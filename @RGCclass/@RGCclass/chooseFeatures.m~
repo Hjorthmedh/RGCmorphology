@@ -1,0 +1,151 @@
+% The purpose of this function is to investigate how the
+% classification of the RGCs vary depending on which features are used.
+
+function chooseFeatures(obj)
+
+  tic
+  
+  tmp = [];
+ 
+  featureIdxList = {};
+  featureList = {};
+
+  featureIdx = 1:numel(obj.allFeatureNames);
+  
+  nFeatures = numel(obj.allFeatureNames);
+  maxFeaturesUsed = 4; % -- for full run
+
+  nCellsOfEachUsed = 3:5 % --- when we got more data
+  nBootstrap = 20; %10; % How many times to resample data
+  
+  % showNBest = 50;
+  
+  % Create the list of features
+  appendLoop([],maxFeaturesUsed);
+  featureList = convertToNames(featureIdxList);
+  
+  % Check how good each set of features is for classification
+
+  nCorrect = zeros(numel(featureList),nBootstrap);
+  
+  for j = 1:nBootstrap
+    
+    fprintf('Data repeats = %d/%d                \n', j, nBootstrap)
+    
+    % Define training set
+    nUsed = nCellsOfEachUsed(ceil(rand*numel(nCellsOfEachUsed)));
+  
+    obj.setRandomTrainingSet(nUsed);
+  
+    for i = 1:numel(featureList)
+      fprintf('Feature count: %d/%d\r', i, numel(featureList))
+      obj.setFeatureMat(featureList{i});
+      obj.train();
+      [group,nCorr,nFalse] = obj.classify();
+      nCorrect(i,j) = nCorr;
+    end
+    
+  end
+
+  totalScore = mean(nCorrect,2)/numel(obj.RGC);
+  
+  stdScore = std(nCorrect/numel(obj.RGC),[],2);
+  
+  [~,sortIdx] = sort(totalScore,'descend');
+  
+  fprintf('\n\nBest feature sets:\n\n')
+  
+  for i = 1:numel(sortIdx)
+    idx = sortIdx(i);
+    fprintf('%d. Score: %.2f %% (+/- %.2f) ', ...
+            i, 100*totalScore(idx), ...
+            100*stdScore(idx)/sqrt(nBootstrap))
+    for j = 1:numel(featureList{idx})
+      fprintf('%s ', featureList{idx}{j})
+    end
+    fprintf('\n')
+  end
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  % How good is each fature, weight together the classifications it
+  % participates in
+  
+  scoreSum = zeros(nFeatures,1);
+  nOccurances = 0;
+  
+  for i = 1:numel(featureIdxList)
+    for j = 1:numel(featureIdxList{i})
+      
+      scoreSum(featureIdxList{i}(j)) = ...
+          scoreSum(featureIdxList{i}(j)) + totalScore(i);
+      
+      if(featureIdxList{i}(j) == 1)
+        nOccurances = 1;
+      end
+      
+    end
+  end
+  
+  scoreSum = scoreSum / nOccurances;
+  
+  [~,featureSortIdx] = sort(scoreSum,'descend');
+  
+  fprintf('\n\n Feature "quality":\n\n')
+  
+  for i = 1:numel(featureSortIdx)
+    fprintf('%d. %.2f %s\n', i, scoreSum(featureSortIdx(i)), ...
+            obj.allFeatureNames{featureSortIdx(i)})
+    
+  end
+
+  fprintf('\n')
+  
+  toc
+  
+  keyboard
+  
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  function appendLoop(preIdx,nDeep)
+    
+    if(isempty(preIdx))
+      featureIdxList = {};
+    end
+    
+    if(numel(preIdx) < nDeep)
+
+      if(isempty(preIdx))
+        maxPreIdx = 0;
+      else
+        maxPreIdx = max(preIdx);
+      end
+
+      availableFeatureIdx = featureIdx(featureIdx > maxPreIdx);
+      
+      for aIdx = 1:numel(availableFeatureIdx)
+        fIdx = [preIdx,availableFeatureIdx(aIdx)];
+        featureIdxList{end+1} = fIdx;
+        appendLoop(fIdx,nDeep);
+      end
+      
+    end
+    
+  end
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  function featNameList = convertToNames(featIdxList)
+
+    featNameList = {};
+    
+    for fIdx = 1:numel(featIdxList)
+      featNameList{end+1} = obj.allFeatureNames(featIdxList{fIdx});
+    end
+  
+  end
+  
+  
+  
+end

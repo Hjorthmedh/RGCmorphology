@@ -1,0 +1,126 @@
+function loadDirectory(obj,dataDir)
+
+  if(~exist('dataDir') | isempty(dataDir))
+    dataDir = uigetdir();
+    
+    if(dataDir == 0)
+      % User cancelled
+      return
+    end
+  end
+  
+  skipList = {};
+  clearLSM = true;
+  
+  files = dir(sprintf('%s/*.xml', dataDir));
+
+  tic
+  for i = 1:numel(files)
+    r = RGCmorph(files(i).name,dataDir);
+    
+    if(~checkLSM(r))
+      % Bad LSM file, no VAChT band
+      skipList{end+1} = r.xmlFile;
+      continue
+    end
+
+    r.checkCoords();
+    r.analyse();
+    close all
+
+    if(clearLSM)
+      % Clear the LSM file, because it takes a lot of memory
+      disp('loadDirectory: Clearing LSM file')
+      r.lsm.image = [];
+      r.lsm.fileName = {};
+      r.lsm = [];
+    end
+    
+    if(isempty(obj.RGC))
+      obj.RGC = r;
+    else
+      obj.RGC(end+1) = r;
+    end
+    
+  end
+    
+  % Look through any subdirectories
+  dirinfo = dir(dataDir);
+  dirinfo(~[dirinfo.isdir]) = [];
+  
+  for i = 1:numel(dirinfo)
+
+    if(strcmp(dirinfo(i).name,'.') | strcmp(dirinfo(i).name,'..'))
+      % Skip current directory, and parent directory
+      continue
+    end
+    
+    dPath = sprintf('%s/%s', dataDir, dirinfo(i).name);
+    
+    files = dir(sprintf('%s/*.xml', dPath));
+    
+    for j = 1:numel(files)
+      r = RGCmorph(files(j).name, dPath);
+      
+      if(~checkLSM(r))
+        % Bad LSM file, no VAChT band
+        skipList{end+1} = r.xmlFile;
+        continue
+      end
+      
+      r.checkCoords();
+      %r.analyse();
+
+      if(clearLSM)
+        % Clear the LSM file, because it takes a lot of memory
+        disp('loadDirectory: Clearing LSM file')
+        r.lsm.image = [];
+        r.lsm.fileName = {};
+        r.lsm = [];
+      end
+      
+      % Remove plots from screen
+      close all
+      
+      if(isempty(obj.RGC))
+        obj.RGC = r;
+      else
+        obj.RGC(end+1) = r;
+      end
+      
+    end
+    
+  end
+  
+  
+  try
+    obj.updateTables();
+  catch e
+    getReport(e)
+    keyboard
+  end
+    
+  for i = 1:numel(skipList)
+    fprintf('Could not find VAChT bands for: %s (IGNORED)\n', ...
+            skipList{i})
+  end
+  
+  toc
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  function LSMok = checkLSM(rObj)
+    
+    LSMok = true;
+    
+    % Check to see if the LSM image exists, and is non-zero
+    if(isempty(rObj.lsm) | nnz(rObj.lsm.image(:,:,3,:)) == 0)
+      fprintf('!!! No VAChT band found, skipping cell: %s\n', rObj.xmlFile)
+      LSMok = false;
+    end
+      
+  end
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+end

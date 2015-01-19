@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/synd/!svn/ver/13/LSM/lsm
+END
+tiffread.m
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/synd/!svn/ver/13/LSM/lsm/tiffread.m
+END
+lsminfo.m
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/synd/!svn/ver/13/LSM/lsm/lsminfo.m
+END
+scaninforead.m
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/synd/!svn/ver/13/LSM/lsm/scaninforead.m
+END
+contents.m
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/synd/!svn/ver/13/LSM/lsm/contents.m
+END
+ifdread.m
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/synd/!svn/ver/13/LSM/lsm/ifdread.m
+END
+TIFF_H.m
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/synd/!svn/ver/13/LSM/lsm/TIFF_H.m
+END
+channelinforead.m
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/synd/!svn/ver/13/LSM/lsm/channelinforead.m
+END
+LSM_H.m
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/synd/!svn/ver/13/LSM/lsm/LSM_H.m
+END
+timestampsread.m
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/synd/!svn/ver/13/LSM/lsm/timestampsread.m
+END

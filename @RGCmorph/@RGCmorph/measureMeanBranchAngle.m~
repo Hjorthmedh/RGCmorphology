@@ -1,0 +1,26 @@
+function res = measureMeanBranchAngle(branch,res)
+    
+  if(isempty(res))
+    res = [0 0 0];
+  end
+    
+  if(numel(branch.branches) == 2)
+    % Only do this if there are two child branches
+      
+    bp = branch.coords(end,:);
+    ep1 = branch.branches(1).coords(end,:);
+    ep2 = branch.branches(2).coords(end,:);
+      
+    a = ep1 - bp;
+    b = ep2 - bp;
+      
+    v = acos(sum(a .* b)/(norm(a)*norm(b)));
+    
+    res(2) = res(2) + v;
+    res(3) = res(3) + 1;
+    res(1) = res(2) / res(3);
+      
+  end
+
+end
+  

@@ -1,0 +1,156 @@
+% This function plots a figure with all RGC
+
+clear all, close all
+
+useFiles = {}
+
+% goodFiles = {CB2-06122012-cell1
+% CB2-07-18-2012-r1cell2 --- have 1 and 3
+
+%              'CB2-P62-06252012-40x-stitch.xml'
+%              'P61-CB2-06252012-r2-cell2-40x-b.xml'
+% Hoxd10-03022012-c1
+% 'Hoxd10-07022012-retina1-cell3-40x-stitch.xml'
+% P21-Hoxd10-r1-02022012-cell1
+% P21-Hoxd10-r1-02022012-cell2
+% 'cdh3-03122012-corrected.xml'
+% 'Cdh3-07-17-2012-a2-r2-cell2-40x-0.xml'
+% 'Cdh3-07-18-2012--cell1-40x-0-corrected.xml'
+% 'DRD4-brown-noearclip-righteye-control-06012013-cell2-40x-07zoom.xml'
+% 'P25-DRD4-07142012-r1-cells3.xml'
+% 'DRD4-brown-noearclip-righteye-control-06012013-cell4-40x-tile.xml'
+% 'P32TRHR-02232012-A1R1-40x-stitch.xml'
+% 'TRHR-r1-01252012-40x.xml'
+% 'TRHR-07182012-a1r2-40x-08zoom.xml'
+  
+%             }
+
+% goodFiles = {'CB2-07182012-r1-cell3-40x-0-corrected.xml', ...
+%              'CB2-2ears-R1-07062012-cell1-40x-stitch.xml', ...
+%              'P61-CB2-06252012-r2-cell1-40x-grey.xml', ...
+%              'Cdh3-07-18-2012-a2r2-cell1-40x-0-corrected.xml', ...
+%              'Cdh3-07-18-2012--cell1-40x-0-corrected.xml', ...
+%              'cdh3-03122012-corrected.xml', ...
+%              'DRD4-albino-leftearclip-righteye-control-06022013-cell1-40x-07zoom.xml', ...
+%              'P30-DRD4-07102012-a2r2-cell1-40x-08zoom-grey.xml', ...
+%              'DRD4-noearclip-righteye-control-06012013-cell6-40x-07zoom.xml', ...
+%              'Hoxd10-03122012.xml', ...
+%              'Hoxd10-07022012-retina1-cell3-40x-stitch.xml', ...
+%              'Hoxd10-02242012.xml', ...
+%              'TRHR-r1-01252012-40x.xml', ...
+%              'trhr-04032012-corrected.xml', ...
+%              'TRHR-07182012-a1r1-cell2-40x-0.8zoom.xml'      }
+
+
+goodFiles = { 'CB2-2ears-R2-07062012-cell1-40x-06zoom.xml', ...
+              'P61-CB2-06252012-r2-cell2-40x-b.xml', ...
+              'CB2-06202012-new.xml', ...
+              'Cdh3-07-18-2012-a2r2-cell1-40x-0-corrected.xml', ...
+              'Cdh3-07172012-a1r1-cell1-40x-0.xml', ...
+              'Cdh3-07-17-2012-a2-r2-cell2-40x-0.xml', ...
+              'DRD4-albino-leftearclip-righteye-control-06022013-cell3-40x-0_Subset.xml', ...
+              'DRD4-albino-leftearclip-righteye-control-06022013-cell4-40x-09zoom.xml', ...
+              'DRD4-07142012-r2-cell1-40x-0.xml', ...
+              'Hoxd10-03122012.xml', ...
+              'hoxd10-04302013-bothears-righteyecontrol-cell3-40x-06zoom.xml', ...
+              'P82-Hoxd10-retina3-07022012-cell5-40x-stitch.xml', ...
+              'TRHR-07182012-a1r1-cell2-40x-0.8zoom.xml', ...
+              'P32TRHR-02232012-A1R1-40x-stitch.xml', ...
+              'P34TRHR-02242012-R1C2-40x.xml'  };
+
+previouslyUsed = { 'CB2-rightear-R1-beads-07032012-cell1-40x-06zoom.xml', ...
+                   'Cdh3-07-18-2012-a2r2-cell2-40x-corrected.xml', ...
+                   'P25-DRD4-07142012-r1-c2-40x-07zoom.xml', ...
+                   'Hoxd10-06062012-c2-corrected.xml', ...
+                   'P40-TRHR-03222012-r2c2-40x.xml', ...
+                   'CB2-06142012-cell1-40x.xml', ...
+                   'Cdh3-a3r3-07172012-cell3-40x-0.xml', ...
+                   'DRD4-noearclip-righteye-control-06012013-cell2-40x-09zoom.xml', ...
+                   'P25-Hoxd1007132012-r2-25x-06zoom.xml', ...
+                   'TRHR-07182012-a1r1-cell1-40x-0.xml', ...
+                   'CB2-2ears-R1-07062012-cell3-40x-06zoom.xml', ... % Rana reject
+                   'Hoxd10-none-righteyecontrol-04292013-40x-cell2-09zoom.xml', ... % Rana reject
+                   'Hoxd10-none-righteyecontrol-04292013-40x-cell3.xml', ...
+                   'CB2-2ears-R1-07062012-cell4-40x-06zoom.xml', ...
+                   'Hoxd10-none-righteyecontrol-04292013-40x-cell5-stitch.xml', ...                 
+                   'CB2-07182012-r1-cell1-40x-06zoom-corrected.xml', ...
+                   'CB2-T4-R2-07092012-cell3-40x-08zoom.xml', ...
+                   'Hoxd10-04292013-leftear-righteyecontrol-cell3-40x-tile_Stitch.xml', ...
+                   'P82-Hoxd10-retina2-cell4-07022012.xml' ...
+                 }; % Rana reject
+
+dataPath = '/Users/hjorth/DATA/RanaEldanaf/XML';
+
+classDir = { 'CB2','Cdh3','DRD4','Hoxd10','TRHR' };
+nOfEach = 3;
+filesUsed = {};
+
+nBad = 0;
+
+for i = 1:numel(classDir)
+  fileList = dir(sprintf('%s/%s/', dataPath, classDir{i}));
+  fileIdx = find(~cat(1,fileList.isdir));
+ 
+  % List of all file names
+  fileNames = {};
+  for j = 1:numel(fileIdx)
+    fileNames{j} = fileList(fileIdx(j)).name;
+  end
+
+  goodFlag = ismember(fileNames,goodFiles);
+  
+  %  % Remove those that are part of excluded list
+  % badFlag = ismember(fileNames,previouslyUsed);
+  % badFlag2 = ismember(fileNames,'.DS_Store');
+  % badFlag = badFlag + badFlag2;
+  
+  % nBad = nBad + nnz(badFlag);
+  % fileNames = fileNames(find(~badFlag));
+  fileNames = fileNames(find(goodFlag));
+  
+  useIdx = randperm(numel(fileNames));
+  useIdx = useIdx(1:nOfEach);
+  
+  for j = 1:numel(useIdx)
+    filesUsed{i,j} = sprintf('%s/%s/%s', ...
+                             dataPath, classDir{i}, ...
+                             fileNames{useIdx(j)});
+  end
+  
+end
+
+xSpacing = 400;
+ySpacing = -400;
+
+figure
+for i = 1:numel(classDir)
+  for j = 1:nOfEach
+    r = RGCmorph(filesUsed{i,j});
+    xCenter = i*xSpacing;
+    yCenter = j*ySpacing;
+    r.drawNeuron(1,0,[xCenter yCenter 0]);
+  end
+end
+   
+plot3(xCenter(1)+[0 100],yCenter(1) -150*[1 1],[0 0],'k-','linewidth',2)
+text(xCenter(1)+50,yCenter(1)-180,'100 \mum','fontsize',10,'horizontalalignment','center')
+axis off
+title([])
+
+for i = 1:numel(classDir)
+  t(i) = text(400*i,-150,classDir{i},'fontsize',18);
+  set(t(i),'horizontalalignment','center')
+end
+
+
+printA4('FIGS/ExampleMorphologies.eps');
+
+fid = fopen('FIGS/ExampleMorphologies.txt','w');
+
+for i = 1:size(filesUsed,1)
+  for j = 1:size(filesUsed,2)
+    fprintf(fid,'%s\n', filesUsed{i,j});
+  end
+end
+
+fclose(fid)
