@@ -1,0 +1,11 @@
+.#*
+*~
+*.pdf
+*.mat
+*.txt
+*.png
+.DS_Store
+FIGS
+MTR
+sparsePCA
+RESULTS
