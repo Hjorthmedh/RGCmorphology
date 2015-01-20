@@ -1,6 +1,7 @@
 \documentclass[11pt,article,oneside]{memoir}
+%% SJE: uncomment.
 \usepackage{org-preamble-xelatex}
-\input{vc}
+%% \input{vc}
 
 $if(listings)$
 \usepackage{listings}
@@ -47,12 +48,14 @@ $endif$
 \begin{document}  
 \setkeys{Gin}{width=1\textwidth} 	
 \setromanfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
-\setsansfont[Mapping=tex-text]{Minion Pro} 
-\setmonofont[Mapping=tex-text,Scale=0.8]{Pragmata}
+\setsansfont[Mapping=tex-text]{Minion Pro}
+%% SJE: do not have this font:
+%%\setmonofont[Mapping=tex-text,Scale=0.8]{Pragmata}
 \chapterstyle{article-4} 
 \pagestyle{kjh}
 
-\published{$date$. Incomplete Draft. Please do not cite without permission.}
+\published{$date$}
+%%\published{$date$. Incomplete Draft. Please do not cite without permission.}
 
 $if(title)$
 \maketitle
