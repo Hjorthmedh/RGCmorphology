@@ -118,10 +118,10 @@ classdef RGCclass < handle
             % Skip loading
             return
           case -1
-            dataDir = '/Users/hjorth/DATA/RanaEldanaf/XML/';
+            dataDir = 'DATA/RanaEldanaf/XML/';
           case -2
 
-            dataDir = { '/Users/hjorth/DATA/RanaEldanaf/XML/', ...
+            dataDir = { 'DATA/RanaEldanaf/XML/', ...
                         '/Users/hjorth/DATA/Sumbul/SWC/'};
         end
 

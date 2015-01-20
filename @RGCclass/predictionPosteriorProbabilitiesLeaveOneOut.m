@@ -110,7 +110,7 @@ function [classID, postP] = predictionPosteriorProbabilitiesLeaveOneOut(obj,plot
     set(gca,'xtick',[])
     set(gca,'ygrid','on')    
     set(gca,'ytick',0:0.2:1)
-    set(gca,'yticklabel',0:0.2:1)
+    set(gca,'yticklabel',{'0.0','0.2','0.4','0.6','0.8','1.0'})
     set(gca,'yminortick','off')
     
     ylabel('Confidence','fontsize',12)
