@@ -1,5 +1,9 @@
 clear all, close all
 
+disp('Setting random seed...')
+beep
+rng(1)
+
 center = [0 0; 1 1; 0.5 2] + 2;
 
 spread = [0.2 3 0.7];
