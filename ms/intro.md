@@ -36,6 +36,16 @@ http://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliog
 Problems with unicode in methods: trying this without success:
 https://groups.google.com/forum/?fromgroups#!topic/pandoc-discuss/urzu6dQU_R4
 
+A study by [@Coombs2006-pb] did unsupervised clustering
+identifying 10 clusters of RGCs. They found that melanposin positive
+cells clustered together in one group, while SMI-32 positive cells
+spanned four different clusters. This is in line with our findings
+that some cell types span multiple clusters, the silhouette value for
+the genetically labeled classes is 0.2 (using the five-feature set),
+which indicates that there is considerable overlap.
+
+\clearpage
+
 # Abstract
 
 There are estimated to be around 20 different types of retinal
@@ -635,6 +645,79 @@ NIH (RNE-D and ADH). We thank  Ellese Cotterill for comments on the
 manuscript.
 
 # Figure legends
+
+<!--ExampleMorphologies.eps   -->
+**Figure 1:** Neurolucida tracings of RGC obtained from five different
+transgenic mouse lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR. Dendrites
+and soma are drawn in black, and axons in red.
+
+
+<!-- Feature Illustration.pdf -->
+**Figure 2:** Illustration of a selection of basic morphological
+features used for classification.  A Dendritic Area (DA): calculated
+as the convex hull (light grey) enclosing all dendrites (black). **Scale
+bar: 50μm**. B Fractal dimension box counting (FDBC): measures the
+number of grid squares filled at different grid magnification, see
+Methods. C Stratification depth (SD):  z-coordinate of the centre of
+dendritic mass (for our data this is relative to soma, for Sümbül
+normalized relative to VAChT-bands). Bistratification distance (BD):
+(normalized) distance Δz between the centres of two Gaussians fitted
+to the dendritic histogram. **Scale bar: 1μm.** D Branch angle, Number of
+branch points, terminal segment length: elementary measures. E
+Dendritic tortuosity (DT): dendritic path length divided by shortest
+distance between end points (a/b). F Feature vector.
+
+
+<!-- Figure3 - Three Cases.pdf -->
+**Figure 3:** Cartoon illustrating the different degrees of separation
+of classes in the feature space.  Each cell is represented as a point
+in a high dimensional feature space (here for simplicity 2D). For good
+classification, cells of the same type need to be close to each other
+and far from other cells of other types. A. The classes are separable
+in feature space. The cells can be classified without
+error. B. Classes overlap significantly in feature space, very
+difficult or impossible to classify. C. Some overlap between classes,
+leading to good, but imperfect, classification.  **Black squares**
+
+
+<!-- Classification-RGC-traces.pdf -->
+
+**Figure 4:** Examples of correctly and incorrectly classified
+  RGCs. Left, the most typical neuron of each class – the neuron of
+  each class with the highest posterior probability. Right, the neuron
+  that the classifier incorrectly ranked as most likely being of the
+  specific class. Neurons are labeled with “predicted : actual”
+  type. For example, the RGC in the top right was predicted to be
+  Hoxd10 but was CB2. Dendrites are marked as black, axons as
+  red. **Scale bar 100 μm.**
+
+<!--  Figure5-feature-space-and-confidence.pdf -->
+**Figure 5:**
+Illustration of feature space and the classifier confidence for each
+RGC. Each neuron in the classifier is represented as a 5D-feature
+(Table 6). A. Two of the five features are shown for each RGC: Soma
+Area and Density of Branch Points.  Each RGC is represented by a
+filled circle, with the colour denoting its genetic type (see legend).
+Cells incorrectly classified are drawn with a circle around it, the
+colour denoting its predicted type. B. Same as in A, but RGCs are
+plotted on the first two principal components.  C. Confidence in
+classification for each cell in the dataset. The x-axis lists all
+neurons grouped by their genetic markers, the y-axis shows the
+confidence in the classification (posterior probability from the Naive
+Bayes classifier). Correct classifications are marked with a filled
+circle, triangles indicate incorrectly classified neurons and the
+colour denotes predicted type. The neuron tested was withheld from the
+training set, using the leave one out technique. Chance level is
+marked with a dashed blue line
+
+
+<!-- Blind-Hoxd10-best-clustering.eps --> **Figure 6:** Distribution
+of Hoxd10 RGCs in feature space.  The projection of all X Hoxd10 RGCs
+onto the first two principal components is shown in the top-left.  Two
+main clusters are observed, with a third cluster with just own member
+(top-right).  Unsupervised clustering into three clusters, here marked
+with filled circles, triangles and crosses.  Three representative RGCs
+from each of the three clusters (numbered 1, 2 and 3) are shown.
 
 
 # References
