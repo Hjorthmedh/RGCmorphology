@@ -2,25 +2,32 @@
 title: Classification of retinal ganglion cell types according to
  dendritic branching and somal characteristics.
 author:
+- name: J J Johannes Hjorth
+  affiliation: University of Cambridge
+- name: Rana N El-Danaf
+  affiliation: UCSD
+- name: Andrew D Huberman
+  affiliation: UCSD
 - name: Stephen J Eglen
   affiliation: University of Cambridge
   email: S.J.Eglen@damtp.cam.ac.uk
-- name: Andrew Huberman
-  affiliation: UCSD
+
 date: 2015-01-19
 bibliography: <!-- \bibliography{/Users/kjhealy/Documents/bibs/socbib-pandoc.bib} This is a hack for Emacs users so that RefTeX knows where your bibfile is, and you can use RefTeX citation completion in your .md files. -->
 ...
+
+\clearpage
 
 # Introduction
 
 How many types of mammalian retinal ganglion cell (RGC) are there? The
 answer to this question depends partly on how you define a neuronal type
-[Cook1998-bh], but it is commonly assumed that RGC types have distinct
+[@Cook1998], but it is commonly assumed that RGC types have distinct
 morphologies and physiologies.  The pioneering work of @Boycott1974-aa
  suggested that there were at least three morphological
 classes (alpha, beta and gamma) of RGC in cat, and these three types
 mapped onto previously-defined physiological classes (X, Y and W)
-[Cleland 1971, 1973].  For example, alpha cells were defined as having
+[@Cleland1971-bo].  For example, alpha cells were defined as having
 larger dendritic fields and somata compared to neighbouring beta cells.
 Since these early studies, subsequent work has primarily focused on
 finer divisions of the gamma class which was thought to be a mixed
@@ -28,8 +35,8 @@ grouping (REF).  Furthermore, it is unclear whether individual
 morphological features alone are unique predictors of cell type, as
 demonstrated by the large overlap in RGC somata area (their Figure 6)
 among the alpha/beta/gamme cat RGCs, but that multiple features should
-be considered simultaneously when classifying neurons.  [Rodieck and
-Brening 1983] formalised this notion, proposing to use multiple features
+be considered simultaneously when classifying neurons.  @Rodieck1983-nb
+formalised this notion, proposing to use multiple features
 to define a multidimensional "feature space" in which to define RGC
 types.  If cells form distinct types, then the expectation is that cells
 of the same type should cluster together in one part of this feature
@@ -51,15 +58,17 @@ In this study, we analyse the morphology of RGCs from several mutant
 mice lines where typically one or a few types of RGC is labelled with
 GFP.  We use supervised machine learning techniques to predict whether
 the anatomical features can predict the "genetic type" of the mouse,
-i.e. the mouse line from where the cell was labelled.  This provides us
-with ground-truth data which we can use to evaluate our methods againts.
-From each RGC we measured fifteen features, from which we found five
-that were highly predictive of cell type.  We compare our findings with
-a recent study (Sumbul2014) where near-perfect classification was
-achieved when information about stratification depth is included.  We
-suggest that our anatomical measures can provide a reliable basis for
-classification in the absence of stratification depth information, and
-thus that the Brenning and Rodieck (1983) method of classification is
-robust when applied to mouse RGCs.
+i.e. the mouse line from where the cell was labelled.  This provides
+us with ground-truth data which we can use to evaluate our methods
+againts.  From each RGC we measured fifteen features, from which we
+found five that were highly predictive of cell type.  We compare our
+findings with a recent study [@Sumbul2014-vm] where near-perfect
+classification was achieved when information about stratification
+depth is included.  We suggest that our anatomical measures can
+provide a reliable basis for classification in the absence of
+stratification depth information, and thus that the @Rodieck1983-nb
+method of classification is robust when applied to mouse RGCs.
+
+\clearpage
 
 # References
