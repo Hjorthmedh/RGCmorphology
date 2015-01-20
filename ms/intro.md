@@ -107,6 +107,33 @@ method of classification is robust when applied to mouse RGCs.
 
 \clearpage
 
+# Methods
+
+Five different transgenic strains of mice were chosen for this
+study. By utilizing genetic markers for CB2, Cdh3, DRD4, Hoxd10 and
+TRHR, individual RGCs of a specific subtype could be targeted (Table
+1).
+
+## Experimental procedure
+
+All experimental procedures were approved by the Institutional Animal Care and Use Committee (IACUC) at the University California, San Diego. The following BAC transgenic mouse lines were used:  Calretinin-EGFP (CB2-GFP; [Huberman el al., 2008]), Homeobox d10-EGFP (Hoxd10-GFP; [Dhande et al., 2013]), Cadherin 3-EGFP (Cdh3-GFP; [Osterhout et al., 2011]), Dopamine receptor D4-EGFP (DRD4-GFP; [Rivlin-Etzion et al., 2011]) and thyrotropin-releasing hormone receptor-EGFP (TRHR-GFP; [Rivlin-Etzion et al., 2011]). 
+
+Intracellular cell filling and immunostaining of the retina were performed using methods described in detail previously ([Beier et al., 2013]; [Dhande et al., 2013]; [Cruz-Martin et al., 2014]; [Osterhout et al., 2014]). Mice were anesthetized with isoflurane and the eyes were removed.  Retinas were dissected and kept in an oxygenated (95% O2/ 5% CO2) solution of Ames’ medium (Sigma Cat # A1420), containing 23 mM NaHCO3.  Single GFP+ RGCs were visualized under epifluorescence, and then targeted under DIC with electrodes made with borosilicate glass (Sutter instruments; 15-20 MΩ). Cells were filled with Alexa Fluor 555 hydrizide (Invitrogen Cat # A20501MP; 10 mM solution in 200 mM KCl), with the application of hyperpolarizing current pulses ranging between 0.1-0.9 nA, for 1-5 minutes.
+
+Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then washed with 1x phosphate buffered saline (PBS) and incubated for 1 hour at room temperature in a blocking solution consisting of 10% goat serum with 0.25 % Triton-X. The retinas were then incubated for 1 day at 4ºC with the following primary antibodies diluted in blocking solution: rabbit anti-GFP (1:1000, Invitrogen Cat # A6455). Retinas were rinsed with PBS (3x, 30 minutes each), and incubated for 2 hours at room temperature with the following secondary antibodies:  Alexa Fluor 488 goat anti-rabbit (1:1000, Life Technologies Cat# A11034). Sections were rinsed with PBS (3x, 30 minutes each) and mounted onto glass slides and coverslipped with Prolong Gold containing DAPI (Invitrogen P36931).
+
+RGCs were imaged with a laser scanning confocal microscope (Zeiss LSM
+710 or 780), using a LD C-Apochromat 40X/1.1 water immersion objective
+lens (Z-step = 0.48-0.5 Z-step µm; scanning resolution = 1024x1024
+pixels, Kalman averaging = 2-4). Complete morphological
+reconstructions were obtained manually using Neurolucida software
+(10.42.1, MBF Bioscience) and exported to our custom-written Matlab
+scripts for analysis.  All relevant data and code relating to this
+project are available
+[https://github.com/Hjorthmedh/RGCmorphology](https://github.com/Hjorthmedh/RGCmorphology).
+
+
+
 ## Acknowledgements
 
 We thank Uygar Sümbül for sharing tracings of retinal ganglion cells,
