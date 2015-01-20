@@ -16,6 +16,16 @@ date: 2015-01-19
 bibliography: <!-- \bibliography{/Users/kjhealy/Documents/bibs/socbib-pandoc.bib} This is a hack for Emacs users so that RefTeX knows where your bibfile is, and you can use RefTeX citation completion in your .md files. -->
 ...
 
+Contributions
+
+Conceived and designed the project: ADH, SJE.
+
+Collected experimental data: RNE-D. 
+
+Analysed and interpreted data: JJJH, RNE-D, ADH, SJE.
+
+Wrote the paper: JJJH, RNE-D, ADH, SJE.
+
 \clearpage
 
 # Introduction
@@ -70,5 +80,15 @@ stratification depth information, and thus that the @Rodieck1983-nb
 method of classification is robust when applied to mouse RGCs.
 
 \clearpage
+
+## Acknowledgements
+
+We thank Uygar Sümbül for sharing tracings of retinal ganglion cells,
+and his code for classification of cell types. The authors were
+supported by the Wellcome Trust (JJJH and SJE, grant number: 083205),
+NIH (RNE-D and ADH). We thank  Ellese Cotterill for comments on the
+manuscript.
+
+
 
 # References
