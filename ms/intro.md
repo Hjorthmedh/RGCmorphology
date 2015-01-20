@@ -28,6 +28,10 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 \clearpage
 
+# TODO
+
+Problems with unicode in methods: trying this without success:
+https://groups.google.com/forum/?fromgroups#!topic/pandoc-discuss/urzu6dQU_R4
 # Abstract
 
 There are estimated to be around 20 different types of retinal
