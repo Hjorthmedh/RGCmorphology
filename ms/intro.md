@@ -28,6 +28,32 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 \clearpage
 
+# Abstract
+
+There are estimated to be around 20 different types of retinal
+ganglion cells in the mouse retina. Newly developed genetic markers
+allow for the identification and targeting of specific retinal
+ganglion cell (RGC) types, which have different functional and
+morphological features. The purpose of this study was to develop tools
+to identify RGCs types based on the most common available sources of
+information about their morphology: soma size and dendritic branching
+pattern. We used five different transgenic mouse lines, in each of
+which 1-2 RGCs types selectively express green fluorescent protein
+(GFP). Cell tracings of 94 RGCs were acquired from retinas of CB2-GFP
+(transient Off alpha RGCs), Cdh3-GFP (M2 ipRGCs; “diving” RGCs,
+DRD4-GFP (pOn-Off DSGCs), Hoxd10-GFP (On-DSGCs and aOn-Off DSGCs)and
+TRHR-GFP (pOn-Off DSGCs) transgenic mice. Fifteen morphological
+features of GFP expressing cells were calculated, and we used machine
+learning techniques to classify the cells. We found that dendritic
+area, density of branch points, fractal dimension box counting, mean
+terminal segment length and soma area were enough to create a
+classifier that could correctly identify 83 % of the RGC types we
+examined.  This approach is therefore useful for experiments that do
+not have access to the genetically labeled mouse lines and or detailed
+information about stratification of RGC types.
+
+\clearpage
+
 # Introduction
 
 How many types of mammalian retinal ganglion cell (RGC) are there? The
