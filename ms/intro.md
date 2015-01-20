@@ -472,6 +472,157 @@ the VAChT-band information. We found that it was possible to get about
 84% correct classification using five morphological features derived
 from the dendritic tree and soma.
 
+# Discussion
+
+In this study we have used five transgenic mouse lines (CB2-GFP,
+Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and TRHR-GFP) that each fluorescently
+label a subpopulation of RGCs to selectively target these cells in our
+experiments. It is an open question whether the type of an RGC can be
+identified using morphological features alone. To address this we have
+applied machine learning techniques to our data set to see if it is
+possible to train a classifier to distinguish between different RGC
+types.
+
+## Key findings
+
+By using our data set annotated with the genetic type of each RGC we
+could train a classifier to predict the RGC type based on the
+morphological features. We found that no single feature could alone
+predict the type of a RGC. For each feature there was considerable
+overlap between the different RGC types. This is in line with earlier
+findings [@Sun2002-ae] that reported considerable overlap between soma
+area and dendritic field for different RGC types in mouse. One
+possible reason for this feature overlap is that the size and shape of
+RGCs varies considerably across the retina [@Wassle2004-lt]. Neurons
+in the center are more densely packed than those in the periphery and
+as a consequence have a smaller dendritic area than peripheral neurons
+of the same type [@Bleckert2014-hg]. **1974 paper here: For example,
+in cat, beta cells are on average smaller than alpha cells, however, a
+peripheral beta cell might be larger than a central alpha cell
+[Wassle1981]**. Mouse has a shallower density gradient than cat
+[@Jeon1998-df], but one possibility to explore would be to scale the
+area with eccentricity, however we did not have the location for the
+individual RGCs.
+
+We tested supervised classification using the same three features that
+@Kong2005 used in their study (Stratification Depth, Dendritic
+Density and Dendritic Area) but only achieved 61.5±2.6% correct
+predictions. The poor result is a combination of our stratification
+depth being measured relative to soma, and possibly variation in
+dendritic area with eccentricity.
+
+To find the best feature set we searched the entire set of possible
+features (2^15^-1 = 32767). A classifier with five features predicted
+the correct RGC type with an accuracy of 83%. This is lower than **near-perfect**
+[@Sumbul2014-vm], nearly 4 times above chance level which is
+around 24%. We discuss the differences between our approach and
+Sümbül’s in the *Limits* section below.
+
+To verify our data we also tested the algorithm on a dataset from
+@Sumbul2014-vm to see if they performed comparably. Their data
+set had been pre-processed into a standard space based on the VAChT
+band location We achieved 82% accuracy for the classification and
+found that stratification depth and bistratification distance were
+informative for the algorithm. This indicates that with the exception
+of the VAChT bands, the data is of comparable value to RGC
+classification as Sümbül et al presented. The VAChT bands are
+discussed further under Limits below.
+
+
+For our analysis we had initially assumed that each genetic mouse line
+marked one RGC type, however, Cdh3 labels two types
+[@Osterhout2011-9b9] and Hoxd10 marks four types
+[@Dhande2013-vp; Osterhout2014-ko]. Our unsupervised clustering of the
+Hoxd10 (Figure **6**) was in agreement with this result, picking out
+two clusters whose arbors looked distinct.
+
+
+In our classification results TRHR was sometimes confused with
+DRD4. Both genetic labels mark ON-OFF RGCs that are direction
+selective for posterior motion with TRHR being more broadly tuned
+[@Rivlin-Etzion2011-ji]. One difference mentioned in that study is
+that the TRHR have a more symmetric arbor, while the soma of DRD4 is
+**off centre (explain)** which is a distinction our morphological
+features do not distinguish between.
+
+## Limits
+
+The retina is a layered structure, and depending on where the RGC
+dendrites arborize they will receive different types of input. By
+marking the VAChT bands it is possible to see in which layer the RGCs
+stratify.  @Kong2005 found that stratification depth was a
+good feature for unsupervised clustering, and @Sumbul2014-vm showed
+that it is a good, but not perfect, predictor of the RGC
+type. The VAChT bands are not completely flat, and the distance
+between them can vary across the retina. Therefore it is important
+that the stratification depth is measured relative to the VAChT
+bands. Sümbül et al modified their experimental procedure to take
+special care not to compress the retina by the glass cover slip. For
+reasons related to our initial data acquisition protocol we were
+unable to reliably detect location of the inner (ON) and outer (OFF)
+VAChT bands in our z-stacks. Often only one broad peak was visible in
+the staining. In our study the stratification depth is therefore
+measured from the soma, which admittedly was not as good an indicator
+of class membership as the relative stratification depth.
+
+Another limitation was the uneven sampling of the RGC types, out of
+the 94 cells sampled 29 were Hoxd10 while 9 were TRHR. Having more
+TRHR cells might have allowed the Naïve Bayes classifier to build a
+better internal representation of the RGC type.
+
+
+**Andy: I think we end on too much of a downer, “whats wrong with our
+  data” tone. We should emphasize the value of a classifier that
+  doesn’t require Z information.**
+
+** Future work
+
+Aside from the technical result it is worth mentioning that Sümbül et
+al have taken the lead on sharing their data and code which enabled us
+and others to reanalysis and verify the results. It also facilitates
+comparison between studies. @Sumbul2014-vm combined
+genetically identified RGCs with unlabeled RGCs **If unlabelled, how
+can we see them?**, and predicted the
+existence of a new set of RGCs. One of our goals was to combine our
+data set with their data set to see if we could identify one of the
+unknown. Before combining the two sets we wanted to verify that they
+were comparable. There were CB2 and Cdh3 RGCs in both sets, but when
+we plotted the merged data set their features did not overlap. This
+discrepancy is probably due to different acquisition methods, and
+might have been alleviated to some extent if the raw data was
+available. As it stands this meant we were unable to combine the two
+data sets and instead investigated them separately. Also we did not
+have the VAChT band information to directly incorporate our cells in
+their analysis pipeline.
+
+Stratification depth has proven to be a good predictor of the RGC
+type, as it indicates what input the RGC receives. In a similar way
+the RGC target might be an important feature. This could be acquired
+by using retrograde tracing techniques to label the RGCs. Previous
+studies have identified the targets of the five genetic types studied
+here: CB2 projects to contralateral SC and dorsal lateral geniculate
+nucleus [@Huberman2008-5a6]. Hoxd10 project to Accessory Optic
+System (nucleus of the optic tract, medial terminal nucleus and dorsal
+terminal nucleus) [@Dhande2013-vp]. Cdh3 innervate vLGN, IGL, OPN,
+mdPPN [@Osterhout2011-9b9]. DRD4 project to dorsal lateral
+geniculate nucleus, ventral lateral geniculate nucleus and the
+superior colliculus [@Rivlin-Etzion2011-ji]. TRHR project to dorsal
+lateral geniculate nucleus, zona incerta, ventral lateral geniculate
+nucleus and the superior colliculus [@Rivlin-Etzion2011-ji].
+
+Given that our method does not rely on VAChT band information, which
+is specific to the retina, our technique should be applicable to use
+on neurons from other structures of the brain also. In a first
+instance **planear ?** cells, but easy to add volume based features
+also.
+
+In summary, we have developed a classifier that can predict the type
+of a RGC using morphological features. Our method does not require
+VAChT band information to be gathered. We can predict the RGC type of
+CB2, Cdh3, DRD4, Hoxd10 and TRHR correctly with 83% accuracy.
+
+
+
 
 ## Acknowledgements
 
