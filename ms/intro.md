@@ -30,6 +30,9 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 # TODO
 
+References can only come at end of document it seems
+http://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography
+
 Problems with unicode in methods: trying this without success:
 https://groups.google.com/forum/?fromgroups#!topic/pandoc-discuss/urzu6dQU_R4
 
@@ -575,7 +578,7 @@ better internal representation of the RGC type.
   data” tone. We should emphasize the value of a classifier that
   doesn’t require Z information.**
 
-** Future work
+## Future work
 
 Aside from the technical result it is worth mentioning that Sümbül et
 al have taken the lead on sharing their data and code which enabled us
@@ -623,7 +626,6 @@ CB2, Cdh3, DRD4, Hoxd10 and TRHR correctly with 83% accuracy.
 
 
 
-
 ## Acknowledgements
 
 We thank Uygar Sümbül for sharing tracings of retinal ganglion cells,
@@ -632,10 +634,15 @@ supported by the Wellcome Trust (JJJH and SJE, grant number: 083205),
 NIH (RNE-D and ADH). We thank  Ellese Cotterill for comments on the
 manuscript.
 
+# Figure legends
 
 
 # References
 
+
+
+
 <!-- (setq reftex-cite-format '((?\C-m . "[@%l]"))
 	       reftex-default-bibliography '("rgcmorph.bib"))
  -->
+
