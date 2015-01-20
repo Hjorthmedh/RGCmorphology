@@ -155,6 +155,153 @@ scripts for analysis.  All relevant data and code relating to this
 project are available
 [https://github.com/Hjorthmedh/RGCmorphology](https://github.com/Hjorthmedh/RGCmorphology).
 
+## Analysis of RGC morphology
+
+@Rodieck1983-nb proposed measuring multiple features to define a
+feature space, within which different RGC types could be
+identified. Our analysis calculated 15 morphological features to
+quantify the characteristics of individual RGCs (Table 2). From these
+features, we defined a feature vector, which specified a point in the
+15 dimensional feature space. The individual features are:
+
+### Dendritic Area and Soma Area
+
+The dendritic area is the convex hull enclosing all of the dendrites
+(Figure 3A), and the soma area is calculated in a similar way. All
+areas are measured in the XY-plane.
+
+### Fractal Dimension
+
+Fractal dimension measures the neuron’s coverage of the retina at
+different length scales. Here we used the box counting method
+described in @Fernandez2001-ef. The neuron was projected onto the XY
+plane and a grid was placed over it (Figure 3B). This grid was then
+successively refined. The magnification is defined as the maximal
+distance between grid lines / current distance between grid lines. At
+each step, the number of grid boxes that contains a piece of dendrite
+was counted. The logarithm of the number of non-empty grid squares was
+plotted against the logarithm of the magnification. A line was fitted
+to these points using the least squares method, and the resulting
+slope is an estimate of the fractal dimension.
+
+### Stratification Depth and Bistratification distance
+
+Commonly, stratification depth is defined as the center of mass of the
+dendritic tree relative to the two VAChT bands [@Kong2005; @Sumbul2014-vm]
+that mark the locations of the starburst amacrine cells. Due to
+unreliable labeling the locations of the two VAChT bands are unknown,
+instead the depth is measured relative to the soma.
+
+Bistratification distance is the distance between the upper and lower
+parts of the dendritic tree (Figure 3C). Two Gaussians are fitted to a
+histogram (along the z-axis) of the dendritic tree, and the (scaled)
+bistratification distance is calculated by
+
+$$ d_{BS}=(d_{A}-d_{B} )/ \max(\sigma_{A},\sigma_{B}) $$
+
+where d~A,B~ are the centres of the Gaussians, and σ~A,B~ are the
+standard deviations. This is calculated for both bistratified and
+monostratified cells, but for bistratified neurons this distance will
+be larger.
+
+### Branch Asymmetry and Angle
+For each branch point (Figure 3D), the branch asymmetry compares the
+number of leaves nL that each of the branches has. It is defined as
+the ratio $$ \max(n_L^i) / \sum_i n_L^i $$
+The branch angle is calculated as the angle between the two branches
+in 3D space.
+
+### Length measures and Branch Points
+
+The dendritic tree is divided into segments, split by the branch
+points. From these measures such as mean segment length, mean terminal
+segment length, total dendritic length and dendritic diameter are
+derived.  Mean segment tortuosity is the ratio of the path length from
+the soma to the dendritic end point divided by the Euclidean distance
+between them. The dendritic density is the total dendritic length
+divided by the total dendritic area, the density of branch points is
+defined analogously.
+
+### Correlation Matrix
+
+To assess if any pairs of features were highly correlated or
+anti-correlated, we first calculated the Pearson correlation for all
+15*14/2 feature pairs. To determine the threshold we shuffled the
+elements in each column in the 94x15 feature matrix, and then
+recalculated the pairwise correlation. This shuffling was repeated
+1000 times, and the max of the absolute correlation was saved each
+time. The 99th percentile was used as the threshold for significant
+correlation.
+
+
+### Unsupervised clustering
+
+To assess the structure of the RGCs in the feature space we performed
+unsupervised clustering using the five feature set previously
+selection using k-means clustering. The rational was that the features
+chosen for the classifier would be those that were informative for
+separating the RGC types, and we wanted to see if there was a natural
+grouping in feature space.
+
+### Selection of Classification Method
+
+We evaluated four different types of classification methods: Decision
+tree based
+methods[Freund and Schapire,1997, Breiman 1996, 2001, Shapire and Singer, 1999, Seiffert et al, 2008, Warmuth, Liao, and Ratsch, 2006],
+Support Vector Machines
+[Hastie et al 2008; Christianini and Shawe-Taylor 2000]., Subspace
+[Ho 1998] and Naïve Bayes Classifiers. [Manning et al 2008].
+
+We used the results from Matlab’s built in sequential feature
+selection function to decide which classifier to use.  We also
+confirmed the results by repeating the comparison using the features
+picked by the exhaustive search (see below) for three of the methods:
+Naive Bayes, SVMs and Bagging.
+
+### Selection of Classification Features
+
+The features for the classifier were selected using an exhaustive
+search of all combinations of the 15 features using Naïve Bayes. We
+partitioned the 94 RGCs into five folds, and used four of them for
+training and the remaining one for testing. This was repeated five
+times, ones for each of the five folds, to perform a five-fold cross
+validation. This procedure was then repeated 20 times using different
+folds, for a total of 100 classification tests. We then plotted the
+number of features against the performance, and picked a feature set
+where adding additional features only improved the performance
+marginally.
+
+### Confusion matrix
+
+The confusion matrix summarizes the predictions of a classifier. Each
+row represents one of the five genetic types, and each column lists
+the predicted types. Correctly classified RGCs are counted on the
+leading diagonal. For each RGC, we created a test set containing all
+RGCs except that cell, trained the classifier, and then predicted the
+type of the RGC that was held back.
+
+### Feature Space Plot
+
+We created two different feature space plots, the first only plotted
+the RGCs on two of the features. The second used principal component
+analysis (computed in Matlab, with variance normalization) to
+visualize the feature space, and plotted the RGCs on the two first
+principal components. These correspond to the two directions with the
+largest variation of the data set. **The classification of individual
+cells was generated in the same way as for the confusion matrix, using
+the leave one out method, and the results verified with
+cross-validation.**
+
+
+### Typical and atypical cells
+
+To assess the confidence in the classification, we used the posterior
+probability from the Naïve Bayes classifier. Following the methodology
+established by @Khan2001-71f we plotted the most typical RGC of each
+type, which was defined as the one with the highest posterior
+probability. We also plotted the most atypical RGC of each type, which
+was defined as the RGC with the highest posterior probability for
+another type other than its genetic type.
 
 
 ## Acknowledgements
