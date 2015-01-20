@@ -55,14 +55,14 @@ space.
 
 Recent advances in imaging and genetics have led to a dramatic
 increase in data available, especially from mice but also other
-species, to explore whether cells of distinct types form clusters in
+species, to test whether cells of distinct types form clusters in
 multidimensional space.  Estimates for mouse retina vary from 12
-[@Kong2005] to 22 [@Volgyi2009] based either on manual classification of
-cell types to unsupervised approaches.  These unsupervised approaches
-use statistical methods to determine the optimal number of clusters in
-the data (e.g. using silhoutte widths technique; REF).  However, these
-approachees have no ground-truth data to compare with the predicted
-number of cell types.
+[@Kong2005] to 22 [@Volgyi2009] based either on manual classification
+of cell types or unsupervised machine learning methods.  These
+unsupervised approaches use statistical methods to determine the
+optimal number of clusters in the data (e.g. using silhoutte widths
+technique; REF).  However, these approachees have no ground-truth data
+to compare with the predicted number of cell types.
 
 In this study, we analyse the morphology of RGCs from several mutant
 mice lines where typically one or a few types of RGC is labelled with
