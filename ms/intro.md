@@ -30,6 +30,13 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 # TODO
 
+J Neurophysiol special issue on cell types as initial target.  J Comp
+Neurol second choice.
+
+Automated analysis and classification of retinal ganglion mice occurs
+also in other species, including cat [@Jelinek2004-gp], newt
+[@Pushchin2009-ef5] and lamprey [@Fletcher2014-mj].
+
 References can only come at end of document it seems
 http://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography
 
@@ -98,7 +105,7 @@ space, and that different cell types occupy different parts of feature
 space.
 
 Recent advances in imaging and genetics have led to a dramatic
-increase in data available, especially from mice but also other
+increase in data available, especially from mice [@Badea2004] but also other
 species, to test whether cells of distinct types form clusters in
 multidimensional space.  Estimates for mouse retina vary from 12
 [@Kong2005] to 22 [@Volgyi2009] based either on manual classification
@@ -269,7 +276,7 @@ We used the results from Matlab’s built in sequential feature
 selection function to decide which classifier to use.  We also
 confirmed the results by repeating the comparison using the features
 picked by the exhaustive search (see below) for three of the methods:
-Naive Bayes, SVMs and Bagging.
+Naïve Bayes, SVMs and Bagging.
 
 ### Selection of Classification Features
 
@@ -306,7 +313,7 @@ the leave one out method, and the results verified with
 cross-validation.**
 
 
-### Typical and atypical cells
+### Determining typical and atypical cells
 
 To assess the confidence in the classification, we used the posterior
 probability from the Naïve Bayes classifier. Following the methodology
@@ -314,7 +321,8 @@ established by @Khan2001-71f we plotted the most typical RGC of each
 type, which was defined as the one with the highest posterior
 probability. We also plotted the most atypical RGC of each type, which
 was defined as the RGC with the highest posterior probability for
-another type other than its genetic type.
+another type other than its genetic type. **SAY SOMETHING ABOUT WHAT
+THIS TELLS US?**
 
 # Results
 
@@ -327,7 +335,9 @@ in 1-2 specific types of RGCs.  This makes it possible to reliably and
 selectively target the same types of RGCs in different animals. We
 will refer to these five lines as “genetic types” and we assume for
 the initial analysis that each of these uniquely define one RGC
-type. **Comment on Hoxd10 as multiple types here, using as control**
+type. **Comment on Hoxd10 as multiple types here, using as
+first-approximation and a control to see what happens when we break
+this assumption**
 Three example RGCs of each genetic type are shown in Figure 1. The
 axons (red) and dendrites (black) were manually traced, and the
 locations of the somas were marked. Each RGC collects information
@@ -371,7 +381,15 @@ predicted 64.7 ± 1.7 % of the cases.
 
 ## Selection of multiple feature vectors
 
-Rodrieck and Brening (1983) described the need to base RGC classification on objectively measurable features, which if used to form axes, would define a feature space. If we look at the cartoon in Figure 3A, we can see that dendritic area on the y-axis can separate the red and green clusters quite well, but it is a poor predictor when separating the green and blue groups. By introducing soma area as an additional feature we can now see that the different types separate in feature space. What a classifier does is look at the position of an unknown RGC **(black dot, marked with ?)**, and see where it is located relative to the previously identified RGCs in the abstract feature space. In this case the RGC is within the green region, so it is very likely that it is of that type. If points belonging to the same RGC type cluster together in space and each cluster is distinct (Figure 3A), then it is possible to correctly predict all RGC types. If instead the classes completely overlap in feature space (Figure 3B) then classification is next to impossible. In the intermediate case there is some overlap between individual RGC types in feature space (Figure 3C), then classification is still possible but there will be some miss-classifications.
+Rodrieck and Brening (1983) described the need to base RGC
+classification on objectively measurable features, which if used to
+form axes, would define a feature space. If we look at the cartoon in
+Figure 3A, we can see that dendritic area on the y-axis can separate
+the red and green clusters quite well, but it is a poor predictor when
+separating the green and blue groups. By introducing soma area as an
+additional feature we can now see that the different types separate in
+feature space. What a classifier does is look at the position of an
+unknown RGC (black square in Figure 3C), and see where it is located relative to the previously identified RGCs in the abstract feature space. In this case the RGC is within the green region, so it is very likely that it is of that type. If points belonging to the same RGC type cluster together in space and each cluster is distinct (Figure 3A), then it is possible to correctly predict all RGC types. If instead the classes completely overlap in feature space (Figure 3B) then classification is next to impossible. In the intermediate case there is some overlap between individual RGC types in feature space (Figure 3C), then classification is still possible but there will be some miss-classifications.
 
 Using the fifteen features listed, we can translate each neuron into a fifteen-dimensional feature vector (Figure 2F) which is then a point in feature space. A priori it is not certain that all fifteen features should be used in classification.  With each additional feature, the dimensionality of the feature space increases, causing the data points to be more spread out. Adding features with little or no useful information increases the distance between all cells in feature space. As more irrelevant features are added, the difference between within-class distance and between-class distance decreases, making the cells harder to classify. Another potential complication is that some of the features capture similar properties, leading to correlations between the features. The pairwise correlations between all features are reported in Table 4.  For example, mean segment length and mean terminal segment length are highly correlated with each other, but strongly anti-correlated with density of branch points. To assess which subset of features would give the best classification we did an exhaustive search using all possible combinations of the fifteen features. We choose the Naïve Bayes classifier, as initial tests showed that it was fast and had reasonably good classification performance. A bootstrap aggregation classifier and Support Vector Machine performed equally well. The performance of each set of features was assessed using five-fold cross-validation. Because of variations in ranking between individual runs, we repeated this procedure 20 times to get robust results. The results from this exploration are shown in Table 6, which shows the best subset for each given number of features. Classification performance initially increases with the number of features, however after eight features, additional features were detrimental to performance. We found that, in our dataset, stratification depth (relative to soma position) and bistratification distance were poor predictors. Here, we opted for a five feature classifier, as adding a sixth feature only marginally improved performance. The features used were Dendritic Area, Density of Branch Points, Fractal Dimension, Mean Terminal Segment Length and Soma Area, which gave an average classification rate of 83%.   By contrast, the baseline for classifier performance when guessing randomly is about 24%. 
 
@@ -525,11 +543,12 @@ depth being measured relative to soma, and possibly variation in
 dendritic area with eccentricity.
 
 To find the best feature set we searched the entire set of possible
-features (2^15^-1 = 32767). A classifier with five features predicted
-the correct RGC type with an accuracy of 83%. This is lower than **near-perfect**
-[@Sumbul2014-vm], nearly 4 times above chance level which is
-around 24%. We discuss the differences between our approach and
-Sümbül’s in the *Limits* section below.
+features (2^15^-1 = 32767). **REF TABLE 1**A classifier with five
+features predicted the correct RGC type with an accuracy of 83%. This
+is lower than **near-perfect** [@Sumbul2014-vm], but around three and
+a half times above chance level which is around 24%. We discuss the
+differences between our approach and Sümbül’s in the *Limits* section
+below.
 
 To verify our data we also tested the algorithm on a dataset from
 @Sumbul2014-vm to see if they performed comparably. Their data
@@ -647,77 +666,121 @@ manuscript.
 # Figure legends
 
 <!--ExampleMorphologies.eps   -->
-**Figure 1:** Neurolucida tracings of RGC obtained from five different
+**Figure 1:** Neurolucida tracings of RGC obtained from five 
 transgenic mouse lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR. Dendrites
 and soma are drawn in black, and axons in red.
 
 
 <!-- Feature Illustration.pdf -->
-**Figure 2:** Illustration of a selection of basic morphological
-features used for classification.  A Dendritic Area (DA): calculated
-as the convex hull (light grey) enclosing all dendrites (black). **Scale
-bar: 50μm**. B Fractal dimension box counting (FDBC): measures the
-number of grid squares filled at different grid magnification, see
-Methods. C Stratification depth (SD):  z-coordinate of the centre of
-dendritic mass (for our data this is relative to soma, for Sümbül
+**Figure 2:** Conversion of an RGC morphology into a feature vector.
+*A*: Example RGC outline to be converted into a feature vector.  The
+Dendritic Area (DA) is calculated
+as the convex hull (light grey) enclosing all dendrites (black); axon
+in red.
+*B*: Fractal dimension box counting (FDBC) measures the
+number of grid squares filled at different grid magnification.
+*C*: Stratification depth (SD):  z-coordinate of the centre of
+dendritic mass (for our data this is relative to the  soma centre
+(**label**?); for the @Sumbul2014-vm data it is
 normalized relative to VAChT-bands). Bistratification distance (BD):
 (normalized) distance Δz between the centres of two Gaussians fitted
-to the dendritic histogram. **Scale bar: 1μm.** D Branch angle, Number of
-branch points, terminal segment length: elementary measures. E
-Dendritic tortuosity (DT): dendritic path length divided by shortest
-distance between end points (a/b). F Feature vector.
+to the dendritic histogram.
+*D*: Branch angle, Number of
+branch points, terminal segment length: elementary measures.
+*E*: Dendritic tortuosity (DT): dendritic path length divided by shortest
+distance between end points (a/b).
+*F*: The feature vector is created by assembling fifteen measures,
+such as those shown in panels A--E.  The RGC in panel A is then
+represented by this feature vector.
 
 
 <!-- Figure3 - Three Cases.pdf -->
 **Figure 3:** Cartoon illustrating the different degrees of separation
-of classes in the feature space.  Each cell is represented as a point
-in a high dimensional feature space (here for simplicity 2D). For good
-classification, cells of the same type need to be close to each other
-and far from other cells of other types. A. The classes are separable
-in feature space. The cells can be classified without
-error. B. Classes overlap significantly in feature space, very
-difficult or impossible to classify. C. Some overlap between classes,
-leading to good, but imperfect, classification.  **Black squares**
+of three types of neuron in feature space.  Each neuron is represented
+as a point in a high dimensional feature space (here for simplicity we
+showing just two of those dimensions). For good classification, cells
+of the same type need to be close to each other and far from other
+cells of other types.
+*A*: The classes are clearly separable in feature space; cells can be
+classified without error.
+*B*: Classes overlap significantly in feature space, making it
+difficult to classify cells.
+*C*: There is moderate overlap between classes, leading to good, but
+imperfect, classification.  When presented with a cell of unknown type
+(black square), a classifier would predict this cell as type 1.
 
 
 <!-- Classification-RGC-traces.pdf -->
 
 **Figure 4:** Examples of correctly and incorrectly classified
-  RGCs. Left, the most typical neuron of each class – the neuron of
-  each class with the highest posterior probability. Right, the neuron
+  RGCs. Left, the most typical neuron of each type – the neuron of
+  each type with the highest posterior probability. Right, the neuron
   that the classifier incorrectly ranked as most likely being of the
-  specific class. Neurons are labeled with “predicted : actual”
-  type. For example, the RGC in the top right was predicted to be
-  Hoxd10 but was CB2. Dendrites are marked as black, axons as
-  red. **Scale bar 100 μm.**
+  specific type. Neurons are labeled with “predicted : actual” type
+  description. For example, the RGC in the top right was predicted to
+  be Hoxd10 but was CB2. Dendrites are marked as black, axons as
+  red.
 
 <!--  Figure5-feature-space-and-confidence.pdf -->
 **Figure 5:**
 Illustration of feature space and the classifier confidence for each
 RGC. Each neuron in the classifier is represented as a 5D-feature
-(Table 6). A. Two of the five features are shown for each RGC: Soma
+(Table 6).
+*A*: Two of the five features are shown for each RGC: Soma
 Area and Density of Branch Points.  Each RGC is represented by a
 filled circle, with the colour denoting its genetic type (see legend).
-Cells incorrectly classified are drawn with a circle around it, the
-colour denoting its predicted type. B. Same as in A, but RGCs are
-plotted on the first two principal components.  C. Confidence in
+Cells incorrectly classified are enclosed in a triangle, with the
+colour of the triangle denoting the predicted type.
+*B*: Same as in A, but RGCs are plotted on the first two principal
+components (which account for 80% of the variance).
+*C*: Confidence in
 classification for each cell in the dataset. The x-axis lists all
-neurons grouped by their genetic markers, the y-axis shows the
-confidence in the classification (posterior probability from the Naive
+neurons grouped by their genetic type, the y-axis shows the
+confidence in the classification (posterior probability from the Naïve
 Bayes classifier). Correct classifications are marked with a filled
 circle, triangles indicate incorrectly classified neurons and the
-colour denotes predicted type. The neuron tested was withheld from the
-training set, using the leave one out technique. Chance level is
-marked with a dashed blue line
+colour denotes predicted type. Chance level for the classifier is
+marked with a dashed blue line.
+
+** TODO Add to methods: The neuron tested was withheld from the training set, using the leave-one-out technique**
+
+<!-- Blind-Hoxd10-best-clustering.eps -->
+
+**Figure 6:** Distribution of Hoxd10 RGCs in feature space.  The
+projection of all X Hoxd10 RGCs onto the first two principal
+components (accounting for 84% of the variance) is shown in the
+top-left.  Unsupervised clustering into three clusters, here marked
+with filled circles, triangles and crosses.  Two large clusters are
+observed, with a third cluster with just own member (top-right). Three
+representative RGCs from each of the three clusters (numbered 1, 2 and
+3) are shown.
 
 
-<!-- Blind-Hoxd10-best-clustering.eps --> **Figure 6:** Distribution
-of Hoxd10 RGCs in feature space.  The projection of all X Hoxd10 RGCs
-onto the first two principal components is shown in the top-left.  Two
-main clusters are observed, with a third cluster with just own member
-(top-right).  Unsupervised clustering into three clusters, here marked
-with filled circles, triangles and crosses.  Three representative RGCs
-from each of the three clusters (numbered 1, 2 and 3) are shown.
+<!-- PCA variances
+1.
+
+For figure 5B, the PCA variances are:
+
+    3.1046
+    0.8910
+    0.4945
+    0.3273
+    0.1827
+
+62.1 % for first component, 17.8% for second component.
+
+
+For figure 6 the PCA variances are
+
+    2.6549
+    0.9485
+    0.3848
+    0.1822
+    0.1038
+
+62.1% for first component, 22.2% for second component
+
+-->
 
 
 # References
