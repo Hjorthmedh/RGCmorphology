@@ -12,3 +12,9 @@ these fonts can be installed using:
 
 I have moved the org-preamble-xelatex.sty into the same directory as
 the .tex for convenience.
+
+    make intro.pdf  ## remake the paper as PDF
+    make intro.docx ## what does the word file look like?
+
+Update: I don't think the above is currently working...
+
