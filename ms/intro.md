@@ -219,7 +219,7 @@ be larger.
 
 ### Branch Asymmetry and Angle
 For each branch point (Figure 3D), the branch asymmetry compares the
-number of leaves nL that each of the branches has. It is defined as
+number of leaves n~L~ that each branch has. It is defined as
 the ratio $$ \max(n_L^i) / \sum_i n_L^i $$
 The branch angle is calculated as the angle between the two branches
 in 3D space.
