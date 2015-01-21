@@ -80,27 +80,27 @@ information about stratification of RGC types.
 # Introduction
 
 How many types of mammalian retinal ganglion cell (RGC) are there? The
-answer to this question depends partly on how you define a neuronal type
-[@Cook1998], but it is commonly assumed that RGC types have distinct
-morphologies and physiologies.  The pioneering work of @Boycott1974-aa
- suggested that there were at least three morphological
-classes (alpha, beta and gamma) of RGC in cat, and these three types
-mapped onto previously-defined physiological classes (X, Y and W)
-[@Cleland1971-bo].  For example, alpha cells were defined as having
-larger dendritic fields and somata compared to neighbouring beta cells.
-Since these early studies, subsequent work has primarily focused on
-finer divisions of the gamma class which was thought to be a mixed
-grouping (REF).  Furthermore, it is unclear whether individual
+answer to this question depends partly on how you define a neuronal
+type [@Cook1998], but it is commonly assumed that RGC types have
+distinct morphologies and physiologies.  The pioneering work of
+@Boycott1974-aa suggested that there were at least three morphological
+sub-classes (alpha, beta and gamma) of RGC in cat, and these three
+types mapped onto previously-defined physiological classes (X, Y and
+W) [@Cleland1971-bo].  For example, alpha cells were defined as having
+larger dendritic fields and somata compared to neighbouring beta
+cells.  Since these early studies, subsequent work has primarily
+focused on finer divisions of the gamma class which was thought to be
+a mixed grouping (REF).  Furthermore, it is unclear whether individual
 morphological features alone are unique predictors of cell type, as
-demonstrated by the large overlap in RGC somata area (their Figure 6)
-among the alpha/beta/gamme cat RGCs, but that multiple features should
-be considered simultaneously when classifying neurons.  @Rodieck1983-nb
-formalised this notion, proposing to use multiple features
-to define a multidimensional "feature space" in which to define RGC
-types.  If cells form distinct types, then the expectation is that cells
-of the same type should cluster together in one part of this feature
-space, and that different cell types occupy different parts of feature
-space.
+demonstrated by the large overlap in RGC somata area
+[Figure 6 of @Boycott1974-aa] among the alpha/beta/gamma cat RGCs, but
+that multiple features should be considered simultaneously when
+classifying neurons.  @Rodieck1983-nb formalised this notion,
+proposing to use multiple features to define a multidimensional
+"feature space" in which to define RGC types.  If cells form distinct
+types, then the expectation is that cells of the same type should
+cluster together in one part of this feature space, and that different
+cell types occupy different parts of feature space.
 
 Recent advances in imaging and genetics have led to a dramatic
 increase in data available, especially from mice [@Badea2004] but also
@@ -134,9 +134,12 @@ method of classification is robust when applied to mouse RGCs.
 
 Five different transgenic strains of mice were chosen for this
 study. By utilizing genetic markers for CB2, Cdh3, DRD4, Hoxd10 and
-TRHR, individual RGCs of specific types could be targeted (Table
-1).  We refer to to the genetic markers  as the "genetic types" of the
-RGCs.
+TRHR, individual RGCs of specific types could be targeted (Table 1).
+We refer to to the genetic markers as the "genetic types" of the RGCs.
+We also follow the terminology proposed by @Cook1998 for
+distinguishing between the notion of a "type" and "class" of a neuron.
+In this context, when we refer to a class, it is in the predicted
+group from the clustering/classification methods.
 
 ## Experimental procedure
 
@@ -265,11 +268,10 @@ grouping in feature space.
 ### Selection of Classification Method
 
 We evaluated four different types of classification methods: Decision
-tree based
-methods[Freund and Schapire,1997, Breiman 1996, 2001, Shapire and Singer, 1999, Seiffert et al, 2008, Warmuth, Liao, and Ratsch, 2006],
-Support Vector Machines
-[Hastie et al 2008; Christianini and Shawe-Taylor 2000]., Subspace
-[Ho 1998] and Naïve Bayes Classifiers. [Manning et al 2008].
+trees [@Kotsiantis2013-jc], Support Vector Machines
+Hastie et al 2008; Christianini and Shawe-Taylor 2000]., Subspace
+[Ho 1998] and Naïve Bayes Classifiers. [Manning et al 2008].  **Need
+refs for three other methods?**
 
 We used the results from Matlab’s built in sequential feature
 selection function to decide which classifier to use.  We also
@@ -783,6 +785,11 @@ For figure 6 the PCA variances are
 
 
 # References
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+\vspace*{-0.2in}
+\noindent
 
 
 
