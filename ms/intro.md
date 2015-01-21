@@ -40,8 +40,6 @@ also in other species, including cat [@Jelinek2004-gp], newt
 References can only come at end of document it seems
 http://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography
 
-Problems with unicode in methods: trying this without success:
-https://groups.google.com/forum/?fromgroups#!topic/pandoc-discuss/urzu6dQU_R4
 
 A study by [@Coombs2006-pb] did unsupervised clustering
 identifying 10 clusters of RGCs. They found that melanposin positive
@@ -105,12 +103,12 @@ space, and that different cell types occupy different parts of feature
 space.
 
 Recent advances in imaging and genetics have led to a dramatic
-increase in data available, especially from mice [@Badea2004] but also other
-species, to test whether cells of distinct types form clusters in
-multidimensional space.  Estimates for mouse retina vary from 12
-[@Kong2005] to 22 [@Volgyi2009] based either on manual classification
-of cell types or unsupervised machine learning methods.  These
-unsupervised approaches use statistical methods to determine the
+increase in data available, especially from mice [@Badea2004] but also
+other species, to test whether distinct types of RGCs form clusters in
+multidimensional space.  Estimates for mouse RGCs vary from 12
+[@Kong2005] to 22 [@Volgyi2009] types based either on manual
+classification of cell types or unsupervised machine learning methods.
+These unsupervised approaches use statistical methods to determine the
 optimal number of clusters in the data (e.g. using silhoutte widths
 technique; REF).  However, these approachees have no ground-truth data
 to compare with the predicted number of cell types.
@@ -136,8 +134,9 @@ method of classification is robust when applied to mouse RGCs.
 
 Five different transgenic strains of mice were chosen for this
 study. By utilizing genetic markers for CB2, Cdh3, DRD4, Hoxd10 and
-TRHR, individual RGCs of a specific subtype could be targeted (Table
-1).
+TRHR, individual RGCs of specific types could be targeted (Table
+1).  We refer to to the genetic markers  as the "genetic types" of the
+RGCs.
 
 ## Experimental procedure
 
@@ -356,7 +355,7 @@ features were calculated (Table 2). Together they define a feature
 vector, which captured both large-scale characteristics of the neuron
 such as stratification depth, area of the dendritic arbor and number
 of branches, and also finer aspects such as the mean angle and the
-tortuosity of the branches (Figure 2).
+tortuosity of the branches (Figure\ 2).
 
 ## Single features do not uniquely predict RGC type
 
@@ -377,7 +376,7 @@ range spans the whole spectrum of values of other RGC types. To assess
 the predictive powers of the individual features, we trained a Naïve
 Bayes classifier for each individual feature. The most discriminative
 feature was mean terminal segment length, which alone correctly
-predicted 64.7 ± 1.7 % of the cases.
+predicted 64.7 ± 1.7\ % of the cases.
 
 ## Selection of multiple feature vectors
 
