@@ -396,44 +396,40 @@ Total Dendritic Length (TDL) & -0.09 & 0.27 & \textbf{0.58} & 0.02 & \textbf{0.6
 % 
 
 % 20 reps
-
 \begin{sidewaystable}
 \begin{tabular}{cclllllllllllllll}
-\toprule
- & & \multicolumn{15}{c}{Feature}\\
-\cline{3-17}
-No. & Performance  & BA & BD & DA & DBP & DD & DDi & FDBC & MBA & MSL & MST & MTSL & NBP & SA & SD & TDL\\
-\midrule
+Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FDBC & MBA & MSL & MST & MTSL & NBP & SA & SD & TDL\\
+\hline
 1 & $64.7 \pm 1.7\,\%$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ &  &  &  & \\
-2 & $72.9 \pm 2.0\,\%$  &  &  &  & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ &  & \\
+2 & $72.9 \pm 2.0\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ &  & \\
 3 & $78.7 \pm 2.8\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
 4 & $80.7 \pm 3.1\,\%$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
-5 & $83.1 \pm 3.6\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
+5 & $83.1 \pm 3.6\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
 6 & $84.0 \pm 2.7\,\%$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & \\
-7 & $85.5 \pm 2.9\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
-8 & $86.3 \pm 2.6\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
-9 & $85.7 \pm 2.1\,\%$  &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-10 & $85.1 \pm 2.2\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+7 & $85.5 \pm 2.9\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
+8 & $86.3 \pm 2.6\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
+9 & $85.7 \pm 2.1\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+10 & $85.1 \pm 2.2\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
 11 & $85.2 \pm 1.7\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
 12 & $84.9 \pm 1.7\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-13 & $84.1 \pm 1.7\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+13 & $84.1 \pm 1.7\,\%$  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
 14 & $83.2 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
 15 & $82.2 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
 \caption{Performance of classifiers. Five-fold cross-validation,
-  repeated twenty times for each feature set. Branch Assymetry (BA),
-    Bistratification Distance (BD), Dendritic Area (DA), Density of
-    Branch Points (DBP), Dendritic Density (DD), Dendritic Diameter
-    (DDi), Fractal Dimension Box Counting (FDBC), Mean Branch Angle
-    (MBA), Mean Segment Length (MSL), Mean Segment Tortuosity (MST),
-    Mean Terminal Segment Length (MTSL), Number of Branch Points
-    (NBP), Soma Area (SA), Stratification Depth (SD), Total Dendritic
-    Length (TDL) Performance is given as mean $\pm$ standard deviation
+  repeated twenty times for each feature set. Bistratification
+  Distance (BD), Branch Assymetry (BA), Dendritic Area (DA), Dendritic
+  Density (DD), Dendritic Diameter (DDi), Density of Branch Points
+  (DBP), Fractal Dimension Box Counting (FDBC), Mean Branch Angle
+  (MBA), Mean Segment Length (MSL), Mean Segment Tortuosity (MST),
+  Mean Terminal Segment Length (MTSL), Number of Branch Points (NBP),
+  Soma Area (SA), Stratification Depth (SD), Total Dendritic Length
+  (TDL). Performance is given as mean $\pm$ standard deviation
     correctly classified.}
-
 \label{tab:performance}
 \end{sidewaystable}
+
 
 
 \clearpage
@@ -870,33 +866,36 @@ No. & Performance  & BA & BD & DA & DBP & DD & DDi & FDBC & MBA & MSL & MST & MT
 %   cells. Using P threshold 0.30}
 % \label{tab:sumbulcorr}\end{sidewaystable}
 
+% runExhaustiveFeatureSearchSumbul    % !!! This is slow
+% analyseExhaustiveFeatureSearchSumbul
+% 
+
 
 \begin{sidewaystable}
 \begin{tabular}{ccllllllllllllll}
-\toprule
- & & \multicolumn{14}{c}{Feature}\\
-\cline{3-16}
-No. & Performance  & BA & BD & DA & DBP & DD & DDi & FDBC & MBA & MSL & MST & MTSL & NBP & SD & TDL\\
-\midrule
+Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FDBC & MBA & MSL & MST & MTSL & NBP & SD & TDL\\
+\hline
 1 & $56.0 \pm 1.4\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & \\
 2 & $67.1 \pm 2.0\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
-3 & $75.8 \pm 2.2\,\%$  &  &  &  &  & $\bullet$ &  &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
-4 & $81.1 \pm 2.0\,\%$  &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
-5 & $81.6 \pm 2.7\,\%$  &  & $\bullet$ &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
-6 & $81.9 \pm 2.4\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
-7 & $80.4 \pm 2.2\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
-8 & $79.8 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
-9 & $79.0 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
-10 & $78.1 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-11 & $76.6 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-12 & $74.7 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+3 & $75.8 \pm 2.2\,\%$  &  &  &  & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
+4 & $81.1 \pm 2.0\,\%$  & $\bullet$ &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
+5 & $81.6 \pm 2.7\,\%$  & $\bullet$ &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
+6 & $81.9 \pm 2.4\,\%$  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
+7 & $80.4 \pm 2.2\,\%$  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+8 & $79.8 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
+9 & $79.0 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+10 & $78.1 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $76.6 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $74.7 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 13 & $73.0 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+14 & $71.6 \pm 2.1\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
 \caption{Feature set performance for \Sumbul dataset. See Table
   \ref{tab:performance} for abbreviations.}
 \label{tab:sumbulfeatureselection}
 \end{sidewaystable}
+
 
 
 
