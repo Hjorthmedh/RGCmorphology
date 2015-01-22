@@ -648,7 +648,7 @@ classdef RGCclass < handle
       obj.featureNameDisplay('meanSegmentTortuosity') = 'Mean Segment Tortuosity';
       obj.featureNameDisplay('meanBranchAngle') = 'Mean Branch Angle';
       obj.featureNameDisplay('dendriticDensity') = 'Dendritic Density';
-      obj.featureNameDisplay('fractalDimensionBoxCounting') = 'Fractal Dimension Box Counting';      
+      obj.featureNameDisplay('fractalDimensionBoxCounting') = 'Fractal Dimension';      
       obj.featureNameDisplay('stratificationDepthScaled') = 'Stratification Depth Scaled';      
       obj.featureNameDisplay('dendriticVAChT') = 'Dendritic VAChT';      
       obj.featureNameDisplay('branchAssymetry') = 'Branch Assymetry';      
@@ -670,7 +670,7 @@ classdef RGCclass < handle
       obj.featureNameDisplayShort('meanSegmentTortuosity') = 'MST';
       obj.featureNameDisplayShort('meanBranchAngle') = 'MBA';
       obj.featureNameDisplayShort('dendriticDensity') = 'DD';
-      obj.featureNameDisplayShort('fractalDimensionBoxCounting') = 'FDBC';      
+      obj.featureNameDisplayShort('fractalDimensionBoxCounting') = 'FD';      
       obj.featureNameDisplayShort('stratificationDepthScaled') = 'SDS';      
       obj.featureNameDisplayShort('dendriticVAChT') = 'DVAChT';      
       obj.featureNameDisplayShort('branchAssymetry') = 'BA';      

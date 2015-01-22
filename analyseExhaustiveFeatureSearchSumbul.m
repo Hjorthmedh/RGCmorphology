@@ -95,29 +95,11 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Had forgotten to add this one when we were running earlier
-data.featureNameDisplay('dendriticDiameter') = 'Dendritic Diameter';            
+r2 = RGCclass(0);
+r2.setNameLookup();     
 
-data.featureNameDisplayShort = containers.Map();
-data.featureNameDisplayShort('stratificationDepth') = 'SD';
-data.featureNameDisplayShort('biStratificationDistance') = 'BD';
-data.featureNameDisplayShort('dendriticField') = 'DA';
-data.featureNameDisplayShort('densityOfBranchPoints') = 'DBP';
-data.featureNameDisplayShort('somaArea') = 'SA';
-data.featureNameDisplayShort('numBranchPoints') = 'NBP';
-data.featureNameDisplayShort('numSegments') = 'NS';
-data.featureNameDisplayShort('totalDendriticLength') = 'TDL';
-data.featureNameDisplayShort('meanSegmentLength') = 'MSL';
-data.featureNameDisplayShort('meanTerminalSegmentLength') = 'MTSL';
-data.featureNameDisplayShort('meanSegmentTortuosity') = 'MST';
-data.featureNameDisplayShort('meanBranchAngle') = 'MBA';
-data.featureNameDisplayShort('dendriticDensity') = 'DD';
-data.featureNameDisplayShort('fractalDimensionBoxCounting') = 'FDBC';      
-data.featureNameDisplayShort('stratificationDepthScaled') = 'SDS';      
-data.featureNameDisplayShort('dendriticVAChT') = 'DVAChT';      
-data.featureNameDisplayShort('branchAssymetry') = 'BA';      
-data.featureNameDisplayShort('numLeaves') = 'NL';            
-data.featureNameDisplayShort('dendriticDiameter') = 'DDi';            
-     
+data.featureNameDisplay = r2.featureNameDisplay;
+data.featureNameDisplayShort = r2.featureNameDisplayShort;
 
 fid = fopen('RESULTS/ExhaustiveSearchLatex-excluded-features-Sumbul.tex','w');
 % Number of features, 
@@ -127,8 +109,14 @@ fprintf(fid,'\\begin{tabular}{cc%s}\n',repmat('l',1,numel(bestNfeatureSets)));
 
 for i = 1:numel(data.allFeatureNames)
   allFeaturesShortOrig{i} = data.featureNameDisplayShort(data.allFeatureNames{i});
+  allFeaturesLongOrig{i} = data.featureNameDisplay(data.allFeatureNames{i});
 end
-[allFeaturesShort,alphabeticIdx] = sort(allFeaturesShortOrig);
+
+% Sort after long names not abbreviations
+% [allFeaturesShort,alphabeticIdx] = sort(allFeaturesShortOrig);
+[allFeaturesLong,alphabeticIdx] = sort(allFeaturesLongOrig);
+allFeaturesShort = allFeaturesShortOrig(alphabeticIdx);
+
 
 % Filter out excluded feature
 %goodAlphaIdx = find(~ismember(alphabeticIdx,excludeFeatureIdx));
