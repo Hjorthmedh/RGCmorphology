@@ -5,3 +5,13 @@ document type:
 
     make intro.pdf
 
+## Figures
+
+	make allfigs.pdf
+
+## Tables
+
+    make allTables.pdf
+
+
+	
