@@ -1,0 +1,14 @@
+All the figures assume that you have the cache file already, if you do not already have it run (the data directory to choose is DATA/RanaEldanaf/XML):
+
+r = RGCclass();
+r.lazySave();
+
+If you want to use default location (and skip the dialogue), use r = RGCclass(-1);
+
+
+
+To generate figure 1:
+
+makeFigureWithAllRGCuserChosen.m
+
+
