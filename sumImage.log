@@ -1,0 +1,35 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=mex 2012.6.30)  22 JAN 2015 15:02
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**sumImage.c
+(./sumImage.c
+This is MeX  Version 1.05  18 XII 1993  (B. Jackowski & M. Ry\'cko)
+! You can't use `macro parameter character #' in vertical mode.
+l.5 #
+     include "mex.h"
+? q
+OK, entering \batchmode...
+! You can't use `macro parameter character #' in horizontal mode.
+l.6 #
+     include <math.h>
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.7 #
+     include <string.h>
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+)
+! Emergency stop.
+<*> sumImage.c
+              
+*** (job aborted, no legal \end found)
+
+No pages of output.
