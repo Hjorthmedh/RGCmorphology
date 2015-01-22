@@ -4,6 +4,8 @@
 *.mat
 *.txt
 *.png
+*.log
+*.aux
 .DS_Store
 FIGS
 MTR
