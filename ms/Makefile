@@ -54,4 +54,10 @@ tex:	clean $(TEX)
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+subscript -s -S --latex-engine=pdflatex --template=$(PREFIX)/templates/xelatex.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) --latex-engine=xelatex -V header-includes:'\setromanfont{TeX Gyre Pagella}' -o $@ $<
 
 clean:
-	rm -f *.html *.pdf *.tex
+	rm -f *.html *.pdf
+
+######################################################################
+## project-specific entries.
+allfigs.pdf: allfigs.tex
+	pdflatex allfigs.tex
+
