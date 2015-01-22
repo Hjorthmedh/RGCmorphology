@@ -1,0 +1,955 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{mathpazo}
+
+\usepackage{graphicx}
+
+\usepackage{cite}
+
+\usepackage{color} 
+
+% Use doublespacing - comment out for single spacing
+\usepackage{setspace} 
+\onehalfspacing
+%\doublespacing
+
+\usepackage[utf8]{inputenc} 
+
+\usepackage{dcolumn}
+\newcolumntype{.}{D{.}{.}{-1}}
+
+\usepackage{marginnote}
+%%\newcommand{\mycomment}[1]{\marginnote{#1}}
+\newcommand{\mycomment}[1]{}
+% use \mycomment{comment text}
+
+% Boolean expressions
+% \usepackage{etoolbox}
+%
+% \newtoggle{groupResults}
+% \toggletrue{groupResults}
+% \togglefalse{groupResults}
+
+
+\usepackage[a4paper,margin=3cm]{geometry}
+\usepackage{url}
+% Bold the 'Figure #' in the caption and separate it with a period
+% Captions will be left justified
+\usepackage[labelfont=bf,labelsep=period,justification=raggedright]{caption}
+
+% Get formating for table
+\usepackage{siunitx}
+
+\usepackage{booktabs}
+
+\usepackage{lastpage}
+
+% Rotated table
+\usepackage{rotating}
+
+
+% J Neurosci stylesheet - not working!
+\usepackage{namedplus}
+\bibliographystyle{namedplus}
+% Use the PLoS provided bibtex style
+%\bibliographystyle{plos2009}
+% \bibliographystyle{modelcomp}
+
+% Remove brackets from numbering in List of References
+% \makeatletter
+% \renewcommand{\@biblabel}[1]{\quad#1.}
+% \makeatother
+
+% Space after your macros, latex being obnoxious
+\usepackage{xspace}
+
+\usepackage{multirow}
+
+% Turn of hyphenation to make word count more accurate
+% \usepackage[none]{hyphenat} 
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\sloppy
+
+% Leave date blank
+\date{}
+
+\pagestyle{myheadings}
+%% ** EDIT HERE **
+
+\newcommand{\Sumbul}{S\"{u}mb\"{u}l\xspace}
+
+
+%% ** EDIT HERE **
+%% PLEASE INCLUDE ALL MACROS BELOW
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% pedex and apex, subscript and superscript
+
+\providecommand*{\ped}[1]{%
+\ensuremath{_\mathrm{#1}}}
+\providecommand*{\ap}[1]{%
+\ensuremath{^\mathrm{#1}}}
+\newcommand{\gMathV}{\textit{Math5}$\ap{\mathrm{-/-}}$\xspace}
+\newcommand{\pMathV}{Math5$\ap{\mathrm{-/-}}$\xspace}
+
+\newcommand{\gIsl}{\textit{Isl2}\xspace}
+\newcommand{\gIslE}{\textit{Isl2-EphA3}\xspace}
+\newcommand{\gIslEkk}{\textit{Isl2-EphA3}$\ap{\mathrm{ki/ki}}$\xspace}
+\newcommand{\gIslEkp}{\textit{Isl2-EphA3}$\ap{\mathrm{ki/+}}$\xspace}
+
+\newcommand{\gIslp}{\textrm{Isl2\ap{+}}\xspace}
+\newcommand{\gIslm}{\textrm{Isl2\ap{-}}\xspace}
+
+\newcommand{\gTKO}{\textit{{ephrin-A2,A3,A5}}\xspace}
+\newcommand{\gephrinA}{\textit{ephrin-A}\xspace}
+\newcommand{\gEphA}{\textit{EphA}\xspace}
+
+\newcommand{\gEphAIII}{\textit{EphA3}\xspace}
+\newcommand{\gEphAIV}{\textit{EphA4}\xspace}
+\newcommand{\gEphAV}{\textit{EphA5}\xspace}
+
+\usepackage{upgreek}
+%\newcommand{\betaIIKO}{\ensuremath{\upbeta 2^{-/-}}\xspace}
+\newcommand{\betaIIKO}{\ensuremath{\beta\mathit{2}^{-/-}}\xspace}
+
+%% END MACROS SECTION
+
+\begin{document}
+
+\singlespacing
+
+
+% \begin{table}
+% \begin{tabular}{p{4.5cm}p{7cm}p{5cm}}
+%   \toprule
+%   Genetic type & Description & Citation \\
+%   \midrule
+%   \footnotesize{Calretinin (CB2)} & \footnotesize{Transient OFF-alpha}  & \footnotesize{\citetext{Huberman2008}}\\
+%   \footnotesize{Cadherin-3 (Cdh3)} & \footnotesize{M2 ipRGCs \& "diving cells"} & \footnotesize{\citetext{Osterhout2011}}\\
+%   \footnotesize{Dopamine Receptor 4 (DRD4)} & \footnotesize{ON-OFF direction selective (posterior motion)} & \footnotesize{\citetext{Huberman2009}}\\
+%   \footnotesize{Homeobox d10 (Hoxd10)} & \footnotesize{On-DS (3 types) and On-Off DS/anterior tuned (1 type)} & \footnotesize{\citetext{Dhande2013}}\\
+%   \footnotesize{Thyrotropin-Releasing Hormone Receptor (TRHR)} & \footnotesize{ON-OFF direction selective (posterior motion)}& \footnotesize{\citetext{RivlinEtzion2011}}\\
+%   \bottomrule
+% \end{tabular}
+% \caption{Description of the five genetic types in this study.}
+% \label{tab:geneticTypes}
+% \end{table}
+
+\doublespacing
+
+\begin{table}
+\begin{tabular}{p{4.5cm} p{4cm} l}
+  \toprule
+  Genetic type & Description & Citation \\
+  \midrule
+  \footnotesize{Calretinin (CB2)} & \footnotesize{Transient Off-alpha}  & \footnotesize{\citetext{Huberman2008}}\\
+  \footnotesize{Cadherin-3 (Cdh3)} & \footnotesize{M2 ipRGCs \& "diving cells"} & \footnotesize{\citetext{Osterhout2011}}\\
+  \footnotesize{Dopamine Receptor 4 (DRD4)} & \footnotesize{On-Off direction selective (posterior motion)} & \footnotesize{\citetext{Huberman2009}}\\
+  \footnotesize{Homeobox d10 (Hoxd10)} & \footnotesize{On-DS (3 types) and On-Off DS/anterior tuned (1 type)} & \footnotesize{\citetext{Dhande2013}}\\
+  \footnotesize{Thyrotropin-Releasing Hormone Receptor (TRHR)} & \footnotesize{On-Off direction selective (posterior motion)}& \footnotesize{\citetext{RivlinEtzion2011}}\\
+  \bottomrule
+\end{tabular}
+\caption{Description of the five genetic types in this study.}
+\label{tab:geneticTypes}
+\end{table}
+
+
+\clearpage
+
+\singlespacing
+
+\begin{table}
+  {\renewcommand{\arraystretch}{1.3} \begin{tabular}{llp{8cm}}
+      \toprule
+      \textbf{Feature Name} & \textbf{Abbrev.} & \textbf{Description} \\
+
+      \midrule
+      Bistratification Distance &  BD & {\footnotesize Distance between putative bistratified dendrites (normalised by variance). See Methods.}\\
+      Branch Asymmetry & BA & {\footnotesize Ratio of number of leaves between a branch points branches.}\\
+      Dendritic Area & DA & {\footnotesize Area of dendritic arbor projected on the XY-plane, calculated using the convex hull}\\
+      Dendritic Density & DD & {\footnotesize TDL / DA}\\
+      Dendritic Diameter & DDi & {\footnotesize  Largest distance between two points on the dendritic arbor}\\
+      Density of Branch Points & DBP &  {\footnotesize  NBP / DA }\\
+      Fractal Dimension & FD & {\footnotesize  Dendritic complexity measure, see Methods}\\
+      Mean Branch Angle & MBA &  {\footnotesize  Mean angle between the branches in 3D space.}\\
+      Mean Segment Length & MSL & {\footnotesize  Mean length of dendritic segments}\\
+      Mean Segment Tortuosity & MST & {\footnotesize  Ratio of segment length to distance between end points}\\
+      Mean Terminal Segment Length & MTSL & {\footnotesize  Mean length of the last segment of each dendrite}\\
+      Number of Branch Points & NBP &  {\footnotesize  Number of points where the dendrites branch}\\
+      Soma Area & SA & {\footnotesize  Area of the soma projected onto the XY-plane}\\
+      Stratification Depth & SD & {\footnotesize Dendritic centre of mass along z-axis, with soma at $z=0$}\\
+      Total Dendritic Length & TDL & {\footnotesize Total length of all dendrites}\\
+
+  \bottomrule
+\end{tabular}
+}
+\caption{Features calculated from each RGC.}
+\label{tab:featurelist}
+\end{table}
+
+
+
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Generated by featureValueTable.m
+%
+
+\begin{sidewaystable}
+\begin{tabular}{llllll}
+\toprule
+ & \multicolumn{5}{c}{Genetic type}\\
+% \cline{2-6}
+Feature name & CB2 & Cdh3 & DRD4 & Hoxd10 & TRHR\\
+\midrule
+Bistratification Distance ($\mu m$)& $1.5 \pm 1.1$& $3.7 \pm 4.1$& $2.3 \pm 1.1$& $1.9 \pm 2.1$& $3.2 \pm 2.1$\\
+Branch Assymetry& $0.63 \pm 0.02$& $0.74 \pm 0.02$& $0.71 \pm 0.03$& $0.67 \pm 0.03$& $0.71 \pm 0.03$\\
+Dendritic Area ($mm^2$)& $0.06 \pm 0.02$& $0.04 \pm 0.01$& $0.05 \pm 0.01$& $0.07 \pm 0.04$& $0.03 \pm 0.01$\\
+Dendritic Density ($\mu m^{-1}$)& $0.07 \pm 0.01$& $0.12 \pm 0.03$& $0.13 \pm 0.02$& $0.08 \pm 0.03$& $0.16 \pm 0.02$\\
+Dendritic Diameter ($\mu m$)& $326 \pm 75$& $270 \pm 52$& $300 \pm 37$& $358 \pm 104$& $248 \pm 34$\\
+Density of Branch Points ($mm^{-2}$)& $1351 \pm 675$& $7697 \pm 2758$& $5235 \pm 1031$& $2295 \pm 1785$& $7150 \pm 1466$\\
+Fractal Dimension Box Counting& $1.40 \pm 0.02$& $1.47 \pm 0.04$& $1.49 \pm 0.03$& $1.44 \pm 0.06$& $1.54 \pm 0.04$\\
+Mean Branch Angle (degrees)& $100 \pm 4$& $99 \pm 5$& $104 \pm 3$& $103 \pm 4$& $102 \pm 3$\\
+Mean Segment Length ($\mu m$)& $29.5 \pm 7.1$& $7.9 \pm 1.5$& $12.7 \pm 2.4$& $22.3 \pm 7.9$& $11.2 \pm 2.2$\\
+Mean Segment Tortuosity& $1.15 \pm 0.02$& $1.21 \pm 0.05$& $1.20 \pm 0.05$& $1.20 \pm 0.07$& $1.17 \pm 0.03$\\
+Mean Terminal Segment Length ($\mu m$)& $36.3 \pm 10.1$& $6.3 \pm 1.2$& $11.8 \pm 2.7$& $20.9 \pm 8.9$& $10.0 \pm 3.0$\\
+Number of Branch Points& $70 \pm 12$& $280 \pm 87$& $242 \pm 66$& $124 \pm 47$& $233 \pm 69$\\
+Soma Area ($\mu m^2$)& $348 \pm 92$& $141 \pm 34$& $180 \pm 52$& $202 \pm 74$& $190 \pm 51$\\
+Stratification Depth ($\mu m$)& $-7 \pm 3$& $-10 \pm 3$& $-11 \pm 4$& $-11 \pm 4$& $-10 \pm 4$\\
+Total Dendritic Length ($mm$)& $4.3 \pm 1.2$& $4.4 \pm 1.0$& $6.0 \pm 1.1$& $5.2 \pm 1.6$& $5.1 \pm 0.9$\\
+\bottomrule
+\end{tabular}
+\caption{Mean and standard deviation of features for each genetic type.}
+\label{tab:featVals}
+\end{sidewaystable}
+
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% r = RGCclass(0);
+% r.lazyLoad();
+% r.featureCorrelation()
+
+
+\begin{sidewaystable}
+\begin{tabular}{lrrrrrrrrrrrrrrr}
+\toprule
+& BD& BA& DA& DD& DDi& DBP& FDBC& MBA& MSL& MST& MTSL& NBP& SA& SD& TDL\\
+\midrule
+Bistratification Distance (BD) & \textbf{}  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+Branch Assymetry (BA) & 0.25 & \textbf{}  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+Dendritic Area (DA) & -0.37 & -0.27 & \textbf{}  &  &  &  &  &  &  &  &  &  &  &  & \\
+Dendritic Density (DD) & \textbf{0.47} & \textbf{0.52} & \textbf{-0.74} & \textbf{}  &  &  &  &  &  &  &  &  &  &  & \\
+Dendritic Diameter (DDi) & -0.37 & -0.20 & \textbf{0.96} & \textbf{-0.69} & \textbf{}  &  &  &  &  &  &  &  &  &  & \\
+Density of Branch Points (DBP) & \textbf{0.51} & \textbf{0.79} & \textbf{-0.63} & \textbf{0.83} & \textbf{-0.60} & \textbf{}  &  &  &  &  &  &  &  &  & \\
+Fractal Dimension Box Counting (FDBC) & 0.38 & \textbf{0.50} & \textbf{-0.52} & \textbf{0.84} & \textbf{-0.47} & \textbf{0.70} & \textbf{}  &  &  &  &  &  &  &  & \\
+Mean Branch Angle (MBA) & 0.13 & -0.02 & 0.02 & 0.13 & 0.06 & -0.07 & -0.00 & \textbf{}  &  &  &  &  &  &  & \\
+Mean Segment Length (MSL) & -0.36 & \textbf{-0.81} & \textbf{0.65} & \textbf{-0.73} & \textbf{0.60} & \textbf{-0.85} & \textbf{-0.64} & -0.01 & \textbf{}  &  &  &  &  &  & \\
+Mean Segment Tortuosity (MST) & 0.16 & 0.10 & -0.06 & 0.24 & -0.03 & 0.11 & 0.05 & 0.29 & -0.07 & \textbf{}  &  &  &  &  & \\
+Mean Terminal Segment Length (MTSL) & -0.31 & \textbf{-0.80} & \textbf{0.52} & \textbf{-0.65} & \textbf{0.49} & \textbf{-0.78} & \textbf{-0.59} & -0.05 & \textbf{0.97} & -0.13 & \textbf{}  &  &  &  & \\
+Number of Branch Points (NBP) & 0.32 & \textbf{0.90} & -0.25 & \textbf{0.60} & -0.18 & \textbf{0.81} & \textbf{0.60} & -0.03 & \textbf{-0.78} & 0.09 & \textbf{-0.75} & \textbf{}  &  &  & \\
+Soma Area (SA) & -0.15 & \textbf{-0.44} & 0.21 & -0.32 & 0.19 & -0.39 & -0.21 & -0.26 & \textbf{0.44} & \textbf{-0.47} & \textbf{0.52} & -0.35 & \textbf{}  &  & \\
+Stratification Depth (SD) & -0.13 & -0.04 & 0.28 & -0.32 & 0.27 & -0.13 & -0.24 & -0.10 & 0.23 & \textbf{-0.44} & 0.25 & 0.04 & 0.22 & \textbf{}  & \\
+Total Dendritic Length (TDL) & -0.09 & 0.27 & \textbf{0.58} & 0.02 & \textbf{0.63} & -0.02 & 0.21 & 0.18 & 0.06 & 0.15 & -0.01 & \textbf{0.45} & -0.02 & 0.12 & \textbf{} \\
+\bottomrule
+\end{tabular}
+\caption{Correlation coefficient calculated for pairs of 15
+  features. Features which are highly correlated or anti-correlated
+  are marked in bold.}
+\label{tab:corr}\end{sidewaystable}
+
+
+
+
+
+% % blindClusteringBatch.m
+
+% % SAVES files in RESULTS
+% % from: RESULTS/BlindClustering-latex-n-5.tex
+
+% \begin{table}
+% \begin{tabular}{llrrrrr}
+% \toprule
+%  & & \multicolumn{5}{c}{Blind Cluster}\\
+% \cline{3-7}
+%  & & 1 & 2 & 3 & 4 & 5\\
+% \midrule
+% \multirow{5}{*}{\rotatebox{90}{Genetic Type}}& CB2 & 0 & 0 & 0 & 19 & 0\\
+% & Cdh3 & 7 & 1 & 3 & 0 & 0\\
+% & DRD4 & 13 & 13 & 0 & 0 & 0\\
+% & Hoxd10 & 3 & 9 & 0 & 3 & 14\\
+% & TRHR & 6 & 2 & 1 & 0 & 0\\
+% \bottomrule %\cline{3-7}
+% \end{tabular}
+% \caption{Comparison of blind clustering and genetic type. This table
+%   was done using our uncorrelated feature set.}
+% \label{tab:blind5confusion}
+% \end{table}
+
+
+
+% blindClusteringBatch.m
+
+% SAVES files in RESULTS
+% from: RESULTS/BlindClustering-latex-n-5.tex
+
+% This table uses our 5-feature set
+\begin{table}
+\begin{tabular}{llrrrrr}
+\hline
+ & & \multicolumn{5}{c}{Blind cluster}\\
+ & & 1 & 2 & 3 & 4 & 5\\
+\cline{3-7}
+\multirow{5}{*}{\rotatebox{90}{Genetic type}}& CB2 & 0 & 11 & 0 & 0 & 8\\
+& Cdh3 & 0 & 0 & 4 & 7 & 0\\
+& DRD4 & 0 & 0 & 20 & 6 & 0\\
+& Hoxd10 & 12 & 2 & 12 & 2 & 1\\
+& TRHR & 0 & 0 & 0 & 9 & 0\\
+\cline{3-7}
+\end{tabular}
+\caption{Comparison of blind clustering with genetic type.}
+\label{tab:blind5confusion}
+\end{table}
+
+
+
+% These use our 3-feature-set classifier
+%
+% \begin{table}
+% \begin{tabular}{lrr}
+%  & 1 & 2\\
+% \hline
+% CB2 & 0 & 19\\
+% Cdh3 & 11 & 0\\
+% DRD4 & 26 & 0\\
+% Hoxd10 & 15 & 14\\
+% TRHR & 9 & 0\\
+% \hline
+% \end{tabular}
+% \caption{Comparison of blind clustering and genetic labeling. Columns shows two blindly generated clusters, and rows the corresponding cells geneticl labeling.}
+% \label{tab:blindconfusion2}
+% \end{table}
+
+% \clearpage
+
+% \begin{table}
+% \begin{tabular}{lrrrrr}
+%  & 1 & 2 & 3 & 4 & 5\\
+% \hline
+% CB2 & 0 & 0 & 4 & 0 & 15\\
+% Cdh3 & 2 & 0 & 0 & 9 & 0\\
+% DRD4 & 1 & 7 & 0 & 18 & 0\\
+% Hoxd10 & 15 & 4 & 1 & 5 & 4\\
+% TRHR & 0 & 6 & 0 & 3 & 0\\
+% \hline
+% \end{tabular}
+% \caption{Comparison of blind clustering and genetic labeling. Columns shows the five blindly generated clusters, and rows the corresponding cells geneticl labeling.}
+% \label{tab:blindconfusion5}
+% \end{table}
+
+
+\clearpage
+
+% Use r.benchmark(1000) to generate statistics
+% Update: doBenchmark
+
+% \begin{table}
+% \begin{tabular}{lll}
+% \textbf{Method} & \textbf{Features} & \textbf{Performance} \\
+% \hline
+
+% Na\"{i}ve Bayes & DD, SA, DF, BSD & $69.4 \pm 2.8\,\%$\\
+% Na\"{i}ve Bayes & DD, SA, FD, BA & $71.1 \pm 2.8\,\%$\\
+% Na\"{i}ve Bayes & DD, SA, FD, DF & $68.4 \pm 2.7\,\%$\\
+% Na\"{i}ve Bayes & DD, SA, TDL, TSL & $80.3 \pm 2.9\,\%$ \\
+% Na\"{i}ve Bayes & DBP, SA, DF, TSL & $ 77.3 \pm 2.8\,\%$ \\ % 4-tuple, exhaustive search, features scored individually
+% Na\"{i}ve Bayes & DBP, SA, FD, TSL & $ 79.7 \pm 2.6\,\%$ \\ % 4-tuple, exhaustive search, individually scored from top 30
+% Na\"{i}ve Bayes & PCA& $ 75.7 \pm 2.5\,\%$ \\ % First 4 PCA components, derived from all 16
+% Na\"{i}ve Bayes & \textbf{FD, TSL, SA} & $ 78.7 \pm 2.2\,\%$ \\ % 3 tuple that was best (redo with more iter)
+% Na\"{i}ve Bayes & \textbf{DF, DD, SD} & $ 61.5 \pm 2.6\,\%$ \\ % Feature set similar to what is used by Kong et al 2005
+
+% Bags & DD, SA, DF, BSD & $ 66.1 \pm 2.7\,\%$\\
+% Bags & DD, SA, FD, BA & $ 67.7 \pm 2.9\,\%$\\
+% Bags & DD, SA, FD, DF & $  71.3 \pm 2.6\,\%$ \\ 
+% Bags & DD, SA, TDL, TSL & $ 78.5 \pm 2.5\,\%$\\
+% Bags & DBP, SA, DF, TSL & $ 74.6 \pm 2.5\,\%$ \\
+% Bags & DBP, SA, FD, TSL & $ 77.0 \pm 2.2\,\%$ \\
+
+% % !!! Add Bags and a few more here
+% \hline
+% \end{tabular}
+
+
+% runExhaustiveFeatureSearch     % !!! This is slow
+% analyseExhaustiveFeatureSearch
+% 
+
+% 20 reps
+
+\begin{sidewaystable}
+\begin{tabular}{cclllllllllllllll}
+\toprule
+ & & \multicolumn{15}{c}{Feature}\\
+\cline{3-17}
+No. & Performance  & BA & BD & DA & DBP & DD & DDi & FDBC & MBA & MSL & MST & MTSL & NBP & SA & SD & TDL\\
+\midrule
+1 & $64.7 \pm 1.7\,\%$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ &  &  &  & \\
+2 & $72.9 \pm 2.0\,\%$  &  &  &  & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ &  & \\
+3 & $78.7 \pm 2.8\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
+4 & $80.7 \pm 3.1\,\%$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
+5 & $83.1 \pm 3.6\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
+6 & $84.0 \pm 2.7\,\%$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & \\
+7 & $85.5 \pm 2.9\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
+8 & $86.3 \pm 2.6\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
+9 & $85.7 \pm 2.1\,\%$  &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+10 & $85.1 \pm 2.2\,\%$  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+11 & $85.2 \pm 1.7\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+12 & $84.9 \pm 1.7\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+13 & $84.1 \pm 1.7\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+14 & $83.2 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+15 & $82.2 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+\bottomrule
+\end{tabular}
+\caption{Performance of classifiers. Five-fold cross-validation,
+  repeated twenty times for each feature set. Branch Assymetry (BA),
+    Bistratification Distance (BD), Dendritic Area (DA), Density of
+    Branch Points (DBP), Dendritic Density (DD), Dendritic Diameter
+    (DDi), Fractal Dimension Box Counting (FDBC), Mean Branch Angle
+    (MBA), Mean Segment Length (MSL), Mean Segment Tortuosity (MST),
+    Mean Terminal Segment Length (MTSL), Number of Branch Points
+    (NBP), Soma Area (SA), Stratification Depth (SD), Total Dendritic
+    Length (TDL) Performance is given as mean $\pm$ standard deviation
+    correctly classified.}
+
+\label{tab:performance}
+\end{sidewaystable}
+
+
+\clearpage
+
+% getConfusionMatrixLatex
+
+% !!! OBS, need to make diagonal elements bold by hand! Since the general latex generating function I wrote
+% does not allow for that, it would affect other tables alos.
+
+\begin{table}
+\begin{tabular}{llrrrrr}
+\toprule
+ & & \multicolumn{5}{c}{Predicted type}\\
+\cline{3-7}
+ & & CB2 & Cdh3 & DRD4 & Hoxd10 & TRHR\\
+\midrule
+\multirow{5}{*}{\rotatebox{90}{Genetic type}}& CB2 & \textbf{18} & 0 & 0 & 1 & 0\\
+& Cdh3 & 0 & \textbf{9} & 0 & 1 & 1\\
+& DRD4 & 0 & 0 & \textbf{25} & 0 & 1\\
+& Hoxd10 & 2 & 1 & 1 & \textbf{23} & 2\\
+& TRHR & 0 & 1 & 3 & 0 & \textbf{5}\\
+\bottomrule % \cline{3-7}
+\end{tabular}
+\caption{Confusion matrix result.}
+\label{tab:confusionMatrixLeaveOneOut}
+\end{table}
+
+\clearpage
+
+%
+% Removing TRHR from the data set
+% Our old feature set increased from about 80% to almost 85%.
+%  fractalDimensionBoxCounting, meanTerminalSegmentLength, somaArea
+%
+%
+% 1. 0.850 +/- 0.023 : dendriticField, numLeaves, somaArea
+% 2. 0.847 +/- 0.024 : dendriticField, numSegments, somaArea
+% 3. 0.846 +/- 0.024 : dendriticField, numBranchPoints, somaArea
+% 4. 0.845 +/- 0.022 : fractalDimensionBoxCounting, meanTerminalSegmentLength, somaArea
+% 5. 0.841 +/- 0.022 : densityOfBranchPoints, numLeaves, somaArea
+% 6. 0.840 +/- 0.022 : densityOfBranchPoints, numSegments, somaArea
+% 7. 0.839 +/- 0.022 : densityOfBranchPoints, numBranchPoints, somaArea
+% 8. 0.831 +/- 0.020 : densityOfBranchPoints, meanTerminalSegmentLength, somaArea
+% 9. 0.829 +/- 0.025 : densityOfBranchPoints, somaArea, totalDendriticLength
+% 10. 0.829 +/- 0.021 : branchAssymetry, densityOfBranchPoints, somaArea
+% 11. 0.829 +/- 0.023 : densityOfBranchPoints, meanSegmentLength, somaArea
+% 12. 0.829 +/- 0.024 : meanTerminalSegmentLength, numBranchPoints, somaArea
+% 13. 0.826 +/- 0.023 : meanTerminalSegmentLength, numSegments, somaArea
+% 14. 0.825 +/- 0.027 : dendriticDensity, meanTerminalSegmentLength, somaArea
+% 15. 0.824 +/- 0.025 : meanTerminalSegmentLength, somaArea, totalDendriticLength
+% 16. 0.824 +/- 0.024 : meanTerminalSegmentLength, numLeaves, somaArea
+% 17. 0.823 +/- 0.022 : meanSegmentLength, numBranchPoints, somaArea
+% 18. 0.822 +/- 0.023 : meanSegmentLength, numSegments, somaArea
+% 19. 0.821 +/- 0.021 : meanSegmentTortuosity, meanTerminalSegmentLength, somaArea
+% 20. 0.821 +/- 0.026 : dendriticDensity, meanTerminalSegmentLength, totalDendriticLength
+% 21. 0.820 +/- 0.023 : meanSegmentLength, numLeaves, somaArea
+% 22. 0.819 +/- 0.027 : dendriticField, fractalDimensionBoxCounting, meanTerminalSegmentLength
+% 23. 0.818 +/- 0.020 : dendriticDensity, numLeaves, somaArea
+% 24. 0.817 +/- 0.020 : dendriticDensity, numSegments, somaArea
+% 25. 0.815 +/- 0.024 : biStratificationDistance, numLeaves, somaArea
+% 26. 0.815 +/- 0.024 : biStratificationDistance, numSegments, somaArea
+% 27. 0.814 +/- 0.021 : dendriticDensity, numBranchPoints, somaArea
+% 28. 0.814 +/- 0.024 : biStratificationDistance, numBranchPoints, somaArea
+% 29. 0.812 +/- 0.023 : dendriticField, densityOfBranchPoints, meanTerminalSegmentLength
+% 30. 0.812 +/- 0.022 : biStratificationDistance, meanTerminalSegmentLength, somaArea
+% Score board, feature importance weighted
+% 1. Score: 26.921 : meanTerminalSegmentLength
+% 2. Score: 26.479 : densityOfBranchPoints
+% 3. Score: 26.223 : numBranchPoints
+% 4. Score: 26.220 : numSegments
+% 5. Score: 26.209 : numLeaves
+% 6. Score: 26.089 : meanSegmentLength
+% 7. Score: 26.076 : somaArea
+% 8. Score: 25.306 : dendriticField
+% 9. Score: 25.167 : branchAssymetry
+% 10. Score: 24.967 : dendriticDensity
+% 11. Score: 24.720 : meanSegmentTortuosity
+% 12. Score: 24.571 : totalDendriticLength
+% 13. Score: 24.515 : meanBranchAngle
+% 14. Score: 24.341 : fractalDimensionBoxCounting
+% 15. Score: 24.167 : biStratificationDistance
+% 16. Score: 23.560 : stratificationDepth
+% Score board (only from top 30 entries), feature importance weighted
+% 1. Score: 6.120 : somaArea
+% 2. Score: 2.636 : meanTerminalSegmentLength
+% 3. Score: 1.870 : densityOfBranchPoints
+% 4. Score: 1.423 : numLeaves
+% 5. Score: 1.332 : numSegments
+% 6. Score: 1.331 : numBranchPoints
+% 7. Score: 1.164 : dendriticField
+% 8. Score: 1.136 : dendriticDensity
+% 9. Score: 0.884 : meanSegmentLength
+% 10. Score: 0.851 : biStratificationDistance
+% 11. Score: 0.655 : totalDendriticLength
+% 12. Score: 0.474 : fractalDimensionBoxCounting
+% 13. Score: 0.243 : branchAssymetry
+% 14. Score: 0.228 : meanSegmentTortuosity
+% 15. Score: 0.000 : meanBranchAngle
+% 16. Score: 0.000 : stratificationDepth
+% Wrote data to chooseFeature-results-735783.64439.mat
+% Elapsed time is 13188.359832 seconds.
+
+
+\clearpage
+
+% Use blindClusterBatch.m
+% But you need to change features manually, there is an if(0) statement
+
+% \begin{table}
+% \begin{tabular}{llrr}
+%  & & \multicolumn{2}{c}{Blind Cluster}\\
+%  & & 1 & 2\\
+% \cline{3-4}
+% \multirow{5}{*}{\rotatebox{90}{Genetic Type}}& CB2 & 0 & 19\\
+% & Cdh3 & 11 & 0\\
+% & DRD4 & 26 & 0\\
+% & Hoxd10 & 14 & 15\\
+% & TRHR & 9 & 0\\
+% \cline{3-4}
+% \end{tabular}
+
+% \vspace{1cm}
+
+
+% \begin{tabular}{llrrr}
+%  & & \multicolumn{3}{c}{Blind Cluster}\\
+%  & & 1 & 2 & 3\\
+% \cline{3-5}
+% \multirow{5}{*}{\rotatebox{90}{Genetic Type}}& CB2 & 19 & 0 & 0\\
+% & Cdh3 & 0 & 0 & 11\\
+% & DRD4 & 0 & 0 & 26\\
+% & Hoxd10 & 2 & 15 & 12\\
+% & TRHR & 0 & 0 & 9\\
+% \cline{3-5}
+% \end{tabular}
+% \caption{Blind clustering using the best 5-feature set used
+%   for the supervised classification. }
+% \label{tab:blindOracleFeatures}
+% \end{table}
+
+
+% \clearpage
+
+
+
+% \section*{Old Results Section}
+
+% Using data from genetically labelled RGC we have built a supervised
+% classifier to identify RGC types using morphological features.
+
+% Hierarchical clustering on the feature vectors indicated that a large
+% subset of the features were correlated. This reduction of features
+% from 16 down to 9, for comparison see Table~\ref{tab:corr} where
+% features with significant correlation are marked in bold.  We then
+% used Matlab's built in function \texttt{sequentialfs} to select
+% features to use for the classification. The function sequentially adds
+% one feature at a time, and it can be used to generate a graph showing
+% how the classification error first sharply decreases with the first
+% 3-4 features, reaches a minima at around 9 features, and then
+% increases as the feature set is increased to 16. The performance of
+% Na\"{i}ve Bayes was overall better than the other classification
+% methods, with Bags being the runner up. Guided by thie sequential
+% feature selection we did an exhaustive search for all 3-tuples and
+% 4-tuples of features. Adding a fourth feature does improve the
+% performance somewhat, but there were no clear winner combination,
+% between runs different sets of features came out the best. The best
+% 3-tuple performed almost as well (Table~\ref{tab:performance}), so we
+% decided to use Soma Area, Mean Terminal Segment Length and Fractal
+% Dimension Box Counting. The last measure looks at the dendritic
+% coverage of a grid at different length scales (See Methods).
+
+
+
+
+% Genearte the landscape figures
+% r = RGCclass(0); r.lazyLoad();
+% r.featureSelection();
+
+% Exhaustive test of all 4-tuples.
+% r = RGCclass(0); r.lazyLoad();
+% r.chooseFeatures();
+%
+% Additional analysis:
+% chooseFeaturePostMortem
+%
+% Best 3-tuple: 78.7 +/- 2.2 fractalDimensionBoxCounting meanTerminalSegmentLength somaArea 
+
+
+% Old scores below for 4-tuples:
+%
+% Scores after 200 repeats, using Naive Bayes classifiers
+% Only using the non-correlated features
+% 
+% 1. Score: 8.901 : dendriticDensity
+% 2. Score: 8.663 : fractalDimensionBoxCounting
+% 3. Score: 8.621 : somaArea
+% 4. Score: 8.620 : dendriticField
+% 5. Score: 8.323 : meanSegmentTortuosity
+% 6. Score: 8.318 : meanBranchAngle
+% 7. Score: 8.184 : biStratificationDistance
+% 8. Score: 8.171 : totalDendriticLength
+% 9. Score: 7.992 : stratificationDepth
+
+% Repeated, using all non-VAChT features
+%
+% !!! Running now...
+% 2014-06-20 
+%
+% 1. 0.805 +/- 0.028 : fractalDimensionBoxCounting, meanTerminalSegmentLength, somaArea, totalDendriticLength
+% 2. 0.801 +/- 0.029 : fractalDimensionBoxCounting, meanSegmentLength, somaArea, totalDendriticLength
+% 3. 0.801 +/- 0.020 : densityOfBranchPoints, fractalDimensionBoxCounting, meanSegmentTortuosity, totalDendriticLength
+% 4. 0.801 +/- 0.029 : dendriticDensity, meanTerminalSegmentLength, somaArea, totalDendriticLength
+% 5. 0.800 +/- 0.025 : dendriticField, fractalDimensionBoxCounting, meanTerminalSegmentLength, somaArea
+% 6. 0.799 +/- 0.026 : densityOfBranchPoints, fractalDimensionBoxCounting, meanTerminalSegmentLength, somaArea
+% 7. 0.793 +/- 0.026 : biStratificationDistance, fractalDimensionBoxCounting, meanTerminalSegmentLength, somaArea
+% 8. 0.789 +/- 0.023 : fractalDimensionBoxCounting, meanBranchAngle, meanTerminalSegmentLength, somaArea
+% 9. 0.787 +/- 0.025 : densityOfBranchPoints, fractalDimensionBoxCounting, numBranchPoints, somaArea
+% 10. 0.787 +/- 0.025 : dendriticDensity, meanSegmentTortuosity, meanTerminalSegmentLength, totalDendriticLength
+% 11. 0.787 +/- 0.024 : densityOfBranchPoints, fractalDimensionBoxCounting, numSegments, somaArea
+% 12. 0.786 +/- 0.025 : densityOfBranchPoints, fractalDimensionBoxCounting, numLeaves, somaArea
+% 13. 0.786 +/- 0.022 : dendriticField, densityOfBranchPoints, meanSegmentTortuosity, meanTerminalSegmentLength
+% 14. 0.782 +/- 0.026 : densityOfBranchPoints, numLeaves, somaArea, totalDendriticLength
+% 15. 0.780 +/- 0.026 : dendriticDensity, fractalDimensionBoxCounting, meanTerminalSegmentLength, somaArea
+% 16. 0.780 +/- 0.025 : densityOfBranchPoints, numSegments, somaArea, totalDendriticLength
+% 17. 0.779 +/- 0.021 : densityOfBranchPoints, fractalDimensionBoxCounting, meanSegmentTortuosity, numBranchPoints
+% 18. 0.778 +/- 0.024 : densityOfBranchPoints, numBranchPoints, somaArea, totalDendriticLength
+% 19. 0.778 +/- 0.024 : dendriticDensity, meanBranchAngle, meanTerminalSegmentLength, totalDendriticLength
+% 20. 0.778 +/- 0.029 : densityOfBranchPoints, meanTerminalSegmentLength, somaArea, totalDendriticLength
+% Score board, feature importance weighted
+% 1. Score: 81.121 : densityOfBranchPoints
+% 2. Score: 80.976 : meanTerminalSegmentLength
+% 3. Score: 80.306 : somaArea
+% 4. Score: 80.016 : dendriticField
+% 5. Score: 79.845 : fractalDimensionBoxCounting
+% 6. Score: 79.526 : dendriticDensity
+% 7. Score: 79.477 : meanSegmentLength
+% 8. Score: 79.221 : numBranchPoints
+% 9. Score: 79.177 : numSegments
+% 10. Score: 79.114 : numLeaves
+% 11. Score: 78.386 : meanSegmentTortuosity
+% 12. Score: 78.184 : meanBranchAngle
+% 13. Score: 78.005 : totalDendriticLength
+% 14. Score: 77.293 : branchAssymetry
+% 15. Score: 76.271 : biStratificationDistance
+% 16. Score: 74.948 : stratificationDepth
+% Elapsed time is 49387.996946 seconds.
+
+
+% See: feature-selection-exhaustive.txt
+
+% From the confusion matrix (Table~\ref{tab:confusion}) we learn that
+% TRHR is particularly difficult to classify. On average half of the
+% TRHR cells are misclassified as DRD4. One of them is also
+% misclassified as Hoxd10. The CB2 cells form a distinct cluster
+% without overlap with other classes. Cdh3, DRD4 and Hoxd10 cells have
+% some overlap between the clusters but they are mostly correctly
+% classified. Turning the table around, how sure are we a cell
+% classified as a certain class is indeed of that class. Taking the data
+% from Table~\ref{tab:confusion} we can calculate the true positive
+% rates for each class. CB2: 90\,\%, Cdh3 77\,\%, DRD4 72\,\%, Hoxd10
+% 89\,\% and TRHR 48\,\%.
+
+
+% \subsubsection*{Blind Clustering}
+
+% We performed blind clustering on the dataset using the k-means
+% algorithm, and optimised the number of classes using the silhouette
+% measure (k = 2 to 11). The silhouette measure was smallest for k = 2.
+
+% Looking closer at the blind clustering using k=2: Cdh3, DRD4 and TRHR
+% exclusively have members in the first cluster, CB2 only has members in
+% the second cluster, and Hoxd10 is split evenly between the two
+% clusters.
+
+% When k is increased to 3, CB2 stays together in its own cluster. DRD4
+% and TRHR mainly falls in a shared cluster, with a couple of their
+% cells now instead clustering in a third cluster with 2/3 of the Hoxd10
+% cells. The remaining Hoxd10 are mainly in the third cluster.
+
+% Table~\ref{tab:blindconfusion5} compares blind clustering using five
+% clusters to the genetical labeling. The first cluster is made up
+% almost entirely of Hoxd10, and three cells genetically labeled as Cdh3
+% or DRD4. The fifth cluster and the smaller third cluster are made up
+% of mainly CB2 and a few Hoxd10 cells. Half the cells in the fourth
+% cluster are DRD4, and the only cell type not represented in that
+% cluster are CB2. The third cluster is roughly evenly divided between
+% DRD4, Hoxd10 and TRHR.
+
+% One important question is whether the genetic markers are distinct.
+% Should any classes be split into two? To assess this we calculate the
+% PCA components for each individual class.
+
+
+
+
+% \begin{figure}[!ht]
+% \begin{center}
+% \includegraphics[width=15cm,trim=0 200 0 200, clip]{FIGS/Figure1/Clustering-based-on-feature-corrcoeff.pdf}
+% % \includegraphics[width=6cm,trim=50 150 50 150, clip]{FIGS/Figure1/FeatureNumberErrorPlot-naiveBayes-nFeatures-16-seed-0-2014-05-16-11:27:10.pdf}
+
+% \end{center}
+% \caption{Feature selection. (A) Hierarchical clustering based on
+%   pairwise correlation between feature vectors. Branches below 0.9
+%   were pruned so that they only have one leaf, removed leaves are
+%   marked in red.
+% }
+% \label{fig:hierarchical}
+% \end{figure}
+
+
+% rgc_pairs.R
+%
+% \begin{figure}[!ht]
+% \begin{center}
+% \includegraphics[width=15cm,trim=0 0 0 0, clip]{FIGS/FigurePairs/rgc_pairs.pdf}
+
+% \end{center}
+% \caption{Pairwise correlation.
+% }
+% \label{fig:pairwise}
+% \end{figure}
+
+
+
+
+
+% \begin{table}\begin{tabular}{llllll}
+% & \bf{CB2} & \bf{Cdh3} & \bf{DRD4} & \bf{Hoxd10} & \bf{TRHR}\\
+% \hline
+% \textbf{CB2} & $17.71 \pm 0.78$  &  $0.00 \pm 0.00$  &  $0.00 \pm 0.03$  &  $1.28 \pm 0.78$   &  $0.00 \pm 0.00$\\
+% \textbf{Cdh3} & $0.00 \pm 0.00$  &  $7.91 \pm 0.80$  &  $0.24 \pm 0.47$  &  $1.74 \pm 0.45$   &  $1.12 \pm 0.47$\\
+% \textbf{DRD4} & $0.00 \pm 0.00$  &  $1.08 \pm 0.40$  &  $21.81 \pm 0.60$  &  $1.29 \pm 0.48$   &  $1.82 \pm 0.63$\\
+% \textbf{Hoxd10} & $2.35 \pm 0.60$  &  $0.95 \pm 0.43$  &  $0.13 \pm 0.36$  &  $24.12 \pm 0.93$   &  $1.44 \pm 0.55$\\
+% \textbf{TRHR} & $0.00 \pm 0.00$  &  $0.90 \pm 0.77$  &  $1.60 \pm 0.81$  &  $1.02 \pm 0.30$   &  $5.49 \pm 1.25$\\
+% \end{tabular}
+% \caption{Confusion matrix with cross validation: branchAssymetry
+%   dendriticDensity dendriticDiameter dendriticField
+%   densityOfBranchPoints fractalDimensionBoxCounting meanBranchAngle
+%   meanTerminalSegmentLength numBranchPoints numSegments somaArea
+%   totalDendriticLength. \textbf{Note that using these features in
+%     5-fold cross validation only gives $81.9\pm 1.8\,\%$ correctness.}} 
+
+% \end{table}
+
+% CB2: 88.3 %
+% Cdh3: 73.0 %
+% DRD4: 91.7 %
+% Hoxd10: 81.9 %
+% TRHR: 55.6 %
+
+% Using howManyRandomFeatureVectorsNeeded.m to test on synthetic data,
+% if there is no structure in the feature vectors (uniform random
+% numbers) then it is not possible to separate out the classes.
+
+% \begin{table}
+% \begin{tabular}{lrrrrr}
+%  & CB2 & Cdh3 & DRD4 & Hoxd10 & TRHR\\
+% \hline
+% CB2 & 18 & 0 & 0 & 1 & 0\\
+% Cdh3 & 0 & 8 & 0 & 2 & 1\\
+% DRD4 & 0 & 1 & 22 & 1 & 2\\
+% Hoxd10 & 2 & 1 & 0 & 24 & 2\\
+% TRHR & 0 & 1 & 1 & 1 & 6\\
+% \hline
+% \end{tabular}
+% \caption{Confusion matrix generated with leave one out: branchAssymetry dendriticDensity dendriticDiameter dendriticField densityOfBranchPoints fractalDimensionBoxCounting meanBranchAngle meanTerminalSegmentLength numBranchPoints numSegments somaArea totalDendriticLength 
+% }
+% \label{tab:confusionMatrixLeaveOneOut}
+% \end{table}
+
+% \clearpage
+
+% \Sumbul data figures and tables following
+
+% \begin{figure}[!ht]
+% \begin{center}
+% \includegraphics{FIGS/Sumbul/exhaustive-search-box-plot-Sumbul.eps}
+% \caption{Performance as a function of number of features used for
+%   S\"{u}mb\"{u}l dataset. For details about the box plot, see Figure~\ref{fig:exhaustive}.}
+% \end{center}
+% \label{fig:sumbulexhaustive}
+% \end{figure}
+
+
+% \begin{figure}[!ht]
+% \begin{center}
+% \includegraphics{FIGS/Sumbul/KnownSumbul-Confidence-in-classification-leave-one-out.eps}
+% \end{center}
+% \caption{Confidence of classifier in prediction. For details see Figure~\ref{fig:confidence}.}
+% \label{fig:sumbulconfidence}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \begin{center}
+% \includegraphics{FIGS/Sumbul/PlotSpace-for-article-summary-knownSumbul.eps}
+% \end{center}
+% \caption{Feature space for the four selected features for the \Sumbul
+%   dataset.}
+% \label{fig:sumbulfeaturespace}
+% \end{figure}
+
+% \begin{figure}[!ht]
+% \begin{center}
+% \includegraphics{FIGS/Sumbul/SVM-NaiveBayes-comparison-knownSumbul-DATA.eps}
+% \caption{Performance of SVM, Naive Bayes and BAGS for the best
+%   N-feature sets found during the exhaustive search (using Naive Bayes).}
+% \label{fig:sumbulmethodcomparison}
+% \end{center}
+% \end{figure}
+
+
+
+% \begin{sidewaystable}
+% \begin{tabular}{lrrrrrrrrrrrrrr}
+% & BD& BA& DA& DD& DDi& DBP& FDBC& MBA& MSL& MST& MTSL& NBP& SD& TDL\\
+% \hline
+% Bistratification Distance (BD) & \textbf{}  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+% Branch Assymetry (BA) & 0.25 & \textbf{}  &  &  &  &  &  &  &  &  &  &  &  & \\
+% Dendritic Area (DA) & -0.14 & \textbf{-0.44} & \textbf{}  &  &  &  &  &  &  &  &  &  &  & \\
+% Dendritic Density (DD) & 0.07 & \textbf{0.42} & \textbf{-0.58} & \textbf{}  &  &  &  &  &  &  &  &  &  & \\
+% Dendritic Diameter (DDi) & -0.12 & \textbf{-0.41} & \textbf{0.94} & \textbf{-0.67} & \textbf{}  &  &  &  &  &  &  &  &  & \\
+% Density of Branch Points (DBP) & 0.04 & \textbf{0.45} & \textbf{-0.50} & \textbf{0.95} & \textbf{-0.59} & \textbf{}  &  &  &  &  &  &  &  & \\
+% Fractal Dimension Box Counting (FDBC) & 0.15 & \textbf{0.41} & \textbf{-0.49} & \textbf{0.86} & \textbf{-0.54} & \textbf{0.74} & \textbf{}  &  &  &  &  &  &  & \\
+% Mean Branch Angle (MBA) & 0.10 & 0.24 & -0.28 & 0.21 & \textbf{-0.30} & 0.22 & 0.20 & \textbf{}  &  &  &  &  &  & \\
+% Mean Segment Length (MSL) & -0.26 & \textbf{-0.64} & \textbf{0.78} & \textbf{-0.58} & \textbf{0.75} & \textbf{-0.54} & \textbf{-0.61} & \textbf{-0.36} & \textbf{}  &  &  &  &  & \\
+% Mean Segment Tortuosity (MST) & -0.24 & -0.26 & 0.06 & -0.18 & 0.05 & -0.23 & -0.29 & -0.01 & \textbf{0.36} & \textbf{}  &  &  &  & \\
+% Mean Terminal Segment Length (MTSL) & -0.27 & \textbf{-0.64} & \textbf{0.75} & \textbf{-0.52} & \textbf{0.71} & \textbf{-0.49} & \textbf{-0.55} & \textbf{-0.36} & \textbf{0.99} & \textbf{0.34} & \textbf{}  &  &  & \\
+% Number of Branch Points (NBP) & 0.23 & \textbf{0.59} & \textbf{-0.31} & \textbf{0.64} & \textbf{-0.33} & \textbf{0.67} & \textbf{0.73} & 0.22 & \textbf{-0.68} & \textbf{-0.51} & \textbf{-0.64} & \textbf{}  &  & \\
+% Stratification Depth (SD) & 0.18 & 0.24 & -0.12 & 0.15 & -0.09 & 0.08 & 0.19 & 0.05 & -0.07 & -0.09 & -0.08 & 0.11 & \textbf{}  & \\
+% Total Dendritic Length (TDL) & 0.03 & -0.15 & \textbf{0.67} & -0.15 & \textbf{0.66} & -0.18 & 0.17 & -0.17 & \textbf{0.32} & -0.19 & \textbf{0.31} & 0.25 & 0.10 & \textbf{} \\
+% \hline
+% \end{tabular}
+% \caption{\Sumbul dataset, including only known genetically labelled 
+%   cells. Using P threshold 0.30}
+% \label{tab:sumbulcorr}\end{sidewaystable}
+
+
+\begin{sidewaystable}
+\begin{tabular}{ccllllllllllllll}
+\toprule
+ & & \multicolumn{14}{c}{Feature}\\
+\cline{3-16}
+No. & Performance  & BA & BD & DA & DBP & DD & DDi & FDBC & MBA & MSL & MST & MTSL & NBP & SD & TDL\\
+\midrule
+1 & $56.0 \pm 1.4\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & \\
+2 & $67.1 \pm 2.0\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
+3 & $75.8 \pm 2.2\,\%$  &  &  &  &  & $\bullet$ &  &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
+4 & $81.1 \pm 2.0\,\%$  &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
+5 & $81.6 \pm 2.7\,\%$  &  & $\bullet$ &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
+6 & $81.9 \pm 2.4\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
+7 & $80.4 \pm 2.2\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+8 & $79.8 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
+9 & $79.0 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+10 & $78.1 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $76.6 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $74.7 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+13 & $73.0 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+\bottomrule
+\end{tabular}
+\caption{Feature set performance for \Sumbul dataset. See Table
+  \ref{tab:performance} for abbreviations.}
+\label{tab:sumbulfeatureselection}
+\end{sidewaystable}
+
+
+
+% \begin{sidewaystable}
+% \begin{tabular}{llllllll}
+%  & \multicolumn{5}{c}{Cell Type}\\
+% \cline{2-6}
+% Feature name & CB2 & Cdh3 & BD & JAM-B & K & W3 & W7\\
+% \hline
+% Bistratification Distance ($\mu m$)& $1.5 \pm 0.7$& $1.8 \pm 1.4$& $5.5 \pm 2.9$& $2.6 \pm 1.5$& $1.4 \pm 1.3$& $1.2 \pm 1.2$& $0.7 \pm 0.7$\\
+% Branch Assymetry& $0.67 \pm 0.08$& $0.62 \pm 0.03$& $0.69 \pm 0.02$& $0.68 \pm 0.04$& $0.64 \pm 0.02$& $0.69 \pm 0.02$& $0.63 \pm 0.02$\\
+% Dendritic Area ($mm^2$)& $0.03 \pm 0.01$& $0.04 \pm 0.01$& $0.04 \pm 0.02$& $0.03 \pm 0.01$& $0.06 \pm 0.02$& $0.01 \pm 0.00$& $0.06 \pm 0.01$\\
+% Dendritic Density ($\mu m^{-1}$)& $0.11 \pm 0.02$& $0.06 \pm 0.01$& $0.14 \pm 0.06$& $0.11 \pm 0.02$& $0.08 \pm 0.02$& $0.34 \pm 0.09$& $0.08 \pm 0.01$\\
+% Dendritic Diameter ($\mu m$)& $257 \pm 43$& $272 \pm 51$& $261 \pm 68$& $243 \pm 36$& $310 \pm 52$& $139 \pm 17$& $336 \pm 45$\\
+% Density of Branch Points ($mm^{-2}$)& $2241 \pm 1281$& $758 \pm 346$& $5515 \pm 4404$& $2790 \pm 1341$& $1340 \pm 815$& $19799 \pm 7003$& $1117 \pm 447$\\
+% Fractal Dimension Box Counting& $1.49 \pm 0.05$& $1.35 \pm 0.04$& $1.54 \pm 0.04$& $1.47 \pm 0.04$& $1.45 \pm 0.04$& $1.66 \pm 0.08$& $1.46 \pm 0.03$\\
+% Mean Branch Angle (degrees)& $84 \pm 9$& $85 \pm 12$& $89 \pm 4$& $86 \pm 8$& $79 \pm 6$& $92 \pm 4$& $78 \pm 8$\\
+% Mean Segment Length ($\mu m$)& $30.2 \pm 11.1$& $42.1 \pm 9.9$& $16.5 \pm 5.8$& $23.7 \pm 7.5$& $39.1 \pm 18.1$& $9.4 \pm 2.9$& $39.5 \pm 12.9$\\
+% Mean Segment Tortuosity& $1.24 \pm 0.04$& $1.30 \pm 0.03$& $1.20 \pm 0.03$& $1.25 \pm 0.04$& $1.25 \pm 0.04$& $1.24 \pm 0.07$& $1.22 \pm 0.04$\\
+% Mean Terminal Segment Length ($\mu m$)& $37.6 \pm 18.4$& $54.8 \pm 18.1$& $16.5 \pm 6.7$& $22.6 \pm 9.1$& $55.1 \pm 32.3$& $10.7 \pm 3.5$& $51.8 \pm 21.2$\\
+% Number of Branch Points& $69 \pm 34$& $25 \pm 9$& $154 \pm 40$& $81 \pm 36$& $60 \pm 16$& $196 \pm 63$& $69 \pm 25$\\
+% Stratification Depth ($\mu m$)& $23 \pm 12$& $6 \pm 4$& $28 \pm 5$& $37 \pm 7$& $9 \pm 8$& $25 \pm 5$& $27 \pm 9$\\
+% Total Dendritic Length ($mm$)& $3.5 \pm 0.4$& $2.1 \pm 0.5$& $4.8 \pm 1.4$& $3.3 \pm 0.6$& $4.3 \pm 0.9$& $3.4 \pm 0.9$& $4.9 \pm 0.8$\\
+% \hline
+% \end{tabular}
+% \caption{Average feature values for genetic classes in \Sumbul
+%   dataset.}
+% \label{tab:sumbulclasscharacteristics}
+% \end{sidewaystable}
+
+
+
+% \begin{table}
+% \begin{tabular}{lrrrrrrrr}
+%  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+% \hline
+% CB2 & 2 & 1 & 0 & 1 & 0 & 5 & 0 & 0\\
+% Cdh3 & 0 & 0 & 0 & 0 & 10 & 0 & 0 & 0\\
+% BD & 0 & 4 & 2 & 0 & 0 & 0 & 17 & 0\\
+% JAM-B & 0 & 0 & 0 & 31 & 0 & 1 & 0 & 0\\
+% K & 0 & 0 & 0 & 0 & 0 & 9 & 0 & 3\\
+% W3 & 0 & 15 & 0 & 0 & 1 & 0 & 0 & 0\\
+% W7 & 3 & 0 & 4 & 0 & 0 & 2 & 0 & 0\\
+% \hline
+% \end{tabular}
+% \caption{Blind clustering of the Sumbul data. All cells were included
+%   in the optimization, the rand index for the genetically labeled
+%   cells were calculated. Clustering with k-means, k=7,...,20. Here k=8
+% gave best results using the 8 features: biStratificationDistance branchAssymetry fractalDimensionBoxCounting meanSegmentTortuosity meanTerminalSegmentLength numBranchPoints stratificationDepth totalDendriticLength. }
+% \end{table}
+
+
+\bibliography{RefLibrary}
+
+
+\end{document}

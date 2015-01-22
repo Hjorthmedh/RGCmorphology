@@ -12,7 +12,11 @@ clear all, close all
               {'P25-Hoxd1007132012-r2-25x-06zoom.xml'}, ... % Single cell cluster, top right corner
               {'Hoxd10-none-righteyecontrol-04292013-40x-cell5-stitch.xml'} }
 
+ RGCtoPlot = {{'Hoxd10-bothears-righteyecontrol-04302013-40x-cell1-09zoom.xml'}, ...
+              {'P25-Hoxd1007132012-r2-25x-06zoom.xml'}, ... % Single cell cluster, top right corner
+              {'Hoxd10-none-righteyecontrol-04292013-40x-cell4-zoom07-stitch.xml'} }
 
+ 
 RGCpath = '/Users/hjorth/Data/RanaEldanaf/XML/Hoxd10/';
 pos = [0 0;
        600 500; % Top right corner

@@ -76,6 +76,7 @@ printA4('FIGS/Illustration-FractalDimBoxCounting.eps');
 
 %r.drawNeuron();
 figure, subplot(1,2,1)
+set(gca,'ydir','reverse')
 hold on
 
 view(0,0)
@@ -122,8 +123,8 @@ plot3(xHist0+xHistScale*[0 1]*max(binCount)*1.1, ...
 
 
 % Scalebar
-plot3(305*[1 1],[0 0],[-1 0],'k-','linewidth',3)
-
+plot3(305*[1 1],[0 0],[-8 -9],'k-','linewidth',3)
+set(gca,'zdir','reverse')
 
 box off
 axis off

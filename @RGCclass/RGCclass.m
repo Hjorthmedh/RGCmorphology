@@ -301,6 +301,7 @@ classdef RGCclass < handle
       try
         obj.RGCtypeID = cat(1,obj.RGC.typeID);
         
+        obj.RGCtypeName = {};
         for i = 1:numel(obj.RGC)
           obj.RGCtypeName{i} = obj.RGC(i).typeName;
         end
