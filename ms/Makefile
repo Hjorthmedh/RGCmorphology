@@ -61,3 +61,6 @@ clean:
 allfigs.pdf: allfigs.tex
 	pdflatex allfigs.tex
 
+allTables.pdf: allTables.tex
+	pdflatex allTables.tex
+
