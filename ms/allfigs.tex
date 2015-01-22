@@ -3,6 +3,13 @@
 \usepackage[a4paper,margin=2cm]{geometry}
 \usepackage{graphicx}
 
+%% Hack the caption:
+%% http://tex.stackexchange.com/questions/41597/remove-colon-in-the-caption-of-a-figure-without-using-caption-package
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makecaption}{#1: #2}{\textbf{\Large #1}}{}{}
+\makeatother
+
 \begin{document}
 
 
@@ -42,7 +49,7 @@
 \begin{figure}
   \centering
   \fbox{\includegraphics{Figures/Figure6/Hoxd10-split-figure.pdf}}
-  \caption{Figure X}
+  \caption{}
 \end{figure}
 
 
