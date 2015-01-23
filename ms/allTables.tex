@@ -300,12 +300,16 @@ Total Dendritic Length (TDL) & -0.09 & 0.27 & \textbf{0.58} & 0.02 & \textbf{0.6
 % analyseExhaustiveFeatureSearch
 % 
 
+%%framebox to show frame around it.
+%%\newcommand{\xx}[1]{\framebox[6mm][c]{\footnotesize #1}}
+\newcommand{\xx}[1]{\makebox[6mm][c]{\footnotesize #1}}
 % 20 reps
-\begin{sidewaystable}
-%\centering
-\begin{tabular}{cclllllllllllllll}
+\begin{table}
+\centering
+\begin{tabular}{rcccccccccccccccc}
 \toprule
-Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & SA & SD & TDL\\
+N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} &
+\xx{MST} & \xx{MTSL} & \xx{NBP} & \xx{SA} & \xx{SD} & \xx{TDL}\\
 \midrule
 1 & $64.7 \pm 1.7\,\%$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ &  &  &  & \\
 2 & $72.9 \pm 2.0\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ &  & \\
@@ -324,7 +328,7 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 15 & $82.2 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
-\caption{Performance of classifiers. Row $i$ of the table shows the
+\caption{Performance (mean $\pm$ s.d.) of classifiers. Row $i$ of the table shows the
   classifier performance with $i$ features included; the dots
   represent which $i$ features generated the best performance.
   Five-fold cross-validation,
@@ -335,10 +339,9 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
   (MBA), Mean Segment Length (MSL), Mean Segment Tortuosity (MST),
   Mean Terminal Segment Length (MTSL), Number of Branch Points (NBP),
   Soma Area (SA), Stratification Depth (SD), Total Dendritic Length
-  (TDL). Performance is given as mean $\pm$ standard deviation
-    correctly classified.}
+  (TDL)}
 \label{tab:performance}
-\end{sidewaystable}
+\end{table}
 
 
 
@@ -377,11 +380,12 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 % 
 
 
-\begin{sidewaystable}
+\begin{table}
 \centering
-\begin{tabular}{ccllllllllllllll}
+\begin{tabular}{cccccccccccccccc}
 \toprule
-Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & SD & TDL\\
+N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} &
+\xx{MST} & \xx{MTSL} & \xx{NBP} & \xx{SD} & \xx{TDL}\\
 \hline
 1 & $56.0 \pm 1.4\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & \\
 2 & $67.1 \pm 2.0\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
@@ -400,9 +404,10 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 \bottomrule
 \end{tabular}
 \caption{Feature set performance for \Sumbul dataset using same format
-  as Table~\ref{tab:performance}. }
+  as Table~\ref{tab:performance}.  Somal area (SA) excluded from this
+  table as data excluded.}
 \label{tab:sumbulfeatureselection}
-\end{sidewaystable}
+\end{table}
 
 
 
