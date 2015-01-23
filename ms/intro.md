@@ -11,9 +11,14 @@ author:
 - name: Stephen J Eglen
   affiliation: University of Cambridge
   email: S.J.Eglen@damtp.cam.ac.uk
-
-date: 2015-01-19
+nocite: |
+  @Huberman2009-xf, @Osterhout2011-9b9, @Huberman2008-5a6,
+  @Dhande2013-vp, @Rivlin-Etzion2011-ji
+date: 2015-01-23 <!-- TODO update by hand. -->
 ...
+
+<!-- nocite above to ensure we cite all the refs from Table 1. -->
+---
 
 Contributions
 
@@ -134,7 +139,7 @@ method of classification is robust when applied to mouse RGCs.
 Five different transgenic strains of mice were chosen for this
 study. By utilizing genetic markers for CB2, Cdh3, DRD4, Hoxd10 and
 TRHR, individual RGCs of specific types could be targeted (Table 1).
-We refer to to the genetic markers as the "genetic types" of the RGCs.
+We refer to to the genetic markers as the "genetic type" of the RGCs.
 We also follow the terminology proposed by @Cook1998 for
 distinguishing between the notion of a "type" and "class" of a neuron.
 In this context, when we refer to a class, it is in the predicted
@@ -157,15 +162,10 @@ under DIC with electrodes made with borosilicate glass (Sutter
 instruments; 15-20 MΩ). Cells were filled with Alexa Fluor 555
 hydrizide (Invitrogen Cat # A20501MP; 10 mM solution in 200 mM KCl),
 with the application of hyperpolarizing current pulses ranging between
-0.1-0.9 nA, for 1-5 minutes.
+0.1-0.9 nA, for 1--5 minutes.
 
 
-<!-- Ensure we cite all the refs from Table 1. -->
----
-nocite: |
-  @Huberman2009-xf, @Osterhout2011-9b9, @Huberman2008-5a6,
-  @Dhande2013-vp, @Rivlin-Etzion2011-ji
-...
+
 
 Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then washed with 1x phosphate buffered saline (PBS) and incubated for 1 hour at room temperature in a blocking solution consisting of 10% goat serum with 0.25 % Triton-X. The retinas were then incubated for 1 day at 4°C with the following primary antibodies diluted in blocking solution: rabbit anti-GFP (1:1000, Invitrogen Cat # A6455). Retinas were rinsed with PBS (3x, 30 minutes each), and incubated for 2 hours at room temperature with the following secondary antibodies:  Alexa Fluor 488 goat anti-rabbit (1:1000, Life Technologies Cat# A11034). Sections were rinsed with PBS (3x, 30 minutes each) and mounted onto glass slides and coverslipped with Prolong Gold containing DAPI (Invitrogen P36931).
 
@@ -293,14 +293,17 @@ number of features against the performance, and picked a feature set
 where adding additional features only improved the performance
 marginally.
 
-### Confusion matrix
+### Classification and the confusion matrix
 
 The confusion matrix summarizes the predictions of a classifier. Each
 row represents one of the five genetic types, and each column lists
 the predicted types. Correctly classified RGCs are counted on the
 leading diagonal. For each RGC, we created a test set containing all
 RGCs except that cell, trained the classifier, and then predicted the
-type of the RGC that was held back.
+type of the RGC that was held back. The classification of individual
+cells was generated in the same way as for the confusion matrix, using
+the leave one out method, and the results verified with
+cross-validation.
 
 ### Feature Space Plot
 
@@ -309,10 +312,7 @@ the RGCs on two of the features. The second used principal component
 analysis (computed in Matlab, with variance normalization) to
 visualize the feature space, and plotted the RGCs on the two first
 principal components. These correspond to the two directions with the
-largest variation of the data set. **The classification of individual
-cells was generated in the same way as for the confusion matrix, using
-the leave one out method, and the results verified with
-cross-validation.**
+largest variation of the data set. 
 
 
 ### Determining typical and atypical cells
@@ -323,31 +323,29 @@ established by @Khan2001-71f we plotted the most typical RGC of each
 type, which was defined as the one with the highest posterior
 probability. We also plotted the most atypical RGC of each type, which
 was defined as the RGC with the highest posterior probability for
-another type other than its genetic type. **SAY SOMETHING ABOUT WHAT
-THIS TELLS US?**
-
+another type other than its genetic type. 
 # Results
 
 
 
 We filled, reconstructed and analyzed a total of 94 RGCs from five
-genetic mouse lines: CB2 (n=19), Cdh3 (n=11) , DRD4 (n=26), Hoxd10
-(n=29) and TRHR (n=9) (Table 1). In these mouse lines GFP is expressed
-in 1-2 specific types of RGCs.  This makes it possible to reliably and
-selectively target the same types of RGCs in different animals. We
-will refer to these five lines as “genetic types” and we assume for
-the initial analysis that each of these uniquely define one RGC
-type. **Comment on Hoxd10 as multiple types here, using as
-first-approximation and a control to see what happens when we break
-this assumption**
-Three example RGCs of each genetic type are shown in Figure 1. The
-axons (red) and dendrites (black) were manually traced, and the
-locations of the somas were marked. Each RGC collects information
-about a small region in the visual field; the shape and distribution
-of the dendritic tree differs depending on the function the RGC
-performs. It is an open problem to identify the RGC type based on
-morphological characteristics. Here we are interested in using
-objective methods to assess this RGC patterning.
+genetic mouse lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR (Table 1). In
+these mouse lines GFP is usually expressed in 1--2 specific types of
+RGCs.  This makes it possible to reliably and selectively target the
+same types of RGCs in different animals. We will refer to these five
+lines as “genetic types” and we assume for the initial analysis that
+each of these uniquely define one RGC type.  Our prior findings
+suggest however that Hoxd10 may label 3--4 RGC types.  In this work we
+initially assume that Hoxd10 labels one type of RGCs, and then assess
+later in detail whether it is likely to label multiple types.  Three
+example RGCs of each genetic type are shown in Figure 1. The axons
+(red) and dendrites (black) were manually traced, and the locations of
+the somas were marked. Each RGC collects information about a small
+region in the visual field; the shape and distribution of the
+dendritic tree differs depending on the function the RGC performs. It
+is an open problem to identify the RGC type based on morphological
+characteristics. Here we are interested in using objective methods to
+assess this RGC patterning.
 
 ## Quantifying RGC morphology
 
@@ -383,7 +381,7 @@ predicted 64.7 ± 1.7\ % of the cases.
 
 ## Selection of multiple feature vectors
 
-Rodrieck and Brening (1983) described the need to base RGC
+Rodrieck and Brening (1983) described the need to base neuronal
 classification on objectively measurable features, which if used to
 form axes, would define a feature space. If we look at the cartoon in
 Figure 3A, we can see that dendritic area on the y-axis can separate
@@ -391,9 +389,54 @@ the red and green clusters quite well, but it is a poor predictor when
 separating the green and blue groups. By introducing soma area as an
 additional feature we can now see that the different types separate in
 feature space. What a classifier does is look at the position of an
-unknown RGC (black square in Figure 3C), and see where it is located relative to the previously identified RGCs in the abstract feature space. In this case the RGC is within the green region, so it is very likely that it is of that type. If points belonging to the same RGC type cluster together in space and each cluster is distinct (Figure 3A), then it is possible to correctly predict all RGC types. If instead the classes completely overlap in feature space (Figure 3B) then classification is next to impossible. In the intermediate case there is some overlap between individual RGC types in feature space (Figure 3C), then classification is still possible but there will be some miss-classifications.
+unknown RGC (black square in Figure 3C), and see where it is located
+relative to the previously identified RGCs in the abstract feature
+space. In this case the RGC is within the green region, so it is very
+likely that it is of that type. If points belonging to the same RGC
+type cluster together in space and each cluster is distinct (Figure
+3A), then it is possible to correctly predict all RGC types. If
+instead the classes completely overlap in feature space (Figure 3B)
+then classification is next to impossible. In the intermediate case
+there is some overlap between individual RGC types in feature space
+(Figure 3C), then classification is still possible but there will be
+some miss-classifications.
 
-Using the fifteen features listed, we can translate each neuron into a fifteen-dimensional feature vector (Figure 2F) which is then a point in feature space. A priori it is not certain that all fifteen features should be used in classification.  With each additional feature, the dimensionality of the feature space increases, causing the data points to be more spread out. Adding features with little or no useful information increases the distance between all cells in feature space. As more irrelevant features are added, the difference between within-class distance and between-class distance decreases, making the cells harder to classify. Another potential complication is that some of the features capture similar properties, leading to correlations between the features. The pairwise correlations between all features are reported in Table 4.  For example, mean segment length and mean terminal segment length are highly correlated with each other, but strongly anti-correlated with density of branch points. To assess which subset of features would give the best classification we did an exhaustive search using all possible combinations of the fifteen features. We choose the Naïve Bayes classifier, as initial tests showed that it was fast and had reasonably good classification performance. A bootstrap aggregation classifier and Support Vector Machine performed equally well. The performance of each set of features was assessed using five-fold cross-validation. Because of variations in ranking between individual runs, we repeated this procedure 20 times to get robust results. The results from this exploration are shown in Table 6, which shows the best subset for each given number of features. Classification performance initially increases with the number of features, however after eight features, additional features were detrimental to performance. We found that, in our dataset, stratification depth (relative to soma position) and bistratification distance were poor predictors. Here, we opted for a five feature classifier, as adding a sixth feature only marginally improved performance. The features used were Dendritic Area, Density of Branch Points, Fractal Dimension, Mean Terminal Segment Length and Soma Area, which gave an average classification rate of 83%.   By contrast, the baseline for classifier performance when guessing randomly is about 24%. 
+Using the fifteen features listed, we can translate each neuron into a
+fifteen-dimensional feature vector (Figure 2F) which is then a point
+in feature space. A priori it is not certain that all fifteen features
+should be used in classification.  With each additional feature, the
+dimensionality of the feature space increases, causing the data points
+to be more spread out. Adding features with little or no useful
+information increases the distance between all cells in feature
+space. As more irrelevant features are added, the difference between
+within-class distance and between-class distance decreases, making the
+cells harder to classify. Another potential complication is that some
+of the features capture similar properties, leading to correlations
+between the features. The pairwise correlations between all features
+are reported in Table 4.  For example, mean segment length and mean
+terminal segment length are highly correlated with each other, but
+strongly anti-correlated with density of branch points. To assess
+which subset of features would give the best classification we did an
+exhaustive search using all possible combinations of the fifteen
+features. We choose the Naïve Bayes classifier, as initial tests
+showed that it was fast and had reasonably good classification
+performance. A bootstrap aggregation classifier and Support Vector
+Machine performed equally well. The performance of each set of
+features was assessed using five-fold cross-validation. Because of
+variations in ranking between individual runs, we repeated this
+procedure 20 times to get robust results. The results from this
+exploration are shown in Table 6, which shows the best subset for each
+given number of features. Classification performance initially
+increases with the number of features, however after eight features,
+additional features were detrimental to performance. We found that, in
+our dataset, stratification depth (relative to soma position) and
+bistratification distance were poor predictors. Here, we opted for a
+five feature classifier, as adding a sixth feature only marginally
+improved performance. The features used were Dendritic Area, Density
+of Branch Points, Fractal Dimension, Mean Terminal Segment Length and
+Soma Area, which gave an average classification rate of 83%.  By
+contrast, the baseline for classifier performance when guessing
+randomly is about 24%.
 
 ## Assessing the classification
 
@@ -430,8 +473,18 @@ large overlaps with other genetic types.
 
 ## Hoxd10 contain multiple subtypes
 
-**Update Hoxd10 is multiple types **
-Why is Hoxd10 performing so poorly compared to other genetic types? One explanation might be that multiple RGC types are grouped under the Hoxd10 type. By projecting the feature vectors from 5D down to the first two principal components we can observe the different RGCs in relation to each other. Principal component analysis (PCA) finds the directions in feature space along which the data has the largest variation. Figure 5B shows that the majority of the Hoxd10 cells are grouped together into a cluster that partially overlaps with DRD4. There are also a few outliers that overlap with CB2 and TRHR. 
+Why is Hoxd10 performing so poorly compared to other genetic types?
+As noted at the start of the Results, our recent work [@Dhande2013-vp]
+suggested that Hoxd10 labels multiple types of RGCs, rather than just
+one type.  This mixing of multiple types might account for why cells
+in the Hoxd10 class are being misclassified at a relatively high rate.
+By projecting the feature vectors from 5D down to the first two
+principal components we can observe the different RGCs in relation to
+each other. Principal component analysis (PCA) finds the directions in
+feature space along which the data has the largest variation. Figure
+5B shows that the majority of the Hoxd10 cells are grouped together
+into a cluster that partially overlaps with DRD4. There are also a few
+outliers that overlap with CB2 and TRHR.
 
 If two or more morphologically distinct RGC types are included in one
 genetic type, an algorithm that looks for spatial clustering in
@@ -443,30 +496,31 @@ in a data set. To find out how many clusters to split the Hoxd10 cells
 into we tried a range from k=2 to 6. When only clustering the Hoxd10
 data, we found that the silhouette value (0.62) was maximal for
 k=3. This corresponds to two major clusters, and the third cluster
-containing one outlier (See Figure X1). The RGCs in the different
-Hoxd10 clusters are shown in Figure X2, X3 and X4. **move to start? This result is in
-line with the finding by [Dhande et al (2013)], that Hoxd10 labels
-three types of On-direction-selective and one type of On-Off
-direction-selective/anterior tuned RGC. Hoxd10 is therefore not a
-unique RGC type. **
+containing one outlier (Figure 6). Example RGCs in the three 
+Hoxd10 clusters are shown in Figure 6 and reflect the variability in
+different types.  These statistical results therefore confirm our
+ealier suggestion that Hoxd10 line labels at least three distinct
+RGC types.
 
-Confidence in classification
 
-When using a Naïve Bayes classifier, we get a measure of how certain
-the classifier is of the results. If there is only a small overlap
-between the clusters, we expect the classifier to be fairly certain
-about most of its predictions. When the classifier is wrong, we expect
-the confidence in the results to be lower [@Khan2001-71f]. Figure 5C
-shows the confidence of the classification for different RGCs, with a
-higher score signifying a more confident classification. Triangles
-mark the cells that were incorrectly classified. There are some errors
-hovering around the 0.5 mark, but perhaps more concerning are the
-incorrectly RGCs that the classifier was quite certain about. Each
-class had one example of a RGC with high posterior probability for the
-wrong type, except for Hoxd10, which had three.  One reason for this
-could be that there is something abnormal about these cells, causing
-them to appear in the wrong place in feature space. However, these
-cells were visually inspected but nothing unusual was seen.
+### Confidence in classification
+
+The Naïve Bayes classifier calculates a confidence measure when
+classifying each RGC. If there is only a small overlap between
+clusters, we expect the classifier to be certain about most of its
+predictions. When the clusters are harder to separate, we expect the
+classifier's confidence in the predictions to be lower
+[@Khan2001-71f]. Figure 5C shows the confidence of the classification
+for different RGCs, with a higher score signifying a more confident
+classification. Triangles mark the cells that were incorrectly
+classified. There are some errors hovering around the 0.5 mark, but
+perhaps more concerning are the incorrectly RGCs that the classifier
+was quite certain about. Each class had one example of a RGC with high
+posterior probability for the wrong type, except for Hoxd10, which had
+three.  One reason for this could be that there is something abnormal
+about these cells, causing them to appear in the wrong place in
+feature space. However, these cells were visually inspected but
+nothing unusual was seen.
 
 ## Re-analysis of the Sümbül  et al (2014) data set
 
@@ -545,10 +599,11 @@ depth being measured relative to soma, and possibly variation in
 dendritic area with eccentricity.
 
 To find the best feature set we searched the entire set of possible
-features (2^15^-1 = 32767). **REF TABLE 1**A classifier with five
-features predicted the correct RGC type with an accuracy of 83%. This
-is lower than **near-perfect** [@Sumbul2014-vm], but around three and
-a half times above chance level which is around 24%. We discuss the
+features (2^15^-1 = 32767 possible feature combinations; results
+sumamrised in Table 6). A classifier with five features predicted the
+correct RGC type with an accuracy of 83% (Table 6; N=5). This is lower
+than **near-perfect** [@Sumbul2014-vm], but around three and a half
+times above chance level which is around 24%. We discuss the
 differences between our approach and Sümbül’s in the *Limits* section
 below.
 
@@ -567,7 +622,7 @@ For our analysis we had initially assumed that each genetic mouse line
 marked one RGC type, however, Cdh3 labels two types
 [@Osterhout2011-9b9] and Hoxd10 marks four types
 [@Dhande2013-vp; Osterhout2014-ko]. Our unsupervised clustering of the
-Hoxd10 (Figure **6**) was in agreement with this result, picking out
+Hoxd10 (Figure 6) was in agreement with this result, picking out
 two clusters whose arbors looked distinct.
 
 
