@@ -306,7 +306,7 @@ Total Dendritic Length (TDL) & -0.09 & 0.27 & \textbf{0.58} & 0.02 & \textbf{0.6
 \begin{tabular}{cclllllllllllllll}
 \toprule
 Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & SA & SD & TDL\\
-\hline
+\midrule
 1 & $64.7 \pm 1.7\,\%$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ &  &  &  & \\
 2 & $72.9 \pm 2.0\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ &  & \\
 3 & $78.7 \pm 2.8\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
@@ -324,7 +324,10 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 15 & $82.2 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
-\caption{Performance of classifiers. Five-fold cross-validation,
+\caption{Performance of classifiers. Row $i$ of the table shows the
+  classifier performance with $i$ features included; the dots
+  represent which $i$ features generated the best performance.
+  Five-fold cross-validation,
   repeated twenty times for each feature set. Bistratification
   Distance (BD), Branch Asymmetry (BA), Dendritic Area (DA), Dendritic
   Density (DD), Dendritic Diameter (DDi), Density of Branch Points
@@ -361,7 +364,9 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 & TRHR & 0 & 1 & 3 & 0 & \textbf{5}\\
 \bottomrule % \cline{3-7}
 \end{tabular}
-\caption{Confusion matrix **result**.}
+\caption{Classifier performance.  Rows denote the actual type, and
+  columns denote the classifier prediction.  Numbers in bold denote
+  correct classification.}
 \label{tab:confusionMatrixLeaveOneOut}
 \end{table}
 
@@ -373,7 +378,9 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 
 
 \begin{sidewaystable}
+\centering
 \begin{tabular}{ccllllllllllllll}
+\toprule
 Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & SD & TDL\\
 \hline
 1 & $56.0 \pm 1.4\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & \\
@@ -392,8 +399,8 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 14 & $71.6 \pm 2.1\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
-\caption{Feature set performance for \Sumbul dataset. See Table
-  \ref{tab:performance} for abbreviations.}
+\caption{Feature set performance for \Sumbul dataset using same format
+  as Table~\ref{tab:performance}. }
 \label{tab:sumbulfeatureselection}
 \end{sidewaystable}
 
