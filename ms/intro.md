@@ -529,10 +529,10 @@ possible reason for this feature overlap is that the size and shape of
 RGCs varies considerably across the retina [@Wassle2004-lt]. Neurons
 in the center are more densely packed than those in the periphery and
 as a consequence have a smaller dendritic area than peripheral neurons
-of the same type [@Bleckert2014-hg]. **1974 paper here: For example,
-in cat, beta cells are on average smaller than alpha cells, however, a
-peripheral beta cell might be larger than a central alpha cell
-[Wassle1981]**. Mouse has a shallower density gradient than cat
+of the same type [@Bleckert2014-hg].  Even though at a given
+eccentricity cat beta RGCs are smaller than alpha RGCs, a peripheral
+beta RGC might be confused for an alpha RGC from central retina
+[@Boycott1974-aa].  Mouse has a shallower density gradient than cat
 [@Jeon1998-df], but one possibility to explore would be to scale the
 area with eccentricity, however we did not have the location for the
 individual RGCs.
