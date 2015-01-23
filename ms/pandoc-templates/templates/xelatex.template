@@ -49,8 +49,14 @@ $endif$
 \begin{document}  
 \setkeys{Gin}{width=1\textwidth} 	
 %%\setromanfont[Mapping=tex-text]{Minion Pro}
+
 \setromanfont[Mapping=tex-text]{TeX Gyre Pagella}
-\setmathfont[Mapping=tex-text]{TG Pagella Math}
+%% http://tex.stackexchange.com/questions/118726/handle-different-font-names
+%% Math font changed name to longer version recently.
+%% So refer it to by filename, which has stayed the same.
+%%\setmathfont[Mapping=tex-text]{TeX Gyre Pagella Math} % mac
+%%\setmathfont[Mapping=tex-text]{TG Pagella Math} % ubuntu
+\setmathfont[Mapping=tex-text]{texgyrepagella-math.otf}
 %%\setromanfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
 %%\setsansfont[Mapping=tex-text]{Minion Pro}
 %% SJE: do not have this font:
