@@ -9,6 +9,10 @@ so we need to load the font using [this link](https://groups.google.com/forum/?f
 these fonts can be installed using:
 
     tlmgr install tex-gyre
+    tlmgr install tex-gyre-math ## might be needed too?
+
+On mac, you may then need to open `Font book` and add the fonts before
+they can be found by xelatex.
 
 I have moved the org-preamble-xelatex.sty into the same directory as
 the .tex for convenience.
