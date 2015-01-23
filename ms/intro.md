@@ -13,7 +13,6 @@ author:
   email: S.J.Eglen@damtp.cam.ac.uk
 
 date: 2015-01-19
-bibliography: <!-- \bibliography{/Users/kjhealy/Documents/bibs/socbib-pandoc.bib} This is a hack for Emacs users so that RefTeX knows where your bibfile is, and you can use RefTeX citation completion in your .md files. -->
 ...
 
 Contributions
@@ -268,10 +267,9 @@ grouping in feature space.
 ### Selection of Classification Method
 
 We evaluated four different types of classification methods: Decision
-trees [@Kotsiantis2013-jc], Support Vector Machines
-Hastie et al 2008; Christianini and Shawe-Taylor 2000]., Subspace
-[Ho 1998] and Naïve Bayes Classifiers. [Manning et al 2008].  **Need
-refs for three other methods?**
+trees [@Kotsiantis2013-jc], Support Vector Machines [@Hastie2009-ws],
+Random Subspace [@Ho1998-cp] and Naïve Bayes Classifiers [@Manning2008-dq].
+
 
 We used the results from Matlab’s built in sequential feature
 selection function to decide which classifier to use.  We also
@@ -429,7 +427,7 @@ large overlaps with other genetic types.
 
 ## Hoxd10 contain multiple subtypes
 
-** Update Hoxd10 is multiple types **
+**Update Hoxd10 is multiple types **
 Why is Hoxd10 performing so poorly compared to other genetic types? One explanation might be that multiple RGC types are grouped under the Hoxd10 type. By projecting the feature vectors from 5D down to the first two principal components we can observe the different RGCs in relation to each other. Principal component analysis (PCA) finds the directions in feature space along which the data has the largest variation. Figure 5B shows that the majority of the Hoxd10 cells are grouped together into a cluster that partially overlaps with DRD4. There are also a few outliers that overlap with CB2 and TRHR. 
 
 If two or more morphologically distinct RGC types are included in one
@@ -443,7 +441,7 @@ into we tried a range from k=2 to 6. When only clustering the Hoxd10
 data, we found that the silhouette value (0.62) was maximal for
 k=3. This corresponds to two major clusters, and the third cluster
 containing one outlier (See Figure X1). The RGCs in the different
-Hoxd10 clusters are shown in Figure X2, X3 and X4. ** move to start? This result is in
+Hoxd10 clusters are shown in Figure X2, X3 and X4. **move to start? This result is in
 line with the finding by [Dhande et al (2013)], that Hoxd10 labels
 three types of On-direction-selective and one type of On-Off
 direction-selective/anterior tuned RGC. Hoxd10 is therefore not a
