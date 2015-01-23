@@ -14,3 +14,4 @@ RESULTS
 ms/intro.docx
 ms/intro.pdf
 ms/auto
+/ms/auto/*.el
