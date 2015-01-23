@@ -144,13 +144,8 @@ group from the clustering/classification methods.
 
 All experimental procedures were approved by the Institutional Animal
 Care and Use Committee (IACUC) at the University California, San
-Diego. The following BAC transgenic mouse lines were used:
-Calretinin-EGFP (CB2-GFP; [@Huberman2008-5a6]), Homeobox d10-EGFP
-[Hoxd10-GFP; @Dhande2013-vp], Cadherin 3-EGFP [Cdh3-GFP;
-@Osterhout2011-9b9], Dopamine receptor D4-EGFP [DRD4-GFP;
-@Rivlin-Etzion2011-ji] and thyrotropin-releasing hormone
-receptor-EGFP [TRHR-GFP; @Rivlin-Etzion2011-ji].
-
+Diego. Table 1 lists the  BAC transgenic mouse lines used in this
+study and the number of RGCs from each animal.
 Intracellular cell filling and immunostaining of the retina were
 performed using methods described in detail previously
 [@Beier2013-mc; @Dhande2013-vp; @Cruz-Martin2014-sf; @Osterhout2014-ko]. Mice
@@ -163,6 +158,14 @@ instruments; 15-20 MΩ). Cells were filled with Alexa Fluor 555
 hydrizide (Invitrogen Cat # A20501MP; 10 mM solution in 200 mM KCl),
 with the application of hyperpolarizing current pulses ranging between
 0.1-0.9 nA, for 1-5 minutes.
+
+
+<!-- Ensure we cite all the refs from Table 1. -->
+---
+nocite: |
+  @Huberman2009-xf, @Osterhout2011-9b9, @Huberman2008-5a6,
+  @Dhande2013-vp, @Rivlin-Etzion2011-ji
+...
 
 Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then washed with 1x phosphate buffered saline (PBS) and incubated for 1 hour at room temperature in a blocking solution consisting of 10% goat serum with 0.25 % Triton-X. The retinas were then incubated for 1 day at 4°C with the following primary antibodies diluted in blocking solution: rabbit anti-GFP (1:1000, Invitrogen Cat # A6455). Retinas were rinsed with PBS (3x, 30 minutes each), and incubated for 2 hours at room temperature with the following secondary antibodies:  Alexa Fluor 488 goat anti-rabbit (1:1000, Life Technologies Cat# A11034). Sections were rinsed with PBS (3x, 30 minutes each) and mounted onto glass slides and coverslipped with Prolong Gold containing DAPI (Invitrogen P36931).
 
