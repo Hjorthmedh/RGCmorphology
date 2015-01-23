@@ -1,0 +1,6 @@
+*.html
+*.tex
+intro.docx
+intro.pdf
+auto
+auto/*.el
