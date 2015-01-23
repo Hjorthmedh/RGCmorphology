@@ -44,12 +44,15 @@ $endif$
 
 \date{}
 
+\usepackage{unicode-math} %% for  setmathfont
 
 \begin{document}  
 \setkeys{Gin}{width=1\textwidth} 	
-\setromanfont[Mapping=tex-text]{Minion Pro}
+%%\setromanfont[Mapping=tex-text]{Minion Pro}
+\setromanfont[Mapping=tex-text]{TeX Gyre Pagella}
+\setmathfont[Mapping=tex-text]{TG Pagella Math}
 %%\setromanfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
-\setsansfont[Mapping=tex-text]{Minion Pro}
+%%\setsansfont[Mapping=tex-text]{Minion Pro}
 %% SJE: do not have this font:
 %%\setmonofont[Mapping=tex-text,Scale=0.8]{Pragmata}
 \chapterstyle{article-4} 
