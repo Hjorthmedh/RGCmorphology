@@ -129,6 +129,7 @@
 
 \newcommand{\etal}{et al.\ }
 \begin{table}
+\centering
 \begin{tabular}{p{4.5cm} p{4.5cm} lr}
   \toprule
   Genetic type & Description & Citation & N\\
@@ -148,7 +149,7 @@
   \footnotesize{Rivlin Etzion \etal (2011)} & 9\\
   \bottomrule
 \end{tabular}
-\caption{Description of the five genetic types in this study.  N is
+\caption{Five genetic types in this study.  N is
   the number of cells analysed.}
 \label{tab:geneticTypes}
 \end{table}
@@ -159,6 +160,7 @@
 \singlespacing
 
 \begin{table}
+  \centering
   {\renewcommand{\arraystretch}{1.3} \begin{tabular}{lp{8.5cm}}
       \toprule
       \textbf{Feature} & \textbf{Description} \\
@@ -271,17 +273,19 @@ Total Dendritic Length (TDL) & -0.09 & 0.27 & \textbf{0.58} & 0.02 & \textbf{0.6
 
 % This table uses our 5-feature set
 \begin{table}
+\centering
 \begin{tabular}{llrrrrr}
-\hline
- & & \multicolumn{5}{c}{Blind cluster}\\
+\toprule
+ & & \multicolumn{5}{c}{Cluster}\\
  & & 1 & 2 & 3 & 4 & 5\\
-\cline{3-7}
+%%\cline{3-7}
+\midrule
 \multirow{5}{*}{\rotatebox{90}{Genetic type}}& CB2 & 0 & 11 & 0 & 0 & 8\\
 & Cdh3 & 0 & 0 & 4 & 7 & 0\\
 & DRD4 & 0 & 0 & 20 & 6 & 0\\
 & Hoxd10 & 12 & 2 & 12 & 2 & 1\\
 & TRHR & 0 & 0 & 0 & 9 & 0\\
-\cline{3-7}
+\bottomrule
 \end{tabular}
 \caption{Comparison of blind clustering with genetic type.}
 \label{tab:blind5confusion}
@@ -341,6 +345,7 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 % does not allow for that, it would affect other tables alos.
 
 \begin{table}
+\centering
 \begin{tabular}{llrrrrr}
 \toprule
  & & \multicolumn{5}{c}{Predicted type}\\
@@ -354,7 +359,7 @@ Number of features & Performance  & BD & BA & DA & DD & DDi & DBP & FD & MBA & M
 & TRHR & 0 & 1 & 3 & 0 & \textbf{5}\\
 \bottomrule % \cline{3-7}
 \end{tabular}
-\caption{Confusion matrix result.}
+\caption{Confusion matrix **result**.}
 \label{tab:confusionMatrixLeaveOneOut}
 \end{table}
 
