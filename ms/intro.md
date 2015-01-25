@@ -37,39 +37,26 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 J Neurophysiol special issue on cell types as initial target.  J Comp
 Neurol second choice.
 
-Automated analysis and classification of retinal ganglion mice occurs
-also in other species, including cat [@Jelinek2004-gp], newt
-[@Pushchin2009-ef5] and lamprey [@Fletcher2014-mj].
-
-
-A study by [@Coombs2006-pb] did unsupervised clustering
-identifying 10 clusters of RGCs. They found that melanposin positive
-cells clustered together in one group, while SMI-32 positive cells
-spanned four different clusters. This is in line with our findings
-that some cell types span multiple clusters, the silhouette value for
-the genetically labeled classes is 0.2 (using the five-feature set),
-which indicates that there is considerable overlap.
-
 \clearpage
 
 # Abstract
 
 There are estimated to be around 20 different types of retinal
-ganglion cells in the mouse retina. Newly developed genetic markers
+ganglion cells in the mouse retina. Recently developed genetic markers
 allow for the identification and targeting of specific retinal
 ganglion cell (RGC) types, which have different functional and
-morphological features. The purpose of this study was to develop tools
-to identify RGCs types based on the most common available sources of
-information about their morphology: soma size and dendritic branching
-pattern. We used five different transgenic mouse lines, in each of
-which 1-2 RGCs types selectively express green fluorescent protein
-(GFP). Cell tracings of 94 RGCs were acquired from retinas of CB2-GFP
-(transient Off alpha RGCs), Cdh3-GFP (M2 ipRGCs; “diving” RGCs,
-DRD4-GFP (pOn-Off DSGCs), Hoxd10-GFP (On-DSGCs and aOn-Off DSGCs)and
-TRHR-GFP (pOn-Off DSGCs) transgenic mice. Fifteen morphological
-features of GFP expressing cells were calculated, and we used machine
-learning techniques to classify the cells. We found that dendritic
-area, density of branch points, fractal dimension box counting, mean
+morphological features. The purpose of this study was to develop
+computational tools to identify RGCs types based on the most common
+available sources of information about their morphology: soma size and
+dendritic branching pattern. We used five different transgenic mouse
+lines, in each of which 1-2 RGCs types selectively express green
+fluorescent protein (GFP). Cell tracings of 94 RGCs were acquired from
+retinas of CB2-GFP (transient Off alpha RGCs), Cdh3-GFP (M2 ipRGCs;
+“diving” RGCs, DRD4-GFP (pOn-Off DSGCs), Hoxd10-GFP (On-DSGCs and
+aOn-Off DSGCs)and TRHR-GFP (pOn-Off DSGCs) transgenic mice. Fifteen
+morphological features of GFP expressing cells were calculated, and we
+used machine learning techniques to classify the cells. We found that
+dendritic area, density of branch points, fractal dimension, mean
 terminal segment length and soma area were enough to create a
 classifier that could correctly identify 83 % of the RGC types we
 examined.  This approach is therefore useful for experiments that do
@@ -109,10 +96,13 @@ other species, to test whether distinct types of RGCs form clusters in
 multidimensional space.  Estimates for mouse RGCs vary from 12
 [@Kong2005] to 22 [@Volgyi2009] types based either on manual
 classification of cell types or unsupervised machine learning methods.
-These unsupervised approaches use statistical methods to determine the
-optimal number of clusters in the data (e.g. using silhoutte widths
-technique; REF).  However, these approachees have no ground-truth data
-to compare with the predicted number of cell types.
+These techniques have also been applied to grouping of RGCs in other
+species, including cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and
+lamprey [@Fletcher2014-mj].  These unsupervised approaches use
+statistical methods to determine the optimal number of clusters in the
+data (e.g. using silhoutte widths technique; REF).  However, these
+approachees have no ground-truth data to compare with the predicted
+number of cell types.
 
 In this study, we analyse the morphology of RGCs from several mutant
 mice lines where typically one or a few types of RGC is labelled with
@@ -153,18 +143,18 @@ performed using methods described in detail previously
 [@Beier2013-mc; @Dhande2013-vp; @Cruz-Martin2014-sf; @Osterhout2014-ko]. Mice
 were anesthetized with isoflurane and the eyes were removed.  Retinas
 were dissected and kept in an oxygenated (95% O~2~/ 5% CO~2~) solution
-of Ames’ medium (Sigma Cat # A1420), containing 23 mM NaHCO3.  Single
+of Ames’ medium (Sigma Cat# A1420), containing 23 mM NaHCO3.  Single
 GFP+ RGCs were visualized under epifluorescence, and then targeted
 under DIC with electrodes made with borosilicate glass (Sutter
 instruments; 15-20 MΩ). Cells were filled with Alexa Fluor 555
-hydrizide (Invitrogen Cat # A20501MP; 10 mM solution in 200 mM KCl),
+hydrizide (Invitrogen Cat# A20501MP; 10 mM solution in 200 mM KCl),
 with the application of hyperpolarizing current pulses ranging between
 0.1-0.9 nA, for 1--5 minutes.
 
 
 
 
-Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then washed with 1x phosphate buffered saline (PBS) and incubated for 1 hour at room temperature in a blocking solution consisting of 10% goat serum with 0.25 % Triton-X. The retinas were then incubated for 1 day at 4°C with the following primary antibodies diluted in blocking solution: rabbit anti-GFP (1:1000, Invitrogen Cat # A6455). Retinas were rinsed with PBS (3x, 30 minutes each), and incubated for 2 hours at room temperature with the following secondary antibodies:  Alexa Fluor 488 goat anti-rabbit (1:1000, Life Technologies Cat# A11034). Sections were rinsed with PBS (3x, 30 minutes each) and mounted onto glass slides and coverslipped with Prolong Gold containing DAPI (Invitrogen P36931).
+Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then washed with 1x phosphate buffered saline (PBS) and incubated for 1 hour at room temperature in a blocking solution consisting of 10% goat serum with 0.25 % Triton-X. The retinas were then incubated for 1 day at 4°C with the following primary antibodies diluted in blocking solution: rabbit anti-GFP (1:1000, Invitrogen Cat# A6455). Retinas were rinsed with PBS (3x, 30 minutes each), and incubated for 2 hours at room temperature with the following secondary antibodies:  Alexa Fluor 488 goat anti-rabbit (1:1000, Life Technologies Cat# A11034). Sections were rinsed with PBS (3x, 30 minutes each) and mounted onto glass slides and coverslipped with Prolong Gold containing DAPI (Invitrogen P36931).
 
 RGCs were imaged with a laser scanning confocal microscope (Zeiss LSM
 710 or 780), using a LD C-Apochromat 40X/1.1 water immersion objective
@@ -195,12 +185,12 @@ areas are measured in the XY-plane.
 
 Fractal dimension measures the neuron’s coverage of the retina at
 different length scales. Here we used the box counting method
-described in @Fernandez2001-ef. The neuron was projected onto the XY
-plane and a grid was placed over it (Figure 3B). This grid was then
-successively refined. The magnification is defined as the maximal
-distance between grid lines / current distance between grid lines. At
-each step, the number of grid boxes that contains a piece of dendrite
-was counted. The logarithm of the number of non-empty grid squares was
+[@Fernandez2001-ef]. The neuron was projected onto the XY plane and a
+grid was placed over it (Figure 3B). This grid was then successively
+refined. The magnification is defined as the maximal distance between
+grid lines / current distance between grid lines. At each step, the
+number of grid boxes that contains a piece of dendrite was
+counted. The logarithm of the number of non-empty grid squares was
 plotted against the logarithm of the magnification. A line was fitted
 to these points using the least squares method, and the resulting
 slope is an estimate of the fractal dimension.
@@ -631,6 +621,19 @@ that the TRHR have a more symmetric arbor, while the soma of DRD4 is
 **off centre (explain)** which is a distinction our morphological
 features do not distinguish between.
 
+### Limitations of clustering TODO
+
+**A study by [@Coombs2006-pb] did unsupervised clustering
+identifying 10 clusters of RGCs. They found that melanposin positive
+cells clustered together in one group, while SMI-32 positive cells
+spanned four different clusters. This is in line with our findings
+(Table 7)
+that some cell types span multiple clusters, the silhouette value for
+the genetically labeled classes is 0.2 (using the five-feature set),
+which indicates that there is considerable overlap.**
+
+
+
 ## Limits
 
 The retina is a layered structure, and depending on where the RGC
@@ -731,7 +734,7 @@ and soma are drawn in black, and axons in red.
 Dendritic Area (DA) is calculated
 as the convex hull (light grey) enclosing all dendrites (black); axon
 in red.
-*B*: Fractal dimension box counting (FDBC) measures the
+*B*: Fractal dimension (FD) measures the
 number of grid squares filled at different grid magnification.
 *C*: Stratification depth (SD):  z-coordinate of the centre of
 dendritic mass (for our data this is relative to the  soma centre
