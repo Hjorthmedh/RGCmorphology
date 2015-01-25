@@ -41,9 +41,6 @@ Automated analysis and classification of retinal ganglion mice occurs
 also in other species, including cat [@Jelinek2004-gp], newt
 [@Pushchin2009-ef5] and lamprey [@Fletcher2014-mj].
 
-References can only come at end of document it seems
-http://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography
-
 
 A study by [@Coombs2006-pb] did unsupervised clustering
 identifying 10 clusters of RGCs. They found that melanposin positive
@@ -425,7 +422,7 @@ Machine performed equally well. The performance of each set of
 features was assessed using five-fold cross-validation. Because of
 variations in ranking between individual runs, we repeated this
 procedure 20 times to get robust results. The results from this
-exploration are shown in Table 6, which shows the best subset for each
+exploration are shown in Table 5, which shows the best subset for each
 given number of features. Classification performance initially
 increases with the number of features, however after eight features,
 additional features were detrimental to performance. We found that, in
@@ -453,11 +450,11 @@ As classification was good, but not error-free, we investigated which
 cells were misclassified using a confusion matrix. This matrix
 displays the different RGC types as rows, and the predicted classes as
 columns. Perfect classification would result in non-zero elements
-along only the leading diagonal. The confusion matrix (Table 7) shows
+along only the leading diagonal. The confusion matrix (Table 6) shows
 that Hoxd10 and TRHR were the two RGC types that were most difficult
 to predict, with 21% (6/29) and 44% (4/9) misclassification. We can
 compare this with the confusion matrix from the unsupervised learning
-(Table 5, using the same five features). Here Hoxd10 spans all the
+(Table 7, using the same five features). Here Hoxd10 spans all the
 five clusters. TRHR is restricted to one cluster, but share it with
 four other RGC types.
 
@@ -531,7 +528,7 @@ applied our method to the Sümbül et al. dataset. This dataset has been
 pre-processed using the VAChT band information to flatten the
 dendritic trees, furthermore the soma size was missing from the data
 set. We have therefore repeated the feature selection process for this
-data. Table 9 shows the best feature sets found.  There are some
+data. Table 8 shows the best feature sets found.  There are some
 notable differences with Table 6,that shows the same selection applied
 to our data. Bistratification distance and stratification depth were
 more often picked as classifiers of the Sümbül data, while dendritic
@@ -600,8 +597,8 @@ dendritic area with eccentricity.
 
 To find the best feature set we searched the entire set of possible
 features (2^15^-1 = 32767 possible feature combinations; results
-sumamrised in Table 6). A classifier with five features predicted the
-correct RGC type with an accuracy of 83% (Table 6; N=5). This is lower
+summarised in Table 5). A classifier with five features predicted the
+correct RGC type withan accuracy of 83% (row 5 of Table 5). This is lower
 than **near-perfect** [@Sumbul2014-vm], but around three and a half
 times above chance level which is around 24%. We discuss the
 differences between our approach and Sümbül’s in the *Limits* section
@@ -781,8 +778,7 @@ imperfect, classification.  When presented with a cell of unknown type
 <!--  Figure5-feature-space-and-confidence.pdf -->
 **Figure 5:**
 Illustration of feature space and the classifier confidence for each
-RGC. Each neuron in the classifier is represented as a 5D-feature
-(Table 6).
+RGC. Each neuron is represented as a 5D-feature.
 *A*: Two of the five features are shown for each RGC: Soma
 Area and Density of Branch Points.  Each RGC is represented by a
 filled circle, with the colour denoting its genetic type (see legend).
