@@ -101,9 +101,9 @@ These techniques have also been applied to grouping of RGCs in other
 species, including cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and
 lamprey [@Fletcher2014-mj].  These unsupervised approaches use
 statistical methods to determine the optimal number of clusters in the
-data (e.g. using silhoutte widths technique; REF).  However, these
-approachees have no ground-truth data to compare with the predicted
-number of cell types.
+data [e.g. using the silhoutte widths technique, @Rousseeuw1987-xe].
+However, these approaches have no ground-truth data to compare with
+the predicted number of cell types.
 
 In this study, we analyse the morphology of RGCs from several mutant
 mice lines where typically one or a few types of RGC is labelled with
@@ -113,7 +113,7 @@ i.e. the mouse line from where the cell was labelled.  This provides
 us with ground-truth data which we can use to evaluate our methods
 againts.  From each RGC we measured fifteen features, from which we
 found five that were highly predictive of cell type.  We compare our
-findings with a recent study [@Sumbul2014-vm] where near-perfect
+findings with a recent study [@Sumbul2014-vm] where **near-perfect**
 classification was achieved when information about stratification
 depth is included.  We suggest that our anatomical measures can
 provide a reliable basis for classification in the absence of
@@ -306,24 +306,27 @@ largest variation of the data set.
 ### Determining typical and atypical cells
 
 To assess the confidence in the classification, we used the posterior
-probability from the Naïve Bayes classifier. Following the methodology
-established by @Khan2001-71f we plotted the most typical RGC of each
-type, which was defined as the one with the highest posterior
-probability. We also plotted the most atypical RGC of each type, which
-was defined as the RGC with the highest posterior probability for
-another type other than its genetic type. 
+probability from the Naïve Bayes classifier.  To classify each neuron,
+we withheld it from the training set, using the leave-one-out
+technique. Following the methodology established by @Khan2001-71f we
+plotted the most typical RGC of each type, which was defined as the
+one with the highest posterior probability. We also plotted the most
+atypical RGC of each type, which was defined as the RGC with the
+highest posterior probability for another type other than its genetic
+type.
+
 # Results
 
 
 
-We filled, reconstructed and analyzed a total of 94 RGCs from five
-genetic mouse lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR (Table 1). In
-these mouse lines GFP is usually expressed in 1--2 specific types of
-RGCs.  This makes it possible to reliably and selectively target the
-same types of RGCs in different animals. We will refer to these five
-lines as “genetic types” and we assume for the initial analysis that
-each of these uniquely define one RGC type.  Our prior findings
-suggest however that Hoxd10 may label 3--4 RGC types.  In this work we
+We filled, reconstructed and analyzed 94 RGCs from five genetic mouse
+lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR (Table 1). In these mouse
+lines GFP is usually expressed in 1--2 specific types of RGCs.  This
+makes it possible to reliably and selectively target the same types of
+RGCs in different animals. We will refer to these five lines as
+“genetic types” and we assume for the initial analysis that each of
+these uniquely define one RGC type.  Our prior findings suggest
+however that Hoxd10 may label 3--4 RGC types.  In this work we
 initially assume that Hoxd10 labels one type of RGCs, and then assess
 later in detail whether it is likely to label multiple types.  Three
 example RGCs of each genetic type are shown in Figure 1. The axons
@@ -798,8 +801,6 @@ Bayes classifier). Correct classifications are marked with a filled
 circle, triangles indicate incorrectly classified neurons and the
 colour denotes predicted type. Chance level for the classifier is
 marked with a dashed blue line.
-
-** TODO Add to methods: The neuron tested was withheld from the training set, using the leave-one-out technique**
 
 <!-- Blind-Hoxd10-best-clustering.eps -->
 
