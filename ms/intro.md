@@ -49,7 +49,7 @@ morphological features. The purpose of this study was to develop
 computational tools to identify RGCs types based on the most common
 available sources of information about their morphology: soma size and
 dendritic branching pattern. We used five different transgenic mouse
-lines, in each of which 1-2 RGCs types selectively express green
+lines, in each of which 1--3 RGCs types selectively express green
 fluorescent protein (GFP). Cell tracings of 94 RGCs were acquired from
 retinas of CB2-GFP (transient Off alpha RGCs), Cdh3-GFP (M2 ipRGCs;
 “diving” RGCs, DRD4-GFP (pOn-Off DSGCs), Hoxd10-GFP (On-DSGCs and
@@ -59,9 +59,10 @@ used machine learning techniques to classify the cells. We found that
 dendritic area, density of branch points, fractal dimension, mean
 terminal segment length and soma area were enough to create a
 classifier that could correctly identify 83 % of the RGC types we
-examined.  This approach is therefore useful for experiments that do
-not have access to the genetically labeled mouse lines and or detailed
-information about stratification of RGC types.
+examined.  We therefore believe that standard morphological features
+can serve as reliable classifiers of mouse RGCs.
+
+
 
 \clearpage
 
