@@ -266,30 +266,6 @@ Total Dendritic Length (TDL) & -0.09 & 0.27 & \textbf{0.58} & 0.02 & \textbf{0.6
 
 
 
-% blindClusteringBatch.m
-
-% SAVES files in RESULTS
-% from: RESULTS/BlindClustering-latex-n-5.tex
-
-% This table uses our 5-feature set
-\begin{table}
-\centering
-\begin{tabular}{llrrrrr}
-\toprule
- & & \multicolumn{5}{c}{Cluster}\\
- & & 1 & 2 & 3 & 4 & 5\\
-%%\cline{3-7}
-\midrule
-\multirow{5}{*}{\rotatebox{90}{Genetic type}}& CB2 & 0 & 11 & 0 & 0 & 8\\
-& Cdh3 & 0 & 0 & 4 & 7 & 0\\
-& DRD4 & 0 & 0 & 20 & 6 & 0\\
-& Hoxd10 & 12 & 2 & 12 & 2 & 1\\
-& TRHR & 0 & 0 & 0 & 9 & 0\\
-\bottomrule
-\end{tabular}
-\caption{Unsupervised clustering of RGCs.}
-\label{tab:blind5confusion}
-\end{table}
 
 
 
@@ -378,6 +354,31 @@ N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} &
 % runExhaustiveFeatureSearchSumbul    % !!! This is slow
 % analyseExhaustiveFeatureSearchSumbul
 % 
+
+% blindClusteringBatch.m
+
+% SAVES files in RESULTS
+% from: RESULTS/BlindClustering-latex-n-5.tex
+
+% This table uses our 5-feature set
+\begin{table}
+\centering
+\begin{tabular}{llrrrrr}
+\toprule
+ & & \multicolumn{5}{c}{Cluster}\\
+ & & 1 & 2 & 3 & 4 & 5\\
+%%\cline{3-7}
+\midrule
+\multirow{5}{*}{\rotatebox{90}{Genetic type}}& CB2 & 0 & 11 & 0 & 0 & 8\\
+& Cdh3 & 0 & 0 & 4 & 7 & 0\\
+& DRD4 & 0 & 0 & 20 & 6 & 0\\
+& Hoxd10 & 12 & 2 & 12 & 2 & 1\\
+& TRHR & 0 & 0 & 0 & 9 & 0\\
+\bottomrule
+\end{tabular}
+\caption{Unsupervised clustering of RGCs.}
+\label{tab:blind5confusion}
+\end{table}
 
 
 \begin{table}
