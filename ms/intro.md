@@ -321,54 +321,57 @@ type.
 
 We filled, reconstructed and analyzed 94 RGCs from five genetic mouse
 lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR (Table 1). In these mouse
-lines GFP is usually expressed in 1--2 specific types of RGCs.  This
-makes it possible to reliably and selectively target the same types of
-RGCs in different animals. We will refer to these five lines as
-“genetic types” and we assume for the initial analysis that each of
-these uniquely define one RGC type.  Our prior findings suggest
-however that Hoxd10 may label 3--4 RGC types.  In this work we
-initially assume that Hoxd10 labels one type of RGCs, and then assess
-later in detail whether it is likely to label multiple types.  Three
-example RGCs of each genetic type are shown in Figure 1. The axons
-(red) and dendrites (black) were manually traced, and the locations of
-the somas were marked. Each RGC collects information about a small
-region in the visual field; the shape and distribution of the
-dendritic tree differs depending on the function the RGC performs. It
-is an open problem to identify the RGC type based on morphological
-characteristics. Here we are interested in using objective methods to
-assess this RGC patterning.
+lines GFP is usually expressed in just one RGC type.  This makes it
+possible to reliably and selectively target the same types of RGCs in
+different animals. We will refer to these five lines as “genetic
+types” and we assume for the initial analysis that each of these
+uniquely define one RGC type.  Our prior findings suggest however that
+Hoxd10 may label 3--4 distinct RGC types.  In this work we initially
+assume that Hoxd10 labels one type of RGCs, and then assess later in
+detail whether it is likely to label multiple types.  Three example
+RGCs of each genetic type are shown in Figure 1. The axons (red) and
+dendrites (black) were manually traced, and the locations of the somas
+were marked. Each RGC collects information about a small region in the
+visual field; the shape and distribution of the dendritic tree differs
+depending on the function the RGC performs. It is an open problem to
+identify the RGC type based on morphological characteristics. Here we
+are interested in using objective methods to assess this RGC
+patterning.
 
 ## Quantifying RGC morphology
 
 Our aim was to use machine learning tools to predict RGC type by
-morphology. To do this we need to translate the RGC morphologies into
-a set of numbers quantifying that specific RGC. Fifteen morphological
-features were calculated (Table 2). Together they define a feature
-vector, which captured both large-scale characteristics of the neuron
-such as stratification depth, area of the dendritic arbor and number
-of branches, and also finer aspects such as the mean angle and the
+morphology. To do this, we translate each RGC morphology into a set
+of numbers quantifying that RGC. Fifteen morphological features were
+calculated (Table 2). Together they define a feature vector, which
+captured both large-scale characteristics of the neuron such as
+stratification depth, area of the dendritic arbor and number of
+branches, and also finer aspects such as the mean angle and the
 tortuosity of the branches (Figure\ 2).
 
 ## Single features do not uniquely predict RGC type
 
 We first investigated whether any one feature could predict the RGC
-type. Previous studies [@Kong2005; @Sumbul2014-vm] showed
-that stratification depth, relative to the two VAChT bands, is a good
-predictor of RGC type, but it could not uniquely determine RGC
-type. Our RGC z-stacks included VAChT staining, however, due to the
-way the data was acquired we were unable to reliably distinguish
-between the two VAChT bands. Instead we calculated the stratification
-depth relative to the soma (**is that what the 2009 Puschin paper did
-too?; Volgyi et al. 2009 also I believe**) and found that there was a
-considerable overlap between the different RGC types. There were also
-overlaps between the RGC types based on other features. For example,
-Table 3 shows that Hoxd10 generally had a larger dendritic area than
-other RGC types but that the standard deviation is so large that the
-range spans the whole spectrum of values of other RGC types. To assess
-the predictive powers of the individual features, we trained a Naïve
-Bayes classifier for each individual feature. The most discriminative
-feature was mean terminal segment length, which alone correctly
-predicted 64.7 ± 1.7\ % of the cases.
+type. Previous studies
+[@Kong2005; @Pushchin2009-ef5; @Volgyi2009; @Sumbul2014-vm]
+highlighted that stratification depth, relative to the two VAChT bands
+surrounding the inner plexiform layer, is a good predictor of RGC
+type, but it could not uniquely determine RGC type. Our RGC z-stacks
+included VAChT staining, however, due to the way the data was acquired
+we were unable to reliably distinguish between the two VAChT
+bands. Instead we calculated the stratification depth relative to the
+soma centre.  However, we found that there was considerable overlap
+between the different RGC types according to stratification depth
+(Table 3).  There were also significant overlaps between the RGC types
+based on other features. For example, Table 3 shows that Hoxd10
+generally had a larger dendritic area than other RGC types but that
+the standard deviation is so large that the range spans the whole
+spectrum of values of other RGC types. To assess the predictive powers
+of the individual features, we trained a Naïve Bayes classifier for
+each individual feature.  The single-most discriminative feature for
+our data was mean terminal segment length, which correctly
+predicted 64.7 ± 1.7\ % of the cases.  We therefore confirm that
+our individual features are not reliable classifiers of neuronal type.
 
 ## Selection of multiple feature vectors
 
