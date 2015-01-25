@@ -22,3 +22,12 @@ the .tex for convenience.
 
 Update: I don't think the above is currently working...
 
+
+
+## Pandoc issues
+
+
+1. References can only come at end of document it seems
+http://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography
+
+2. titles in pandoc don't come across that easily.
