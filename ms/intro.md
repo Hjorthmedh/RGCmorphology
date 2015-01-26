@@ -14,7 +14,7 @@ author:
 nocite: |
   @Huberman2009-xf, @Osterhout2011-9b9, @Huberman2008-5a6,
   @Dhande2013-vp, @Rivlin-Etzion2011-ji
-date: 2015-01-23 <!-- TODO update by hand. -->
+date: 2015-01-26 <!-- TODO update by hand. -->
 ...
 
 <!-- nocite above to ensure we cite all the refs from Table 1. -->
@@ -36,6 +36,8 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 J Neurophysiol special issue on cell types as initial target.  J Comp
 Neurol second choice.
+
+Check Sumbul for what exactly we mean by **near-perfect** classification?
 
 \clearpage
 
@@ -391,7 +393,7 @@ Figure 3C, where there is both signal to separate the classes, but
 also noise which blurs the boundaries between classes.
 
 The task of a classification algorithm is to take this training data
-to learn the boundaries between the different types of cell.  After
+to learn the boundaries between the different types of neuron.  After
 training, the classifier is asked to predict the type of a neuron not
 seen in training (e.g. black square in Figure 3C). In this
 case the RGC is within the green region, so it is very likely that it
@@ -404,90 +406,122 @@ between individual RGC types in feature space (Figure 3C), then
 classification is still possible but there will be some
 miss-classifications.
 
-Using the fifteen features listed, we can translate each neuron into a
-fifteen-dimensional feature vector (Figure 2F) which is then a point
-in feature space. A priori it is not certain that all fifteen features
-should be used in classification.  With each additional feature, the
-dimensionality of the feature space increases, causing the data points
-to be more spread out. Adding features with little or no useful
-information increases the distance between all cells in feature
-space. As more irrelevant features are added, the difference between
-within-class distance and between-class distance decreases, making the
-cells harder to classify. Another potential complication is that some
-of the features capture similar properties, leading to correlations
-between the features. The pairwise correlations between all features
-are reported in Table 4.  For example, mean segment length and mean
-terminal segment length are highly correlated with each other, but
-strongly anti-correlated with density of branch points. To assess
-which subset of features would give the best classification we did an
+Using this approach, we translated each neuron into a
+fifteen-dimensional feature vector (Figure 2F).  *A priori* it is not
+certain that all fifteen features should be used in classification.
+With each additional feature, the dimensionality of the feature space
+increases, causing the data points to be more spread out. Adding
+features with little or no useful information increases the distance
+between all cells in feature space. As more irrelevant features are
+added, the difference between within-class distance and between-class
+distance decreases, making the cells harder to classify. Another
+potential complication is that some features capture similar
+properties, leading to correlations between the features. The pairwise
+correlations between all features are reported in Table 4.  For
+example, mean segment length and mean terminal segment length are
+highly correlated with each other, but strongly anti-correlated with
+density of branch points
+
+
+To assess which subset of features would give the best classification,
+rather than select the features by trial and error, we did an
 exhaustive search using all possible combinations of the fifteen
 features. We choose the Naïve Bayes classifier, as initial tests
 showed that it was fast and had reasonably good classification
-performance. A bootstrap aggregation classifier and Support Vector
-Machine performed equally well. The performance of each set of
+performance. A bootstrap aggregation classifier and support vector
+machine performed equally well. The performance of each set of
 features was assessed using five-fold cross-validation. Because of
 variations in ranking between individual runs, we repeated this
 procedure 20 times to get robust results. The results from this
-exploration are shown in Table 5, which shows the best subset for each
-given number of features. Classification performance initially
-increases with the number of features, however after eight features,
-additional features were detrimental to performance. We found that, in
-our dataset, stratification depth (relative to soma position) and
-bistratification distance were poor predictors. Here, we opted for a
-five feature classifier, as adding a sixth feature only marginally
-improved performance. The features used were Dendritic Area, Density
-of Branch Points, Fractal Dimension, Mean Terminal Segment Length and
-Soma Area, which gave an average classification rate of 83%.  By
-contrast, the baseline for classifier performance when guessing
-randomly is about 24%.
+exploration are shown in Table 5, which shows the classification
+performance and the feature subset for each given number of
+features. Classification performance initially increases with the
+number of features, however after eight features, additional features
+inhibited performance.  In our dataset, stratification depth (relative
+to soma position) and bistratification distance were poor predictors.
+On the basis of these results, we selected a five-feature classifier,
+as adding a sixth feature only marginally improved performance. The
+features used were Dendritic Area, Density of Branch Points, Fractal
+Dimension, Mean Terminal Segment Length and Soma Area, which gave an
+average classification rate of 83%.  By contrast, performance without
+training would be about 24%.
 
 ## Assessing the classification
 
 To get a sense of what the different RGC types looked like we selected
 a typical and an atypical RGC from each genetic type (Figure 4), based
-upon the classification of these RGCs. Each row in the figure shows
-two cells: the left being the most typical in the class, and in the
-right a cell that was incorrectly classified. We see, for example,
-that the two Cdh3 RGCs shown look quite different. The more typical
-RGC (left) is more compact while the atypical one (right) occupies a
-larger area with diffuse dendrites similar to the Hoxd10 RGC.
+upon the classification of these RGCs. Each row shows two neurons: the
+left being the most typical in the class, and in the right a neuron that
+was incorrectly classified. We see, for example, that the two Cdh3
+RGCs shown look quite different. The more typical RGC (left) is more
+compact while the atypical one (right) occupies a larger area with
+diffuse dendrites similar to the Hoxd10 RGC.
 
-As classification was good, but not error-free, we investigated which
-cells were misclassified using a confusion matrix. This matrix
-displays the different RGC types as rows, and the predicted classes as
-columns. Perfect classification would result in non-zero elements
-along only the leading diagonal. The confusion matrix (Table 6) shows
-that Hoxd10 and TRHR were the two RGC types that were most difficult
-to predict, with 21% (6/29) and 44% (4/9) misclassification. We can
-compare this with the confusion matrix from the unsupervised learning
-(Table 7, using the same five features). Here Hoxd10 spans all the
-five clusters. TRHR is restricted to one cluster, but share it with
-four other RGC types.
+As classification was good, but not error-free, we investigated
+whether particular cell types were misclassified using a confusion
+matrix. This matrix displays the different RGC types as rows, and the
+predicted classes as columns. Perfect classification would result in
+non-zero elements along only the leading diagonal. The confusion
+matrix (Table 6) shows that Hoxd10 and TRHR were the two RGC types
+that were most difficult to predict, with 21% (6/29) and 44% (4/9)
+misclassification. We can compare this with the confusion matrix from
+clustering using the k-means algorithm (Table 7, using the same five
+features).  This clustering result shows us that each RGC type does
+not neatly fall into its own cluster.  Only the TRHR type is
+restricted to one cluster (cluster 4), but that cluster is shared with
+three other RGC types.  At the other extreme, neurons from the Hoxd10
+type are placed into all five clusters, although the primary split is
+into two clusters (cluster 1 and 3).  Therefore, at least with our
+data, unsupervised discovery of cell types correlates poorly with the
+known genetic type.
+
+To better understand why unsupervised clustering is not able to
+separate the cell types, we need to examine the feature space.  We can
+do this by generating scatterplots between each pair of featurs
+e.g. one shown in Figure 5A, plotting soma area against density of
+branch points.  We can observe from this that TRHR has a large overlap
+with DRD4 and to some extent Cdh3. Likewise, Hoxd10 has large overlaps
+with other genetic types.  Rather than repeat this procedure for each
+pair of features (there are 10 scatterplots for a five dimensional
+feature), we used Principal component analysis to reduce the
+five-dimensional vectors to two dimensions. Figure 5B shows that the
+majority of the Hoxd10 cells are grouped together into a cluster that
+partially overlaps with DRD4. There are also a few outliers that
+overlap with CB2 and TRHR.  This two-dimensional projection confirms
+our *a priori* belief that there is likely to be a morphological
+signal that can separate RGCs types, but that the boundaries overlap,
+as outlined for synthetic data in Figure 3C.
 
 
-To better understand why Hoxd10 and TRHR have worse performance we
-need to look at the feature space. For feature spaces of higher
-dimensions this might be difficult. We can pick two or possibly three
-of the features and plot the RGCs in a subspace of the full feature
-space. Figure 5A shows the RGCs plotted on the Soma Area and Density
-of Branch Points. Here we can see that for these features, TRHR has a
-large overlap with DRD4 and to some extent Cdh3. Likewise, Hoxd10 has
-large overlaps with other genetic types.
+### Confidence in classification
+
+To assess the nature of the boundaries between cell types, we returned
+to the classifer to assess its performance.  The Naïve Bayes
+classifier calculates a confidence measure when classifying each
+RGC. If there is only a small overlap between clusters, we expect the
+classifier to be certain about most of its predictions. When the
+clusters are harder to separate, we expect the classifier's confidence
+in the predictions to be lower [@Khan2001-71f]. Figure 5C shows the
+confidence of the classification for different RGCs, with a higher
+score signifying a more confident classification. Triangles mark the
+cells that were incorrectly classified. There are some misclassified
+cells with confidences around 0.5, but perhaps more concerning are
+misclassified RGCs with higher (> 0.8) confidence.  Each type had one
+example of a RGC with high posterior probability for the wrong type,
+except for Hoxd10, which had three.  One reason for this could be that
+there is something abnormal about these cells, causing them to appear
+in the wrong place in feature space. However, these cells were
+visually inspected but nothing unusual was seen.
+
 
 ## Hoxd10 contain multiple subtypes
 
-Why is Hoxd10 performing so poorly compared to other genetic types?
-As noted at the start of the Results, our recent work [@Dhande2013-vp]
-suggested that Hoxd10 labels multiple types of RGCs, rather than just
-one type.  This mixing of multiple types might account for why cells
-in the Hoxd10 class are being misclassified at a relatively high rate.
-By projecting the feature vectors from 5D down to the first two
-principal components we can observe the different RGCs in relation to
-each other. Principal component analysis (PCA) finds the directions in
-feature space along which the data has the largest variation. Figure
-5B shows that the majority of the Hoxd10 cells are grouped together
-into a cluster that partially overlaps with DRD4. There are also a few
-outliers that overlap with CB2 and TRHR.
+Out of the five RGC types, the Hoxd10 seems to perform poorest in both
+classification and clustering results.  As noted at the start of the
+Results, our recent work [@Dhande2013-vp] suggested that Hoxd10 labels
+multiple RGC types, rather than just one type.  This mixing of
+multiple types might account for why cells in the Hoxd10 class are
+being misclassified at a relatively high rate.
 
 If two or more morphologically distinct RGC types are included in one
 genetic type, an algorithm that looks for spatial clustering in
@@ -506,61 +540,51 @@ ealier suggestion that Hoxd10 line labels at least three distinct
 RGC types.
 
 
-### Confidence in classification
-
-The Naïve Bayes classifier calculates a confidence measure when
-classifying each RGC. If there is only a small overlap between
-clusters, we expect the classifier to be certain about most of its
-predictions. When the clusters are harder to separate, we expect the
-classifier's confidence in the predictions to be lower
-[@Khan2001-71f]. Figure 5C shows the confidence of the classification
-for different RGCs, with a higher score signifying a more confident
-classification. Triangles mark the cells that were incorrectly
-classified. There are some errors hovering around the 0.5 mark, but
-perhaps more concerning are the incorrectly RGCs that the classifier
-was quite certain about. Each class had one example of a RGC with high
-posterior probability for the wrong type, except for Hoxd10, which had
-three.  One reason for this could be that there is something abnormal
-about these cells, causing them to appear in the wrong place in
-feature space. However, these cells were visually inspected but
-nothing unusual was seen.
-
 ## Re-analysis of the Sümbül  et al (2014) data set
 
-A recent study by Sümbül et al (2014) achieved near perfect
-classification for RGC types based on dendritic arborisation depth in
-the inner plexiform layer. To verify the fidelity of our data we also
-applied our method to the Sümbül et al. dataset. This dataset has been
-pre-processed using the VAChT band information to flatten the
-dendritic trees, furthermore the soma size was missing from the data
-set. We have therefore repeated the feature selection process for this
-data. Table 8 shows the best feature sets found.  There are some
-notable differences with Table 6,that shows the same selection applied
-to our data. Bistratification distance and stratification depth were
-more often picked as classifiers of the Sümbül data, while dendritic
-area and density of branch points were less informative.  The former
-is understandable, as the pre-processing was done to enhance these
-two, the latter two could perhaps be a consequence of the warping of
-the dendritic tree. The classification performance (column 2 of Table
-9) is comparable with what we saw for our data, confirming that the
-data in this study, VAChT bands aside, is of a similar value to RGC
+A recent study by Sümbül et al (2014) achieved **near-perfect**
+classification for RGC types labelled by seven distinct genetic
+markers.  One reason for their high performance was that their
+classifier received a high-dimensional representation of the density
+of the entire arbor, with a fine resolution in the depth dimension.
+Accurate generation of dendritic depth information required reliable
+information about the extent of the inner plexiform layer, gained
+through reliable reconstruction of the two two VAChT bands.  This is
+turn relied on complex image-warping of the image stacks to flatten
+the dendritic trees.  Their dataset was made freely available and
+therefore served as a useful control for our feature vector generation
+and classification method.
+
+We took the Sumbul et al. dataset (post image warping) and processed
+it in the same manner as for our data, using exactly the same methods
+to generate feature vectors and then to classify these feature
+vectors.  The only difference in feature vectors was that soma area
+(SA) was absent as no soma information was recorded in their data.
+Table 8 shows the best feature sets found.  There are some notable
+differences with Table 6 which shows the results from our current
+data. Bistratification distance and stratification depth were more
+often picked as classifiers of the Sümbül data, while dendritic area
+and density of branch points were less informative.  The former is
+understandable, as the pre-processing was done to enhance these two,
+the latter two could perhaps be a consequence of the warping of the
+dendritic tree. The classification performance (column 2 of Table 9)
+is comparable with what we saw for our data, confirming that the data
+in our current study, VAChT bands aside, is of a similar value to RGC
 classification as the Sümbül approach, and that errors in classifier
 are similar in both datasets. It is important to note though that the
 Sümbül dataset contains seven RGC types, and ours has five RGC
-types. Two RGC subtypes are in both datasets. The difference in the
-quality of the VAChT band data is probably due to differences in
-experimental protocol, as the Sümbül experiments have been optimized
-to retain the VAChT band information, as well as the non-linear
-pre-processing that un-warps the arbors based on the VAChT-band.
+types, although reducing their data to five types only mildy improved
+performance (from 82 to 84%).
 
-## Summary
 
-The dendritic stratification relative to the VAChT-bands was shown
-previously to be a good predictor of RGC type. We used machine
-learning techniques to see how well we could predict RGC type without
-the VAChT-band information. We found that it was possible to get about
-84% correct classification using five morphological features derived
-from the dendritic tree and soma.
+<!--- ## Summary --->
+
+<!--- The dendritic stratification relative to the VAChT-bands was shown --->
+<!--- previously to be a good predictor of RGC type. We used machine --->
+<!--- learning techniques to see how well we could predict RGC type without --->
+<!--- the VAChT-band information. We found that it was possible to get about --->
+<!--- 84% correct classification using five morphological features derived --->
+<!--- from the dendritic tree and soma. --->
 
 # Discussion
 
@@ -675,6 +699,12 @@ the 94 cells sampled 29 were Hoxd10 while 9 were TRHR. Having more
 TRHR cells might have allowed the Naïve Bayes classifier to build a
 better internal representation of the RGC type.
 
+Two RGC types (XXX,YYY) are in both datasets. The difference in
+the quality of the VAChT band data is probably due to differences in
+experimental protocol, as the Sümbül experiments have been optimized
+to retain the VAChT band information, as well as the non-linear
+pre-processing that un-warps the arbors based on the VAChT-band.
+
 
 **Andy: I think we end on too much of a downer, “whats wrong with our
   data” tone. We should emphasize the value of a classifier that
@@ -715,11 +745,13 @@ superior colliculus [@Rivlin-Etzion2011-ji]. TRHR project to dorsal
 lateral geniculate nucleus, zona incerta, ventral lateral geniculate
 nucleus and the superior colliculus [@Rivlin-Etzion2011-ji].
 
-Given that our method does not rely on VAChT band information, which
-is specific to the retina, our technique should be applicable to use
-on neurons from other structures of the brain also. In a first
-instance **planear ?** cells, but easy to add volume based features
-also.
+
+**Highlight this as key aspect:** Given that our method does not rely
+on VAChT band information, which is specific to the retina, our
+technique should be applicable to use on other neurons; most of the
+measures are planar, but the framework allows us to extend to
+volumetric features of neuron.
+
 
 In summary, we have developed a classifier that can predict the type
 of a RGC using morphological features. Our method does not require
@@ -737,6 +769,7 @@ NIH (RNE-D and ADH). We thank  Ellese Cotterill for comments on the
 manuscript.
 
 \clearpage
+
 # Figure legends
 
 <!--ExampleMorphologies.eps   -->
@@ -864,6 +897,7 @@ For figure 6 the PCA variances are
 -->
 
 \clearpage
+
 # References
 \setlength{\parindent}{-0.2in}
 \setlength{\leftskip}{0.2in}
