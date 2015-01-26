@@ -727,6 +727,7 @@ supported by the Wellcome Trust (JJJH and SJE, grant number: 083205),
 NIH (RNE-D and ADH). We thank  Ellese Cotterill for comments on the
 manuscript.
 
+\clearpage
 # Figure legends
 
 <!--ExampleMorphologies.eps   -->
@@ -845,13 +846,15 @@ For figure 6 the PCA variances are
 -->
  <!--
 ![This is the caption](Figures/Figure2/Feature-Illustration.pdf)
--->
+
 \clearpage
 
 \includepdf[pages=-]{allfigs.pdf}
 \includepdf[pages=-]{allTables.pdf}
-\clearpage
 
+-->
+
+\clearpage
 # References
 \setlength{\parindent}{-0.2in}
 \setlength{\leftskip}{0.2in}
