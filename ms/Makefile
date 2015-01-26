@@ -51,7 +51,7 @@ tex:	clean $(TEX)
 
 
 %.pdf:	%.md
-	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+subscript -s -S --template=$(PREFIX)/templates/xelatex.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) --latex-engine=lualatex -o $@ $<
+	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+subscript -s -S --template=$(PREFIX)/templates/lualatex.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) --latex-engine=lualatex -o $@ $<
 
 clean:
 	rm -f *.html *.pdf
