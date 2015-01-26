@@ -1,6 +1,6 @@
 \documentclass[11pt,article,oneside]{memoir}
 %% SJE: uncomment.
-\usepackage{org-preamble-xelatex}
+\usepackage{org-preamble-lualatex}
 \usepackage{pdfpages}
 %% \input{vc}
 
