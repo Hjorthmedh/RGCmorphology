@@ -42,7 +42,7 @@ Neurol second choice.
 # Abstract
 
 There are estimated to be around 20 different types of retinal
-ganglion cells in the mouse retina. Recently developed genetic markers
+ganglion cells in the mouse retina. Recently-developed genetic markers
 allow for the identification and targeting of specific retinal
 ganglion cell (RGC) types, which have different functional and
 morphological features. The purpose of this study was to develop
@@ -60,7 +60,9 @@ dendritic area, density of branch points, fractal dimension, mean
 terminal segment length and soma area were enough to create a
 classifier that could correctly identify 83 % of the RGC types we
 examined.  We therefore believe that standard morphological features
-can serve as reliable classifiers of mouse RGCs.
+can serve as reliable classifiers of mouse RGCs.  As these features
+are not specific to retinal neurons, we believe our classifier can
+classify a wide range of neurononal morphologies.
 
 
 
@@ -341,13 +343,13 @@ patterning.
 ## Quantifying RGC morphology
 
 Our aim was to use machine learning tools to predict RGC type by
-morphology. To do this, we translate each RGC morphology into a set
+morphology. To do this, we translated each RGC morphology into a set
 of numbers quantifying that RGC. Fifteen morphological features were
 calculated (Table 2). Together they define a feature vector, which
 captured both large-scale characteristics of the neuron such as
 stratification depth, area of the dendritic arbor and number of
-branches, and also finer aspects such as the mean angle and the
-tortuosity of the branches (Figure\ 2).
+branches, and also finer aspects such as the mean angle and 
+tortuosity of branches (Figure\ 2).
 
 ## Single features do not uniquely predict RGC type
 
@@ -377,23 +379,30 @@ our individual features are not reliable classifiers of neuronal type.
 
 Rodrieck and Brening (1983) described the need to base neuronal
 classification on objectively measurable features, which if used to
-form axes, would define a feature space. If we look at the cartoon in
-Figure 3A, we can see that dendritic area on the y-axis can separate
-the red and green clusters quite well, but it is a poor predictor when
-separating the green and blue groups. By introducing soma area as an
-additional feature we can now see that the different types separate in
-feature space. What a classifier does is look at the position of an
-unknown RGC (black square in Figure 3C), and see where it is located
-relative to the previously identified RGCs in the abstract feature
-space. In this case the RGC is within the green region, so it is very
-likely that it is of that type. If points belonging to the same RGC
-type cluster together in space and each cluster is distinct (Figure
-3A), then it is possible to correctly predict all RGC types. If
-instead the classes completely overlap in feature space (Figure 3B)
-then classification is next to impossible. In the intermediate case
-there is some overlap between individual RGC types in feature space
-(Figure 3C), then classification is still possible but there will be
-some miss-classifications.
+form axes, would define a multidimensional feature space.  This is
+demonstrated with three sets of synthetic data in Figure 3.  In Figure
+3A, dendritic area on the y-axis can separate the red and green
+clusters quite well, but does not separate the green and blue
+groups. By introducing soma area as an additional feature, the
+different types separate in feature space. With poor signals
+(e.g. Figure 3B), the different types are intermingled; *a priori* we
+might expect real data to look closer to the synthetic case shown in
+Figure 3C, where there is both signal to separate the classes, but
+also noise which blurs the boundaries between classes.
+
+The task of a classification algorithm is to take this training data
+to learn the boundaries between the different types of cell.  After
+training, the classifier is asked to predict the type of a neuron not
+seen in training (e.g. black square in Figure 3C). In this
+case the RGC is within the green region, so it is very likely that it
+is of that type. If points belonging to the same RGC type cluster
+together in space and each cluster is distinct (Figure 3A), then it is
+possible to correctly predict all RGC types. If instead the classes
+completely overlap in feature space (Figure 3B) then classification is
+next to impossible. In the intermediate case there is some overlap
+between individual RGC types in feature space (Figure 3C), then
+classification is still possible but there will be some
+miss-classifications.
 
 Using the fifteen features listed, we can translate each neuron into a
 fifteen-dimensional feature vector (Figure 2F) which is then a point
