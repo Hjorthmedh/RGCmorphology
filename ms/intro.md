@@ -744,9 +744,10 @@ in red.
 *B*: Fractal dimension (FD) measures the
 number of grid squares filled at different grid magnification.
 *C*: Stratification depth (SD):  z-coordinate of the centre of
-dendritic mass (for our data this is relative to the  soma centre
-(**label**?); for the @Sumbul2014-vm data it is
-normalized relative to VAChT-bands). Bistratification distance (BD):
+dendritic mass (for our data this is relative to the  soma centre; for
+the @Sumbul2014-vm data it is 
+normalized to the VAChT-bands, shown as dotted red
+lines). Bistratification distance (BD): 
 (normalized) distance Δz between the centres of two Gaussians fitted
 to the dendritic histogram.
 *D*: Branch angle, Number of
@@ -842,7 +843,14 @@ For figure 6 the PCA variances are
 62.1% for first component, 22.2% for second component
 
 -->
+ <!--
+![This is the caption](Figures/Figure2/Feature-Illustration.pdf)
+-->
+\clearpage
 
+\includepdf[pages=-]{allfigs.pdf}
+\includepdf[pages=-]{allTables.pdf}
+\clearpage
 
 # References
 \setlength{\parindent}{-0.2in}
