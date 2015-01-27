@@ -1,4 +1,4 @@
-function drawNeuron(obj,draw3D,newFigFlag,offset)
+function drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon)
  
   if(~exist('draw3D'))
     draw3D = 1;
@@ -23,6 +23,10 @@ function drawNeuron(obj,draw3D,newFigFlag,offset)
     offset = offset - mean(xyz,1);    
   end
   
+  if(~exist('drawAxon'))
+    drawAxon = true;
+  end
+  
   % Draw soma contours
   for i = 1:numel(obj.somaContours)
     n = size(obj.somaContours{i},1);
@@ -42,8 +46,10 @@ function drawNeuron(obj,draw3D,newFigFlag,offset)
 
   % Draw axon and dendrites
   
-  for i = 1:numel(obj.axon)
-    drawTree(obj.axon(i),'-r',[]);
+  if(drawAxon)
+    for i = 1:numel(obj.axon)
+      drawTree(obj.axon(i),'-r',[]);
+    end
   end
   
   for i = 1:numel(obj.dendrite)
