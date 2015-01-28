@@ -6,8 +6,8 @@ r = RGCclass(0);
 r.lazyLoad();
 
 
-nColumns = 3;
-nRows = 5;   
+nColumns = 2;
+nRows = 4;   
 
 nameList = {};
 pHandles = [];
@@ -39,7 +39,17 @@ for i = 1:numel(r.RGCuniqueNames)
       r.RGC(subIdx).plotStratification();
       pHandles(end+1) = gca;
       % set(gca,'ydir','reverse')
-      title(num2str(ctr))
+      title([showType ' cell ', num2str(ctr)])
+      set(gca,'fontsize',12)
+      box off
+      
+      if(k == 1)
+        xlabel('Count','fontsize',12)
+        ylabel('Z-depth','fontsize',12)
+      else
+        xlabel([])
+        ylabel([])
+      end
       
       a = axis();
       minZ = min(a(3),minZ);
