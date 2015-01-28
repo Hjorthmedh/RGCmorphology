@@ -75,9 +75,9 @@ function plotFeatures(obj,featureList,interactiveFlag)
         col = unknownColour;
       end
       if(strcmpi(obj.RGC(j).xmlFile(end-2:end),'xml'))
-        plot(x,y,'.','color',col)
+        plot(x,y,'.','color',col,'markersize',18)
       else
-        plot(x,y,'x','color',col);
+        plot(x,y,'x','color',col,'markersize',18);
       end
       hold on
     end
@@ -85,8 +85,9 @@ function plotFeatures(obj,featureList,interactiveFlag)
     xSave{i} = xAll;
     ySave{i} = yAll;
     
-    xlabel(featureList{i});
-    ylabel('Class')
+    xlabel(obj.featureNameDisplay(featureList{i}),'fontsize',18);
+    ylabel('Class','fontsize',24)
+    set(gca,'fontsize',18)
     
     set(gca,'ytick',1:numel(className))
     set(gca,'yticklabel',className)
@@ -104,7 +105,10 @@ function plotFeatures(obj,featureList,interactiveFlag)
     fName = sprintf('FIGS/plotFeatures-%s.pdf',featureList{1});
   end
     
-  saveas(gcf,fName,'pdf')
+  % saveas(gcf,fName,'pdf')
+  fName = strrep(fName,'.pdf','.eps');
+  printA4(fName)
+  
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
