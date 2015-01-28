@@ -2,5 +2,8 @@
 *.tex
 intro.docx
 intro.pdf
+intro.out
+intro.bcf
+intro.run.xml
 auto
 auto/*.el

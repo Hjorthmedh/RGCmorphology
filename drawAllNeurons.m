@@ -6,18 +6,19 @@ r = RGCclass(0);
 r.lazyLoad();
 
 
-nColumns = 3;
-nRows = 5;   
-spacing = 500;
+nColumns = 5;
+nRows = 6;   
+xspacing = 600;
+yspacing = 500;
 
-axisRange = [-spacing/2, nColumns*spacing+spacing/2, -nRows*spacing+spacing/2, 0.7*spacing];
+axisRange = [-xspacing/2, nColumns*xspacing+xspacing/2, -nRows*yspacing+yspacing/2, 0.7*yspacing];
 
 nameList = {};
 
 for i = 1:numel(r.RGCuniqueNames)
   figure
   hold on
-  plot([0 100],-spacing/2*[1 1],'k-','linewidth',2)
+  plot([0 100],-yspacing/2*[1 1],'k-','linewidth',2)
   showType = r.RGCuniqueNames{i};
 
   pageCtr = 1;
@@ -28,12 +29,12 @@ for i = 1:numel(r.RGCuniqueNames)
   ctr = 1;
   
   while(ctr <= numel(idx))
-    if(x > spacing*nColumns)
+    if(x >= xspacing*nColumns)
       x = 0;
-      y = y - spacing;
+      y = y - yspacing;
     end
     
-    if(y < - spacing * nRows)
+    if(y <= - yspacing * nRows)
       % Save old figure
       axis(axisRange)
       axis off
@@ -46,7 +47,7 @@ for i = 1:numel(r.RGCuniqueNames)
       axis(axisRange)
       figure % New figure
       hold on
-      plot([0 100],-spacing/2*[1 1],'k-','linewidth',2)
+      plot([0 100],-yspacing/2*[1 1],'k-','linewidth',2)
 
       pageCtr = pageCtr + 1;
     end
@@ -54,12 +55,12 @@ for i = 1:numel(r.RGCuniqueNames)
     r.RGC(idx(ctr)).drawNeuron(1,0,[x y 0],0);
     nameList{i}{ctr} = r.RGC(idx(ctr)).xmlFile;
     
-    text(x-0.45*spacing,y+0.45*spacing,num2str(ctr))
+    text(x-0.45*xspacing,y+0.45*yspacing,num2str(ctr))
     %text(x,y+spacing/2,r.RGC(idx(ctr)).xmlFile, ...
     %     'horizontalalignment','center','fontsize',4)
     
     ctr = ctr + 1;
-    x = x + spacing;
+    x = x + xspacing;
     title(showType,'fontsize',18)
   end
 
