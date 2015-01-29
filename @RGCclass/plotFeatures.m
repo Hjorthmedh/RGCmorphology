@@ -55,7 +55,7 @@ function plotFeatures(obj,featureList,interactiveFlag)
     end
     
     try
-      xAll = obj.getVariable(featureList{i}); 
+      xAll = obj.getVariable(featureList{i})*obj.unitDisplayScaling(featureList{i}); 
       yAll = zeros(size(xAll));
     catch e
       getReport(e)
@@ -85,7 +85,13 @@ function plotFeatures(obj,featureList,interactiveFlag)
     xSave{i} = xAll;
     ySave{i} = yAll;
     
-    xlabel(obj.featureNameDisplay(featureList{i}),'fontsize',18);
+    unitDisp = obj.unitDisplay(featureList{i});
+    if(~isempty(unitDisp))
+      unitDisp = sprintf('(%s)',unitDisp);
+    end
+    
+    xLab = sprintf('%s %s', obj.featureNameDisplay(featureList{i}), unitDisp);
+    xlabel(xLab,'fontsize',18);
     ylabel('Class','fontsize',24)
     set(gca,'fontsize',18)
     

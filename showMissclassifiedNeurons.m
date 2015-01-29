@@ -50,7 +50,7 @@ fig = [];
 for i = 1:numel(mIdx)
   
   idx = mIdx(i);
-  r.RGC(idx).drawNeuron(1,1,[],0,0.1)
+  r.RGC(idx).drawNeuron(1,1,[],0,0.5)
   
   RGCused{end+1} = r.RGC(idx).xmlFile;
   
@@ -83,7 +83,7 @@ for i = 1:IDmax % Loop through id 1,2,3,4,5
   idx = sortIdx(find(r.RGCtypeID(sortIdx) == i & transpose(classID(sortIdx)) ~= i,1,'first'));
   badIdx(end+1) = idx;
   
-  r.RGC(idx).drawNeuron(1,1,[],0,0.1)
+  r.RGC(idx).drawNeuron(1,1,[],0,0.5)
   figWrong(i) = gcf;
 
   RGCused{end+1} = r.RGC(idx).xmlFile;

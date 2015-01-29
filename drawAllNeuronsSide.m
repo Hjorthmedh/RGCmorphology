@@ -5,9 +5,8 @@ close all, clear all
 r = RGCclass(0);
 r.lazyLoad();
 
-
-nColumns = 2;
-nRows = 4;   
+nColumns = 5;
+nRows = 3;   
 
 nameList = {};
 pHandles = [];
@@ -15,8 +14,8 @@ pHandles = [];
 figFile = {};
 figHandle = [];
 
-minZ = inf;
-maxZ = -inf;
+minZ = 0;
+maxZ = 0;
 
 for i = 1:numel(r.RGCuniqueNames)
 
@@ -36,30 +35,36 @@ for i = 1:numel(r.RGCuniqueNames)
       subplot(nRows,nColumns,k)
       subIdx = idx(k + pageOfs - 1);
       
-      r.RGC(subIdx).plotStratification();
+      [pHand,pMinZ,pMaxZ] = r.RGC(subIdx).plotStratification(true);
       pHandles(end+1) = gca;
       % set(gca,'ydir','reverse')
-      title([showType ' cell ', num2str(ctr)])
+      title(num2str(ctr))
       set(gca,'fontsize',12)
       box off
       
       if(k == 1)
-        xlabel('Count','fontsize',12)
+        xlabel([])
         ylabel('Z-depth','fontsize',12)
       else
         xlabel([])
         ylabel([])
+        set(gca,'ytick',[])
       end
+      set(gca,'xtick',[])
+      set(gca,'ydir','reverse')
       
-      a = axis();
-      minZ = min(a(3),minZ);
-      maxZ = max(a(4),maxZ);
+      %a = axis();
+      %minZ = min(a(3),minZ);
+      %maxZ = max(a(4),maxZ);
+      
+      minZ = min(minZ,pMinZ);
+      maxZ = max(maxZ,pMaxZ);
+      
       ctr = ctr + 1;
       
     end
     
   end
-  
   
 end
 

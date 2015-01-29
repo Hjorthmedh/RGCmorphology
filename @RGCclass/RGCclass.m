@@ -651,7 +651,7 @@ classdef RGCclass < handle
       obj.featureNameDisplay('fractalDimensionBoxCounting') = 'Fractal Dimension';      
       obj.featureNameDisplay('stratificationDepthScaled') = 'Stratification Depth Scaled';      
       obj.featureNameDisplay('dendriticVAChT') = 'Dendritic VAChT';      
-      obj.featureNameDisplay('branchAssymetry') = 'Branch Assymetry';      
+      obj.featureNameDisplay('branchAssymetry') = 'Branch Asymmetry';      
       obj.featureNameDisplay('numLeaves') = 'Number of Leaves';            
       obj.featureNameDisplay('dendriticDiameter') = 'Dendritic Diameter';            
 
