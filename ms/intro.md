@@ -596,6 +596,8 @@ reducing their data to five types only mildy improved performance
 <!--- 84% correct classification using five morphological features derived --->
 <!--- from the dendritic tree and soma. --->
 
+\clearpage
+
 # Discussion
 
 In this study we have used five transgenic mouse lines (CB2-GFP,
