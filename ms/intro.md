@@ -37,7 +37,6 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 J Neurophysiol special issue on cell types as initial target.  J Comp
 Neurol second choice.
 
-Check Sumbul for what exactly we mean by **near-perfect** classification?
 
 \clearpage
 
