@@ -7,16 +7,29 @@
 %% http://tex.stackexchange.com/questions/41597/remove-colon-in-the-caption-of-a-figure-without-using-caption-package
 
 \usepackage{url,booktabs}
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd{\@makecaption}{#1: #2}{\textbf{\Large #1}}{}{}
-\makeatother
+%%\usepackage{etoolbox}
+%% \makeatletter
+%% \patchcmd{\@makecaption}{#1: #2}{\textbf{#1} #2}{}{}
+%% \makeatother
+
+
 
 % !!! For some reason it complains about one of the captions, wants to
 % add a $ sign...??
 
 \begin{document}
 \pagestyle{empty}
+
+
+%% http://bytesizebio.net/2013/03/11/adding-supplementary-tables-and-figures-in-latex/
+\newcommand{\beginsupplement}{%
+  \setcounter{table}{0}
+  \renewcommand{\thetable}{S\arabic{table}}%
+  \setcounter{figure}{0}
+  \renewcommand{\thefigure}{S\arabic{figure}}%
+}
+
+\beginsupplement
 
 % !!!
 % Generated using drawAllNeurons.m
@@ -55,6 +68,7 @@
 19& \url{P61-CB2-06252012-r2-cell2-40x-b}  \\
 \bottomrule
   \end{tabular}
+  \caption{CB2 Filenames}
 \end{table}
 
 \clearpage
