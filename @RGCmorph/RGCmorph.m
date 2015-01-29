@@ -158,7 +158,7 @@ classdef RGCmorph < handle
     
     readXML(obj,filename,dataDir);
     readLSM(obj,filename,dataDir);
-    drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon); % default 3D
+    drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon,lineWidth); % default 3D
     drawNeuronOverlay(obj)
 
     % detectVAChTband(obj); % !!! Obsolete, remove

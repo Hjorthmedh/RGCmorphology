@@ -18,15 +18,22 @@ nameList = {};
 for i = 1:numel(r.RGCuniqueNames)
   figure
   hold on
-  plot([0 100],-yspacing/2*[1 1],'k-','linewidth',2)
+  plot([0 100],-yspacing/4*[1 1],'k-','linewidth',2)
+  text(50,-yspacing/4+20,'100 \mum','fontsize', 10, ...
+       'horizontalalignment','center','verticalalignment','bottom')
+  
   showType = r.RGCuniqueNames{i};
 
   pageCtr = 1;
   
   idx = find(ismember(r.RGCtypeName,{showType}));
 
-  x = 0; y = 0;
+  x = xspacing; y = 0;
   ctr = 1;
+  
+  text(0,0,showType,'fontsize',18, ...
+       'horizontalalignment','center', ...
+       'verticalalignment','bottom')
   
   while(ctr <= numel(idx))
     if(x >= xspacing*nColumns)
@@ -47,12 +54,13 @@ for i = 1:numel(r.RGCuniqueNames)
       axis(axisRange)
       figure % New figure
       hold on
-      plot([0 100],-yspacing/2*[1 1],'k-','linewidth',2)
-
+      plot([0 100],-yspacing/3*[1 1],'k-','linewidth',2)
+      text(50,-yspacing/3,'100 \mum','fontsize', 10,'horizontalalignment','center')
+      
       pageCtr = pageCtr + 1;
     end
     
-    r.RGC(idx(ctr)).drawNeuron(1,0,[x y 0],0);
+    r.RGC(idx(ctr)).drawNeuron(1,0,[x y 0],0,0.1);
     nameList{i}{ctr} = r.RGC(idx(ctr)).xmlFile;
     
     text(x-0.45*xspacing,y+0.45*yspacing,num2str(ctr))
@@ -61,7 +69,8 @@ for i = 1:numel(r.RGCuniqueNames)
     
     ctr = ctr + 1;
     x = x + xspacing;
-    title(showType,'fontsize',18)
+    % title(showType,'fontsize',18)
+    title([])
   end
 
   

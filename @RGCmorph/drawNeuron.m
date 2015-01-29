@@ -1,4 +1,4 @@
-function drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon)
+function drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon,lineWidth)
  
   if(~exist('draw3D'))
     draw3D = 1;
@@ -27,6 +27,10 @@ function drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon)
     drawAxon = true;
   end
   
+  if(~exist('lineWidth'))
+    lineWidth = 1;
+  end
+  
   % Draw soma contours
   for i = 1:numel(obj.somaContours)
     n = size(obj.somaContours{i},1);
@@ -35,11 +39,11 @@ function drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon)
       plot3(offset(1) + obj.somaContours{i}([1:n,1],1), ...
             offset(2) + obj.somaContours{i}([1:n,1],2), ...
             offset(3) + obj.somaContours{i}([1:n,1],3), ...
-            'k-');
+            'k-','linewidth',lineWidth);
     else
       plot(offset(1) + obj.somaContours{i}([1:n,1],1), ...
            offset(2) + obj.somaContours{i}([1:n,1],2), ...
-           'r-');
+           'r-','linewidth',lineWidth);
       
     end
   end
@@ -75,10 +79,10 @@ function drawNeuron(obj,draw3D,newFigFlag,offset,drawAxon)
     if(draw3D)
       plot3(offset(1) + coords(:,1), ...
             offset(2) + coords(:,2), ...
-            offset(3) + coords(:,3), lineType);
+            offset(3) + coords(:,3), lineType,'linewidth',lineWidth);
     else
       plot(offset(1) + coords(:,1), ...
-           offset(2) + coords(:,2), '-r');
+           offset(2) + coords(:,2), '-r','linewidth',lineWidth);
     end
       
     
