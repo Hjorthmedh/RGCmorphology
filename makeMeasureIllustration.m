@@ -16,7 +16,7 @@ coords = r.parseDendrites(@r.allCoords);
 flattenedCoords = coords;
 flattenedCoords(:,3) = 100;
 
-r.drawNeuron();
+r.drawNeuron(1,1,[],0,0.5);
 
 maxC = max(coords,[],1);
 minC = min(coords,[],1);
@@ -135,7 +135,7 @@ printA4('FIGS/Illustration-Bistratification.eps');
 
 % Show the convex hull
 
-r.drawNeuron();
+r.drawNeuron(1,1,[],0,0.5);
 
 cIdx = convhull(coords(:,1),coords(:,2));
 a = axis();

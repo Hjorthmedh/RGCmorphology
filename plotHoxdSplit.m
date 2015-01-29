@@ -33,7 +33,7 @@ for i = 1:numel(RGCtoPlot)
     y = pos(i,2);
     
     r = RGCmorph(RGCtoPlot{i}{j},RGCpath);
-    r.drawNeuron(1,0,[x y 0]);
+    r.drawNeuron(1,0,[x y 0],0,0.1);
 
   end
 end

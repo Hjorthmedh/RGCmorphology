@@ -128,7 +128,7 @@ for i = 1:numel(classDir)
     r = RGCmorph(filesUsed{i,j});
     xCenter = i*xSpacing;
     yCenter = j*ySpacing;
-    r.drawNeuron(1,0,[xCenter yCenter 0]);
+    r.drawNeuron(1,0,[xCenter yCenter 0],0,0.1);
   end
 end
    
