@@ -704,9 +704,9 @@ RGCs, a peripheral beta RGC might be confused for an alpha RGC from
 central retina when viewed in isolation [@Boycott1974-aa].  Mouse has
 a shallower density gradient than cat [@Jeon1998-df], although
 dendritic diameter of an alpha-like mouse RGC increases
-strikingly from nasal to temporal retina [@Bleckert2014-hg].  **CHECK! In our study,
-most RGCs were taken from the same quadrant of retina, which should
-have minimized any eccentricity-variations.**  However, for future work,
+strikingly from nasal to temporal retina [@Bleckert2014-hg].  In our study,
+most RGCs were taken from the middle third of the retina, which should
+have minimized any eccentricity-variations.  However, for future work,
 another feature to include (or control for) would be retinal
 location.
 
