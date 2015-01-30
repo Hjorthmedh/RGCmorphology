@@ -44,7 +44,7 @@ for i = 1:numel(r.RGCuniqueNames)
       
       if(k == 1)
         xlabel([])
-        ylabel('Z-depth','fontsize',12)
+        ylabel('Z-depth (\mum)','fontsize',12)
       else
         xlabel([])
         ylabel([])
@@ -52,6 +52,8 @@ for i = 1:numel(r.RGCuniqueNames)
       end
       set(gca,'xtick',[])
       set(gca,'ydir','reverse')
+      
+      set(gca,'xcolor',get(gcf,'color'))
       
       %a = axis();
       %minZ = min(a(3),minZ);
