@@ -18,9 +18,9 @@ nameList = {};
 for i = 1:numel(r.RGCuniqueNames)
   figure
   hold on
-  plot([0 100],-yspacing/4*[1 1],'k-','linewidth',2)
-  text(50,-yspacing/4+20,'100 \mum','fontsize', 10, ...
-       'horizontalalignment','center','verticalalignment','bottom')
+  plot([0 100]+xspacing,-yspacing/4*[1 1]-50,'k-','linewidth',2)
+  text(50+xspacing,-yspacing/4-50-15,'100 \mum','fontsize', 8, ...
+       'horizontalalignment','center','verticalalignment','top')
   
   showType = r.RGCuniqueNames{i};
 
@@ -54,7 +54,7 @@ for i = 1:numel(r.RGCuniqueNames)
       axis(axisRange)
       figure % New figure
       hold on
-      plot([0 100],-yspacing/3*[1 1],'k-','linewidth',2)
+      plot([0 100]+xspacing,-yspacing/3*[1 1],'k-','linewidth',2)
       text(50,-yspacing/3,'100 \mum','fontsize', 10,'horizontalalignment','center')
       
       pageCtr = pageCtr + 1;
