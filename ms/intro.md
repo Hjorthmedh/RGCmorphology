@@ -623,13 +623,13 @@ investigate morphological classification of RGC types in a variety of
 species [@Costa1999-fh; @Coombs2006-pb; @Pushchin2009-ef5].  These
 methods all relied on unsupervised techniques, as there was no "ground
 truth" against which to compare the results.  Such unsupervised
-methods are more rigorous than what can typically be achieved by human
-observers.  However, the results from unsupervised clustering can
-sometimes be in conflict with independent measures of cell type.  For
-example, @Coombs2006-pb used unsupervised clustering to identify ten
-clusters of RGCs. They found that melanopsin positive cells clustered
-together in one group, while SMI-32 positive cells spanned four
-different clusters. This is in line with our findings (Table 7) that
+methods are more objective and consistent than human observers.
+However, the results from unsupervised clustering can sometimes be in
+conflict with independent measures of cell type.  For example,
+@Coombs2006-pb used unsupervised clustering to identify ten clusters
+of RGCs. They found that melanopsin positive cells clustered together
+in one group, while SMI-32 positive cells spanned four different
+clusters. This is in line with our findings (Table 7) that
 unsupervised methods predict some cell types span multiple clusters.
 Another limitation of unsupervised methods is that often the ideal
 number of clusters (or cell types) must be determined by trial and
@@ -704,9 +704,9 @@ RGCs, a peripheral beta RGC might be confused for an alpha RGC from
 central retina when viewed in isolation [@Boycott1974-aa].  Mouse has
 a shallower density gradient than cat [@Jeon1998-df], although
 dendritic diameter of an alpha-like mouse RGC increases
-strikingly from nasal to temporal retina [@Bleckert2014-hg].  **CHECK! In our study,
-most RGCs were taken from the same quadrant of retina, which should
-have minimized any eccentricity-variations.**  However, for future work,
+strikingly from nasal to temporal retina [@Bleckert2014-hg].  In our study,
+most RGCs were taken from the middle third of the retina, which should
+have minimized any eccentricity-variations.  However, for future work,
 another feature to include (or control for) would be retinal
 location.
 
@@ -719,25 +719,20 @@ symmetric arbor compared to DRD4 RGCs.  It is possible that adding
 features that characterize arbor symmetry could distinguish between
 these two types.
 
-Given that many laboratories are now generating morphological data of mice
-in RGCs, it would be interesting to analyse these collections together
-to conduct meta-analyses.  We actually attempted this as the data from
+Given that many laboratories are now generating morphological data of
+mice in RGCs, it would be interesting to analyse these collections
+together to conduct meta-analyses.  We attempted this as the data from
 @Sumbul2014-vm is freely available.  @Sumbul2014-vm combined
 genetically identified RGCs with RGCs from three heterogeneous lines
 where a broad range of RGCs were labelled.  Using these heterogeneous
 lines, they predicted the existence of six new types of RGCs. One of
 our goals was to combine our data set with their data set to see if we
-could identify one of their unknown six types. Before combining the
-two sets we wanted to verify that they were comparable. Samples of CB2
-and Cdh3 RGCs were present in both datasets, but when we plotted the
-merged data set their features did not overlap. This discrepancy is
-probably due to different acquisition methods, and might have been
-alleviated to some extent if the raw data was available. As it stands
-this meant we were unable to combine the two data sets and instead
-investigated them separately. (We also did not have the VAChT band
-information to directly incorporate our cells into their analysis
-pipeline.)
-
+could identify one of their unknown six types. As a control, as both
+datasets included samples of CB2 and Cdh3 RGCs we first checked
+whether features were consistent between the two laboratories.
+However, we found significant between-laboratory differences in
+these two types of neuron.  This discrepancy prevented us from further
+comparing the two datasets together.
 
 Finally, in this work we have predicted RGC identify based solely upon
 the morphological features of the soma and dendrites; further
