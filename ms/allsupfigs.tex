@@ -22,6 +22,7 @@
 
 
 %% http://bytesizebio.net/2013/03/11/adding-supplementary-tables-and-figures-in-latex/
+
 \newcommand{\beginsupplement}{%
   \setcounter{table}{0}
   \renewcommand{\thetable}{S\arabic{table}}%
@@ -44,9 +45,9 @@
 \begin{figure}
   \centering
   \fbox{\includegraphics[scale=1]{Figures/SupFig1/CB2-all-cells-1.eps}}
-  \label{CB2planar}
   \caption{Planar view of CB2 RGCs. Dendrites and outline of soma are
-    drawn to scale. See Table \ref{CB2filenames} for file names.}
+    drawn to scale. See Table \protect{\ref{CB2filenames}} for file
+    names. \label{CB2planar}}
 \end{figure}
 
 \begin{table}
@@ -76,9 +77,7 @@
 19& \url{P61-CB2-06252012-r2-cell2-40x-b}  \\
 \bottomrule
   \end{tabular}
-\label{CB2filenames}
-  \caption{List of CB2 file names in data set.}
-
+  \caption{List of CB2 file names in data set. \label{CB2filenames}}
 \end{table}
 
 \clearpage
@@ -87,9 +86,8 @@
 \begin{figure}
   \centering
   \fbox{\includegraphics[scale=1]{Figures/SupFig2/CB2-stratification-depth-1}}
-  \label{CB2depth}
   \caption{Stratification profile for CB2 RGCs. Histograms are
-    normalised, and location of soma is marked with a red disk.}
+    normalised, and location of soma is marked with a red disk. \label{CB2depth}}
 \end{figure}
 
 \clearpage
