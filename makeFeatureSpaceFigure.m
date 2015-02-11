@@ -76,8 +76,9 @@ end
 % Hard coding the ticks
 set(gca,'ytick',[0:100:600])
 set(gca,'yticklabel',{'0','','','','','','600'})
-set(gca,'xtick',[0:5000:15000])
-set(gca,'xticklabel',{'0','','','15,000'})
+set(gca,'xtick',[0 5000 10000 14000])
+set(gca,'xticklabel',{'0','','','14,000'})
+axis([0 14000 0 600])
 
 sp(2) = subplot(2,1,2);
 r.plotSpace('pca',predictedID,false, true);
