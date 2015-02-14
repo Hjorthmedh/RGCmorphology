@@ -1,20 +1,19 @@
 ---
-title: Classification of retinal ganglion cell types according to
- dendritic branching and somal characteristics.
+title: Dendritic branching and somal characteristics reliably classify mouse retinal ganglion cell types
 author:
 - name: J J Johannes Hjorth
   affiliation: University of Cambridge
 - name: Rana N El-Danaf
-  affiliation: UCSD
+  affiliation: University California, San Diego
 - name: Andrew D Huberman
-  affiliation: UCSD
+  affiliation: University California, San Diego
 - name: Stephen J Eglen
   affiliation: University of Cambridge
   email: S.J.Eglen@damtp.cam.ac.uk
 nocite: |
   @Huberman2009-xf, @Osterhout2011-9b9, @Huberman2008-5a6,
   @Dhande2013-vp, @Rivlin-Etzion2011-ji
-date: 2015-01-29 <!-- TODO update by hand. -->
+date: 2015-02-14 <!-- TODO update by hand. -->
 ...
 
 <!-- nocite above to ensure we cite all the refs from Table 1. -->
@@ -54,18 +53,17 @@ available sources of information about their morphology: soma size and
 dendritic branching pattern. We used five different transgenic mouse
 lines, in each of which 1--3 RGCs types selectively express green
 fluorescent protein (GFP). Cell tracings of 94 RGCs were acquired from
-retinas of CB2-GFP (transient Off alpha RGCs), Cdh3-GFP (M2 ipRGCs;
-“diving” RGCs, DRD4-GFP (pOn-Off DSGCs), Hoxd10-GFP (On-DSGCs and an
-On-Off DSGCs) and TRHR-GFP (pOn-Off DSGCs) transgenic mice. Fifteen
-morphological features of GFP expressing RGCs were calculated, and we
-used supervised learning techniques to classify the cells. We found
-that just five features (dendritic area, density of branch points,
-fractal dimension, mean terminal segment length and soma area) were
-enough to correctly classify 83 % of the RGCs into the five types that we
-examined.  We therefore believe that standard morphological features
-can serve as reliable classifiers of mouse RGCs.  As these features
-are not specific to retinal neurons, we believe our classifier can
-classify a wide range of neuronal morphologies.
+retinas of CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and TRHR-GFP
+transgenic mice. Fifteen morphological features of GFP expressing RGCs
+were calculated, and we used supervised learning techniques to
+classify the cells. We found that just five features (dendritic area,
+density of branch points, fractal dimension, mean terminal segment
+length and soma area) were enough to correctly classify 83 % of the
+RGCs into the five types that we examined.  We therefore believe that
+standard morphological features can serve as reliable classifiers of
+mouse RGCs.  As these features are not specific to retinal neurons, we
+believe our classifier can classify a wide range of neuronal
+morphologies.
 
 
 
@@ -111,24 +109,24 @@ in other species, including cat [@Jelinek2004-gp], newt
 unsupervised approaches use statistical methods to determine the
 optimal number of clusters in the data
 [e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
-However, these approaches have no ground-truth data to compare with
-the predicted number of cell types.
+However, these previous studies had no independent indicator of cell
+type to compare with the predicted cell types.
 
-In this study, we analyse the morphology of RGCs from several mutant
-mice lines where typically one or a few types of RGC is labelled with
-GFP.  We use supervised machine learning techniques to predict whether
-the anatomical features can predict the "genetic type" of the mouse,
+In this study, we analyse the morphology of RGCs from five mutant mice
+lines where typically one or a few types of RGC is labelled with GFP.
+We use supervised machine learning techniques to predict whether the
+anatomical features can predict the "genetic type" of the mouse,
 i.e. the mouse line from where the cell was labelled.  This provides
 us with ground-truth data which we can use to evaluate our methods
 against.  From each RGC we measured fifteen features, from which we
 found five that were highly predictive of cell type.  We compare our
 findings with a recent study [@Sumbul2014-vm] where perfect
 classification was achieved when detailed information about the entire
-dendritic stratification relative to VAChT bands is included.  We
-suggest that our simple anatomical measures can provide a reliable
-basis for classification in the absence of stratification depth
-information, and thus that the @Rodieck1983-nb method of
-classification is robust when applied to mouse RGCs.
+dendritic stratification relative to reliable retinal landmarks (VAChT
+bands) is included.  We suggest that our simple anatomical measures
+can provide a reliable basis for classification in the absence of
+stratification depth information, and thus that the @Rodieck1983-nb
+method of classification is robust when applied to mouse RGCs.
 
 \clearpage
 
@@ -170,7 +168,7 @@ Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then washed wit
 RGCs were imaged with a laser scanning confocal microscope (Zeiss LSM
 710 or 780), using a LD C-Apochromat 40X/1.1 water immersion objective
 lens (Z-step = 0.48-0.5 Z-step µm; scanning resolution = 1024x1024
-pixels, Kalman averaging = 2-4). Complete morphological
+pixels, Kalman averaging = 2-4). Complete 3D morphological
 reconstructions were obtained manually using Neurolucida software
 (10.42.1, MBF Bioscience) and exported to our custom-written Matlab
 scripts for analysis.  All relevant data and code relating to this
@@ -189,7 +187,7 @@ features, we defined a feature vector, which specified a point in the
 ### Dendritic Area and Soma Area
 
 The dendritic area is the convex hull enclosing all of the dendrites
-(Figure 3A), and the soma area is calculated in a similar way. All
+(Figure 2A), and the soma area is calculated in a similar way. All
 areas are measured in the XY-plane.
 
 ### Fractal Dimension
@@ -197,7 +195,7 @@ areas are measured in the XY-plane.
 Fractal dimension measures the neuron’s coverage of the retina at
 different length scales. Here we used the box counting method
 [@Fernandez2001-ef]. The neuron was projected onto the XY plane and a
-grid was placed over it (Figure 3B). This grid was then successively
+grid was placed over it (Figure 2B). This grid was then successively
 refined. The magnification is defined as the maximal distance between
 grid lines / current distance between grid lines. At each step, the
 number of grid boxes that contains a piece of dendrite was
@@ -215,7 +213,7 @@ unreliable labelling the locations of the two VAChT bands are unknown;
 instead the depth is measured relative to the soma.
 
 Bistratification distance is the distance between the upper and lower
-parts of the dendritic tree (Figure 3C). Two Gaussians are fitted to a
+parts of the dendritic tree (Figure 2C). Two Gaussians are fitted to a
 histogram (along the z-axis) of the dendritic tree, and the (scaled)
 bistratification distance is calculated by
 
@@ -227,7 +225,7 @@ monostratified cells, but for bistratified neurons this distance will
 be larger.
 
 ### Branch Asymmetry and Angle
-For each branch point (Figure 3D), the branch asymmetry compares the
+For each branch point (Figure 2D), the branch asymmetry compares the
 number of leaves n~L~ that each branch has. It is defined as
 the ratio $$ \max(n_L^i) / \sum_i n_L^i $$
 The branch angle is calculated as the angle between the two branches
@@ -238,11 +236,12 @@ in 3D space.
 The dendritic tree is divided into segments, split by the branch
 points. From these segments, measures such as mean segment length,
 mean terminal segment length, number of branch points, total dendritic
-length and dendritic diameter are derived.  Mean segment tortuosity is
-the ratio of the path length from the soma to the dendritic end point
-divided by the Euclidean distance between them. The dendritic density
-is the total dendritic length divided by the total dendritic area, the
-density of branch points is defined analogously.
+length and dendritic diameter are derived.  Mean segment tortuosity
+(Figure 2E) is the ratio of the path length from the soma to the
+dendritic end point divided by the Euclidean distance between
+them. The dendritic density is the total dendritic length divided by
+the total dendritic area, the density of branch points is defined
+analogously.
 
 ### Correlation Matrix
 
@@ -276,7 +275,7 @@ We used the results from Matlab’s built in sequential feature
 selection function to decide which classifier to use.  We also
 confirmed the results by repeating the comparison using the features
 picked by the exhaustive search (see below) for three of the methods:
-Naïve Bayes, SVMs and Bagging.
+Naïve Bayes, SVMs and Bagging (TODO: ref for bagging?).
 
 ### Classification features
 
@@ -297,8 +296,8 @@ We created two different feature space plots, the first only plotted
 the RGCs on two of the features. The second used principal component
 analysis (computed in Matlab, with variance normalization) to
 visualize the feature space, and plotted the RGCs on the two first
-principal components. These correspond to the two directions with the
-largest variation of the data set. 
+principal components.  These correspond to the two orthogonal
+directions that account for the largest variation of the data set. 
 
 ### Classification and the confusion matrix
 
@@ -316,15 +315,15 @@ cross-validation.
 
 ### Determining typical and atypical cells
 
-To assess the confidence in the classification, we used the posterior
-probability from the Naïve Bayes classifier.  To classify each neuron,
-we withheld it from the training set, using the leave-one-out
-technique. Following the methodology established by @Khan2001-71f we
-plotted the most typical RGC of each type, which was defined as the
-one with the highest posterior probability. We also plotted the most
-atypical RGC of each type, which was defined as the RGC with the
-highest posterior probability for another type other than its genetic
-type.
+We used the maximal posterior probability from the Naïve Bayes
+classifier as a measure of "confidence" in classifications.  To
+classify each neuron, we withheld it from the training set, using the
+leave-one-out technique. Following the methodology established by
+@Khan2001-71f we plotted the most typical RGC of each type, which was
+defined as the one with the highest posterior probability. We also
+plotted the most atypical RGC of each type, which was defined as the
+RGC with the highest posterior probability for another type other than
+its genetic type.
 
 # Results
 
@@ -367,22 +366,21 @@ type. Previous studies
 [@Kong2005; @Pushchin2009-ef5; @Volgyi2009; @Sumbul2014-vm]
 highlighted that stratification depth, relative to the two VAChT bands
 surrounding the inner plexiform layer, is a good predictor of RGC
-type, but it could not uniquely determine RGC type. Most, but not of
-all, of our RGC z-stacks included VAChT staining.  However as we were
-unable to reliably observe two separate VAChT bands, we could not use
-the bands to determine stratification depth. Instead we calculated the
-stratification depth relative to the soma centre.  However, we found
-that there was considerable overlap between the different RGC types
-according to stratification depth (Table 3).  There were also
-significant overlaps between the RGC types based on other
-features. For example, Table 3 shows that Hoxd10 generally had a
-larger dendritic area than other RGC types but that the standard
-deviation is so large that the range spans the whole spectrum of
-values of other RGC types. To assess the predictive powers of the
-individual features, we trained a Naïve Bayes classifier for each
-individual feature.  The single-most discriminative feature for our
-data was mean terminal segment length, which correctly predicted 64.7
-± 1.7\ % of the cases.  We therefore confirm that our individual
+type. Most, but not of all, of our RGC z-stacks included VAChT
+staining.  However as we were unable to reliably observe two separate
+VAChT bands, we could not use the bands to determine stratification
+depth. Instead we calculated the stratification depth relative to the
+soma centre.  However, we found that there was considerable overlap
+between the different RGC types according to stratification depth
+(Table 3).  There were also significant overlaps between the RGC types
+based on other features. For example, Table 3 shows that Hoxd10
+generally had a larger dendritic area than other RGC types but that
+the standard deviation is so large that the range spans the whole
+spectrum of values of other RGC types. To assess the predictive powers
+of the individual features, we trained a Naïve Bayes classifier for
+each individual feature.  The single-most discriminative feature for
+our data was mean terminal segment length, which correctly predicted
+64.7 ± 1.7\ % of the cases.  We therefore confirm that our individual
 features are not reliable classifiers of neuronal type.
 
 ## Selection of multiple feature vectors
@@ -422,13 +420,13 @@ increases, causing the data points to be more spread out. Adding
 features with little or no useful information increases the distance
 between all cells in feature space. As more irrelevant features are
 added, the difference between within-class distance and between-class
-distance decreases, making the cells harder to classify. A
-potential complication is that some features capture similar
-properties, leading to correlations between the features. The pairwise
-correlations between all features are reported in Table 4.  For
-example, mean segment length and mean terminal segment length are
-highly correlated with each other, but strongly anti-correlated with
-density of branch points
+distance decreases, making the cells harder to classify. A potential
+complication is that some features capture similar properties, leading
+to correlations between the features. The pairwise correlations
+between all features are reported in Table 4.  For example, mean
+segment length and mean terminal segment length are highly correlated
+with each other (r=0.97), but strongly anti-correlated with density of
+branch points (r=-0.78 and r=-0.85).
 
 
 To assess which subset of features would give the best classification,
@@ -505,23 +503,22 @@ as outlined for synthetic data in Figure 3C.
 ### Confidence in classification
 
 To assess the nature of the boundaries in feature space between cell
-types, we returned to the classifer to assess its performance.  The
-Naïve Bayes classifier calculates a confidence measure when
-classifying each RGC. If there is only a small overlap between
-clusters, we expect the classifier to be certain about most of its
-predictions. When the clusters are harder to separate, we expect the
-classifier's confidence in the predictions to be lower
-[@Khan2001-71f]. Figure 5C shows the confidence of the classification
-for different RGCs, with a higher score signifying a more confident
-classification. Triangles mark the cells that were incorrectly
-classified. There are some misclassified cells with confidences around
-0.5, but perhaps more concerning are misclassified RGCs with higher (>
-0.8) confidence.  Each type had one example of a RGC with high
-posterior probability for the wrong type, except for Hoxd10, which had
-three.  One reason for this could be that there is something abnormal
-about these cells, causing them to appear in the wrong place in
-feature space. However, these cells were visually inspected but
-nothing unusual was seen.
+types, we returned to the classifer to assess its performance. If
+there is only a small overlap between clusters, we expect the
+classifier to be confident (i.e. high maximal posterior probability)
+about most of its predictions. When the clusters are harder to
+separate, we expect the classifier's confidence in the predictions to
+be lower [@Khan2001-71f]. Figure 5C shows the confidence of the
+classification for different RGCs, with a higher score signifying a
+more confident classification. Triangles mark the cells that were
+incorrectly classified. There are some misclassified cells with
+confidences around 0.5, but perhaps more concerning are misclassified
+RGCs with higher (> 0.8) confidence.  Each type had one example of a
+RGC with high posterior probability for the wrong type, except for
+Hoxd10, which had three.  One reason for this could be that there is
+something abnormal about these cells, causing them to appear in the
+wrong place in feature space. However, these cells were visually
+inspected but nothing unusual was seen.
 
 
 ## Hoxd10 contain multiple subtypes
@@ -541,13 +538,13 @@ relative location in feature space. A popular method for unsupervised
 clustering is k-means, which is an iterative method to find k clusters
 in a data set. To find out how many clusters to split the Hoxd10 cells
 into we tried a range from k=2 to 6. When only clustering the Hoxd10
-data, we found that the silhouette value (0.62) was maximal for
-k=3. This corresponds to two major clusters, and the third cluster
-containing one outlier (Figure 6). Example RGCs in the three 
-Hoxd10 clusters are shown in Figure 6 and reflect the variability in
-different types.  These statistical results therefore confirm our
-earlier suggestion that Hoxd10 line labels at least three distinct
-RGC types.
+data, we found that the mean silhouette width [@Rousseeuw1987-xe] was
+maximal (0.62) when k=3. This corresponds to two major clusters, and
+the third cluster containing one outlier (Figure 6). Example RGCs in
+the three Hoxd10 clusters are shown in Figure 6 and reflect the
+variability in different types.  These statistical results therefore
+confirm our earlier suggestion that Hoxd10 line labels at least three
+distinct RGC types.
 
 
 ## Re-analysis of the Sümbül  et al (2014) data set
@@ -575,17 +572,14 @@ feature search.  There are some notable differences with Table 6 which
 shows the results from our current data. Bistratification distance and
 stratification depth were more often picked as classifiers of the
 Sümbül data, while dendritic area and density of branch points were
-less informative.  The former is understandable, as the pre-processing
-was done to enhance these two, the latter two could perhaps be a
-consequence of the warping of the dendritic tree. The classification
-performance (column 2 of Table 9) is comparable with what we saw for
-our data, confirming that the data in our current study, VAChT bands
-aside, is of a similar value to RGC classification as the Sümbül
-approach, and that errors in classifier are similar in both
-datasets. It is important to note though that the Sümbül dataset
-contains seven RGC types, and ours has five RGC types, although
-reducing their data to five types only mildly improved performance
-(from 82 to 84%).
+less informative.  Classification performance (column 2 of Table
+8) is comparable with what we saw for our data, confirming that the
+data in our current study, VAChT bands aside, is of a similar value to
+RGC classification as the Sümbül approach, and that errors in
+classifier are similar in both datasets. It is important to note
+though that the Sümbül dataset contains seven RGC types, and ours has
+five RGC types, although reducing their data to five types only mildly
+improved performance (from 82 to 84%).
 
 
 <!--- ## Summary --->
@@ -730,9 +724,9 @@ our goals was to combine our data set with their data set to see if we
 could identify one of their unknown six types. As a control, as both
 datasets included samples of CB2 and Cdh3 RGCs we first checked
 whether features were consistent between the two laboratories.
-However, we found significant between-laboratory differences in
-these two types of neuron.  This discrepancy prevented us from further
-comparing the two datasets together.
+However, we found significant between-laboratory differences in the
+magnitudes and distributions of key features.  This discrepancy
+prevented us from further comparing the two datasets together.
 
 Finally, in this work we have predicted RGC identify based solely upon
 the morphological features of the soma and dendrites; further
@@ -759,8 +753,8 @@ computer code and data relating to this project are freely available online.
 We thank Uygar Sümbül for sharing tracings of retinal ganglion cells,
 and his code for classification of cell types. The authors were
 supported by the Wellcome Trust (JJJH and SJE, grant number: 083205),
-NIH (RNE-D and ADH). We thank  Ellese Cotterill for comments on the
-manuscript.
+NIH (RNE-D and ADH). We thank Julian Budd and Ellese Cotterill for
+comments on the manuscript.
 
 \clearpage
 
@@ -772,27 +766,24 @@ transgenic mouse lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR. Dendrites
 and soma are drawn in black, and axons in red.
 
 
-<!-- Feature Illustration.pdf -->
-**Figure 2:** Conversion of an RGC morphology into a feature vector.
-*A*: Example RGC to be converted into a feature vector.  The
-Dendritic Area (DA) is calculated
-as the convex hull (light grey) enclosing all dendrites (black).
-*B*: Fractal dimension (FD) measures the
-number of grid squares filled at different grid magnification.
-*C*: Stratification depth (SD):  z-coordinate of the centre of
-dendritic mass (for our data this is relative to the  soma centre; for
-the @Sumbul2014-vm data it is 
+<!-- Feature Illustration.pdf --> **Figure 2:** Conversion of an RGC
+morphology into a feature vector.  *A*: Example RGC to be converted
+into a feature vector.  The Dendritic Area (DA) is calculated as the
+convex hull (light grey) enclosing all dendrites (black).  *B*:
+Fractal dimension (FD) measures the number of grid squares filled at
+different grid magnification.  *C*: Stratification depth (SD):
+z-coordinate of the centre of dendritic mass (for our data this is
+relative to the soma centre; for the @Sumbul2014-vm data it is
 normalized to the VAChT-bands, shown as dotted red
-lines). Bistratification distance (BD): 
-(normalized) distance Δz between the centres of two Gaussians fitted
-to the dendritic histogram.
-*D*: Branch angle, Number of
-branch points, terminal segment length: elementary measures.
-*E*: Dendritic tortuosity (DT): dendritic path length divided by shortest
-distance between end points (a/b).
-*F*: The feature vector is created by assembling fifteen measures,
-such as those shown in panels A--E.  The RGC in panel A is then
-represented by this feature vector.
+lines). Bistratification distance (BD): (normalized) distance Δz
+between the centres of two Gaussians fitted to the dendritic
+histogram.  *D*: Branch angle, Number of branch points, terminal
+segment length: elementary measures.  *E*: Dendritic tortuosity (DT):
+dendritic path length divided by shortest distance between end points
+(a/b).  *F*: The feature vector is created by assembling fifteen
+measures, such as those shown in panels A--E, e.g. x1 could be the
+value of the dendritic area for this neuron.  The RGC in panel A is
+then represented by this feature vector.
 
 
 <!-- Figure3 - Three Cases.pdf -->
