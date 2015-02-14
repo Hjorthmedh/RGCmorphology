@@ -2,6 +2,7 @@
 %% SJE: uncomment.
 \usepackage{org-preamble-lualatex}
 \usepackage{pdfpages}
+\usepackage{lineno}
 %% \input{vc}
 
 $if(listings)$
