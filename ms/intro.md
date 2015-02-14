@@ -4,9 +4,9 @@ author:
 - name: J J Johannes Hjorth
   affiliation: University of Cambridge
 - name: Rana N El-Danaf
-  affiliation: University California, San Diego
+  affiliation: University of California, San Diego
 - name: Andrew D Huberman
-  affiliation: University California, San Diego
+  affiliation: University of California, San Diego
 - name: Stephen J Eglen
   affiliation: University of Cambridge
   email: S.J.Eglen@damtp.cam.ac.uk
@@ -43,27 +43,29 @@ spell-check / langtool
 
 # Abstract
 
+\linenumbers
+\modulolinenumbers[2]
+
 There are estimated to be around 20 different types of retinal
-ganglion cells in the mouse retina. Recently-developed genetic markers
-allow for the identification and targeting of specific retinal
-ganglion cell (RGC) types, which have different functional and
-morphological features. The purpose of this study was to develop
-computational tools to identify RGCs types based on the most common
-available sources of information about their morphology: soma size and
-dendritic branching pattern. We used five different transgenic mouse
-lines, in each of which 1--3 RGCs types selectively express green
-fluorescent protein (GFP). Cell tracings of 94 RGCs were acquired from
-retinas of CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and TRHR-GFP
-transgenic mice. Fifteen morphological features of GFP expressing RGCs
-were calculated, and we used supervised learning techniques to
-classify the cells. We found that just five features (dendritic area,
-density of branch points, fractal dimension, mean terminal segment
-length and soma area) were enough to correctly classify 83 % of the
-RGCs into the five types that we examined.  We therefore believe that
-standard morphological features can serve as reliable classifiers of
-mouse RGCs.  As these features are not specific to retinal neurons, we
-believe our classifier can classify a wide range of neuronal
-morphologies.
+ganglion cells (RGCs) in mouse retina. Recently-developed genetic
+markers allow for the identification and targeting of specific RGC
+types, which have different functional and morphological features. The
+purpose of this study was to develop computational tools to identify
+RGCs types based on the most common available sources of information
+about their morphology: soma size and dendritic branching pattern. We
+used five different transgenic mouse lines, in each of which 1--2 RGCs
+types selectively express green fluorescent protein (GFP). Cell
+tracings of 94 RGCs were acquired from retinas of CB2-GFP, Cdh3-GFP,
+DRD4-GFP, Hoxd10-GFP and TRHR-GFP transgenic mice. Fifteen
+morphological features of GFP expressing RGCs were calculated, and
+supervised learning techniques were used to classify the neurons. We
+found that just five features (dendritic area, density of branch
+points, fractal dimension, mean terminal segment length and soma area)
+were enough to correctly classify 83 % of the RGCs into the five types
+that we examined.  We therefore believe that standard morphological
+features can serve as reliable classifiers of mouse RGCs.  As these
+features are not specific to retinal neurons, we believe our
+classifier can classify a wide range of neuronal morphologies.
 
 
 
@@ -74,51 +76,44 @@ morphologies.
 The retina processes the visual scene and sends this information in
 parallel channels to the brain via retinal ganglion cells (RGCs)
 [@Wassle2004-lt; @Dhande2014-ek].  To determine the number of parallel
-channels, we first need to determine the number of RGC types. The
-answer to this problem depends partly on how you define a neuronal
-type [@Cook1998], but it is commonly assumed that RGC types have
-distinct morphologies and physiologies.  The pioneering work of
-@Boycott1974-aa suggested that there were at least three morphological
-sub-classes (alpha, beta and gamma) of RGC in cat, and these three
-types mapped onto previously-defined physiological classes (X, Y and
-W) [@Cleland1971-bo].  For example, alpha cells were defined as having
-larger dendritic fields and somata compared to neighbouring beta
-cells.  Since these early studies, subsequent work has primarily
-focused on finer divisions of the gamma class which was thought to be
-a mixed grouping (REF).  Furthermore, it is unclear whether individual
-morphological features alone are unique predictors of cell type, as
-demonstrated by the large overlap in RGC somata area
-[Figure 6 of @Boycott1974-aa] among the alpha/beta/gamma cat RGCs, but
-that multiple features should be considered simultaneously when
-classifying neurons.  @Rodieck1983-nb formalised this notion,
-proposing to use multiple features to define a multidimensional
-"feature space" in which to define RGC types.  If cells form distinct
-types, then the expectation is that cells of the same type should
-cluster together in one part of this feature space, and that different
-cell types occupy different parts of feature space.
+channels, we first need to determine the number of RGC types.  The
+pioneering work of @Boycott1974-aa suggested that there were at least
+three morphological sub-classes (alpha, beta and gamma) of RGC in cat,
+and these three types mapped onto previously-defined physiological
+classes (X, Y and W) [@Cleland1971-bo].  For example, alpha cells were
+defined as having larger dendritic fields and somata compared to
+neighbouring beta cells.  However, individual morphological features
+cannot uniquely predict cell type, as demonstrated by the large
+overlap in RGC somata area [Figure 6 of @Boycott1974-aa] among
+alpha/beta/gamma cat RGCs.  Instead, multiple features should be
+considered simultaneously when classifying neurons.  @Rodieck1983-nb
+formalised this notion, proposing to use multiple features to define a
+multidimensional "feature space" in which to define RGC types.  If
+cells form distinct types, then cells of the same type should cluster
+together in one part of this feature space, and that different cell
+types occupy different parts of feature space.
 
 Recent advances in imaging and genetics have led to a dramatic
-increase in data available, especially from mice [@Badea2004] but also
-other species, that can be used to test whether distinct types of RGCs
-form clusters in multidimensional space.  Estimates for mouse RGCs
-vary from 12 [@Kong2005] to 22 [@Volgyi2009] types based either on
-manual classification of cell types or unsupervised machine learning
-methods.  These techniques have also been applied to grouping of RGCs
-in other species, including cat [@Jelinek2004-gp], newt
-[@Pushchin2009-ef5] and lamprey [@Fletcher2014-mj].  These
-unsupervised approaches use statistical methods to determine the
-optimal number of clusters in the data
-[e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
+increase in data available, especially from mice [@Badea2004], that
+can be used to test whether distinct types of RGCs form clusters in
+multidimensional space.  Estimates for mouse RGCs vary from 12
+[@Kong2005] to 22 [@Volgyi2009] types based either on manual
+classification of cell types or unsupervised machine learning methods.
+These techniques have also been applied to grouping of RGCs in other
+species, including cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and
+lamprey [@Fletcher2014-mj].  These unsupervised approaches use
+statistical methods to determine the optimal number of clusters in the
+data [e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
 However, these previous studies had no independent indicator of cell
 type to compare with the predicted cell types.
 
 In this study, we analyse the morphology of RGCs from five mutant mice
-lines where typically one or a few types of RGC is labelled with GFP.
+lines where typically one or a few types of RGCs are labelled with GFP.
 We use supervised machine learning techniques to predict whether the
 anatomical features can predict the "genetic type" of the mouse,
 i.e. the mouse line from where the cell was labelled.  This provides
 us with ground-truth data which we can use to evaluate our methods
-against.  From each RGC we measured fifteen features, from which we
+against.  From each individual RGC we measured fifteen features, from which we
 found five that were highly predictive of cell type.  We compare our
 findings with a recent study [@Sumbul2014-vm] where perfect
 classification was achieved when detailed information about the entire
@@ -134,36 +129,53 @@ method of classification is robust when applied to mouse RGCs.
 
 Five different transgenic strains of mice were chosen for this
 study. By utilizing genetic markers for CB2, Cdh3, DRD4, Hoxd10 and
-TRHR, individual RGCs of specific types could be targeted (Table 1).
+TRHR, individual RGCs of specific types could be targeted and labelled
+with a fluorescent dye (details of each line are given in Table 1).
 When we refer to a class, it is in the predicted group from the
-clustering/classification methods. We refer to to the genetic markers
-as the "genetic type" of the RGCs, and follow the terminology proposed
-by @Cook1998 for distinguishing between the notion of a "type" and
-"class" of a neuron.
+clustering/classification methods. We refer to the genetic markers as
+the "genetic type" of the RGCs, and follow the terminology proposed by
+@Cook1998 for distinguishing between the notion of a "type" and
+"class" of a neuron. Some of the cells included in this study were
+illustrated and analysed in earlier publications
+[@Beier2013-mc; @Cruz-Martin2014-sf; @Osterhout2014-ko; @El-Danaf2015-pk].
+
 
 ## Experimental procedure
 
 All experimental procedures were approved by the Institutional Animal
 Care and Use Committee (IACUC) at the University California, San
-Diego. Table 1 lists the  BAC transgenic mouse lines used in this
-study and the number of RGCs from each animal.
-Intracellular cell filling and immunostaining of the retina were
-performed using methods described in detail previously
-[@Beier2013-mc; @Dhande2013-vp; @Cruz-Martin2014-sf; @Osterhout2014-ko]. Mice
-were anesthetized with isoflurane and the eyes were removed.  Retinas
-were dissected and kept in an oxygenated (95% O~2~/ 5% CO~2~) solution
-of Ames’ medium (Sigma Cat# A1420), containing 23 mM NaHCO3.  Single
-GFP+ RGCs were visualized under epifluorescence, and then targeted
-under DIC with electrodes made with borosilicate glass (Sutter
-instruments; 15-20 MΩ). Cells were filled with Alexa Fluor 555
-hydrizide (Invitrogen Cat# A20501MP; 10 mM solution in 200 mM KCl),
-with the application of hyperpolarizing current pulses ranging between
-0.1-0.9 nA, for 1--5 minutes.
+Diego. Table 1 lists the BAC transgenic mouse lines used in this study
+and the number of RGCs from each animal.  Intracellular cell filling,
+immunostaining of the retina and imaging of RGCs were performed using
+methods described in detail previously
+[@Beier2013-mc; @Dhande2013-vp; @Cruz-Martin2014-sf; @Osterhout2014-ko; @El-Danaf2015-pk]. Mice
+were anesthetized with isoflurane vapors.  The eyes were removed and
+the retinas were dissected and kept in an oxygenated (95% O~2~/ 5%
+CO~2~) solution of Ames’ medium (Sigma Cat# A1420), containing 23 mM
+NaHCO3.  Single GFP+ RGCs were visualized under epifluorescence, and
+then targeted with borosilicate glass electrodes (Sutter instruments;
+15-20 MΩ) under DIC. Cells were filled with Alexa Fluor 555 hydrizide
+(Invitrogen Cat# A20501MP; 10 mM solution in 200 mM KCl) with the
+application of hyperpolarizing current pulses ranging between 0.1-0.9
+nA for 1--5 minutes.
 
 
 
 
-Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then washed with 1x phosphate buffered saline (PBS) and incubated for 1 hour at room temperature in a blocking solution consisting of 10% goat serum with 0.25 % Triton-X. The retinas were then incubated for 1 day at 4°C with the following primary antibodies diluted in blocking solution: rabbit anti-GFP (1:1000, Invitrogen Cat# A6455). Retinas were rinsed with PBS (3x, 30 minutes each), and incubated for 2 hours at room temperature with the following secondary antibodies:  Alexa Fluor 488 goat anti-rabbit (1:1000, Life Technologies Cat# A11034). Sections were rinsed with PBS (3x, 30 minutes each) and mounted onto glass slides and coverslipped with Prolong Gold containing DAPI (Invitrogen P36931).
+Retinas were then fixed for 1 hour in 4% paraformaldehyde (PFA), then
+washed with 1x phosphate buffered saline (PBS) and incubated for 1
+hour at room temperature in a blocking solution consisting of 10% goat
+serum with 0.25 % Triton-X. The retinas were then incubated for 1 day
+at 4°C with the following primary antibodies diluted in blocking
+solution: rabbit anti-GFP (1:1000, Invitrogen Cat# A6455); guinea pig
+anti-VAChT (1:1000, Millipore Cat# AB1588). Retinas were rinsed with
+PBS (3x, 30 minutes each), and incubated for 2 hours at room
+temperature with the following secondary antibodies: Alexa Fluor 488
+goat anti-rabbit (1:1000, Life Technologies Cat# A11034); Alexa Fluor 647
+goat anti-guinea pig (1:1000, Invitrogen Cat# A21550). Sections
+were rinsed with PBS (3x, 30 minutes each) and mounted onto glass
+slides and coverslipped with Prolong Gold containing DAPI (Invitrogen
+P36931).
 
 RGCs were imaged with a laser scanning confocal microscope (Zeiss LSM
 710 or 780), using a LD C-Apochromat 40X/1.1 water immersion objective
@@ -258,21 +270,18 @@ correlation.
 ### Unsupervised clustering
 
 To assess the structure of the RGCs in the feature space we performed
-unsupervised clustering using the five feature set previously
-selection using k-means clustering. The rational was that the features
-chosen for the classifier would be those that were informative for
-separating the RGC types, and we wanted to see if there was a natural
-grouping in feature space.
+unsupervised k-means clustering using the Matlab *kmeans* function.  The
+rational was that the features chosen for the classifier would be
+those that were informative for separating the RGC types, and we
+wanted to see if there was a natural grouping in feature space.
 
 ### Classification method
 
 We evaluated four different types of classification methods: Decision
 trees [@Kotsiantis2013-jc], Support Vector Machines [@Hastie2009-ws],
-Random Subspace [@Ho1998-cp] and Naïve Bayes Classifiers [@Manning2008-dq].
-
-
-We used the results from Matlab’s built in sequential feature
-selection function to decide which classifier to use.  We also
+Random Subspace [@Ho1998-cp] and Naïve Bayes Classifiers
+[@Manning2008-dq].  We used Matlab’s sequential feature selection
+function *sequentialfs* to test performance of many classifers.  We
 confirmed the results by repeating the comparison using the features
 picked by the exhaustive search (see below) for three of the methods:
 Naïve Bayes, SVMs and Bagging (TODO: ref for bagging?).
@@ -283,7 +292,7 @@ The features for the classifier were selected using an exhaustive
 search of all combinations of the 15 features using Naïve Bayes. We
 partitioned the 94 RGCs into five folds, and used four of them for
 training and the remaining one for testing. This was repeated five
-times, ones for each of the five folds, to perform a five-fold cross
+times, one for each of the five folds, to perform a five-fold cross
 validation. This procedure was then repeated 20 times using different
 folds, for a total of 100 classification tests. We then plotted the
 number of features against the performance, and picked a feature set
@@ -689,7 +698,7 @@ area and dendritic field for different RGC types in mouse.  It is
 likely that the classification results that we present here can be
 improved if other factors can be taken into account.  For example, it
 has long been known from other species such as cat that the overall
-size and shape RGCs varies considerably across the retina
+size and shape of RGCs varies considerably across the retina
 [@Boycott1974-aa; @Wassle2004-lt].  Neurons in the center are more
 densely packed than those in the periphery and as a consequence have a
 smaller dendritic area than peripheral neurons of the same type.  Even
@@ -720,8 +729,8 @@ together to conduct meta-analyses.  We attempted this as the data from
 genetically identified RGCs with RGCs from three heterogeneous lines
 where a broad range of RGCs were labelled.  Using these heterogeneous
 lines, they predicted the existence of six new types of RGCs. One of
-our goals was to combine our data set with their data set to see if we
-could identify one of their unknown six types. As a control, as both
+our goals was to combine our data set with theirs to see if we could
+identify one of their unknown six types. As a control, as both
 datasets included samples of CB2 and Cdh3 RGCs we first checked
 whether features were consistent between the two laboratories.
 However, we found significant between-laboratory differences in the
@@ -761,9 +770,9 @@ comments on the manuscript.
 # Figure legends
 
 <!--ExampleMorphologies.eps   -->
-**Figure 1:** Neurolucida tracings of RGC obtained from five 
-transgenic mouse lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR. Dendrites
-and soma are drawn in black, and axons in red.
+**Figure 1:** Neurolucida tracings of RGC obtained from five
+transgenic mouse lines: CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and
+TRHR-GFP. Dendrites and soma are drawn in black, and axons in red.
 
 
 <!-- Feature Illustration.pdf --> **Figure 2:** Conversion of an RGC
@@ -788,9 +797,9 @@ then represented by this feature vector.
 
 <!-- Figure3 - Three Cases.pdf -->
 **Figure 3:** Cartoon illustrating the different degrees of separation
-of three types of neuron in feature space.  Each neuron is represented
+of three types of neurons in feature space.  Each neuron is represented
 as a point in a high dimensional feature space (here for simplicity we
-showing just two of those dimensions). For good classification, cells
+are showing just two of those dimensions). For good classification, cells
 of the same type need to be close to each other and far from other
 cells of other types.
 *A*: The classes are clearly separable in feature space; cells can be
