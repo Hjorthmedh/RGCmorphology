@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[a4paper,margin=1.5cm]{geometry}
 \usepackage{graphicx}
 
 %% Hack the caption:
@@ -21,6 +21,7 @@
 \pagestyle{empty}
 
 
+\section*{Supplementary information for Hjorth et al. (2015)}
 %% http://bytesizebio.net/2013/03/11/adding-supplementary-tables-and-figures-in-latex/
 
 \newcommand{\beginsupplement}{%
@@ -42,15 +43,15 @@
 % plotAllFeaturesForSupplementary.m
 
 
-\begin{figure}
+\begin{figure}[h]
   \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig1/CB2-all-cells-1.eps}}
+  {\includegraphics[scale=1.5]{Figures/SupFig1/CB2-all-cells-1.eps}}
   \caption{Planar view of CB2 RGCs. Dendrites and outline of soma are
     drawn to scale. See Table \protect{\ref{CB2filenames}} for file
     names. \label{CB2planar}}
 \end{figure}
 
-\begin{table}
+\begin{table}[h!]
   \centering
   \begin{tabular}{rl}
     \toprule
@@ -85,25 +86,21 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/CB2-stratification-depth-1}}
+  {\includegraphics[scale=1]{Figures/SupFig2/CB2-stratification-depth-1}}
+  {\includegraphics[scale=1]{Figures/SupFig2/CB2-stratification-depth-16}}
   \caption{Stratification profile for CB2 RGCs. Histograms are
     normalised, and location of soma is marked with a red disk. \label{CB2depth}}
 \end{figure}
 
-\clearpage
+%%\clearpage
 
-\begin{figure}
-  \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/CB2-stratification-depth-16}}
-  \caption{Same as Table \ref{CB2depth}}
-\end{figure}
 
 \clearpage
 
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1.5]{Figures/SupFig1/Cdh3-all-cells-1.eps}}
+  {\includegraphics[scale=1.5]{Figures/SupFig1/Cdh3-all-cells-1.eps}}
   \caption{Planar view of Cdh3 RGCs. See Figure \ref{CB2planar} for details.}
 \end{figure}
 
@@ -126,6 +123,7 @@
     11& \url{cdh3-03122012-corrected} \\
     \bottomrule
   \end{tabular}
+  \caption{List of Cdh3 file names in data set. \label{Cdh3filenames}}
 \end{table}
 
 
@@ -135,7 +133,7 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/Cdh3-stratification-depth-1}}
+  {\includegraphics[scale=1]{Figures/SupFig2/Cdh3-stratification-depth-1}}
   \caption{Stratification depth profiles for Cdh3. See Figure
     \ref{CB2depth} for details.}
 \end{figure}
@@ -145,7 +143,7 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1.5]{Figures/SupFig1/DRD4-all-cells-1.eps}}
+  {\includegraphics[scale=1.5]{Figures/SupFig1/DRD4-all-cells-1.eps}}
   \caption{Planar view of DRD4 RGCs. See Figure \ref{CB2planar} for details.}
 \end{figure}
 
@@ -200,7 +198,8 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/DRD4-stratification-depth-1}}
+  {\includegraphics[scale=1]{Figures/SupFig2/DRD4-stratification-depth-1}}
+  {\includegraphics[scale=1]{Figures/SupFig2/DRD4-stratification-depth-16}}
   \caption{Stratification depth profiles for DRD4. See Figure
     \ref{CB2depth} for details.}
 \end{figure}
@@ -209,18 +208,7 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/DRD4-stratification-depth-16}}
-  \caption{Stratification depth profiles for DRD4. See Figure
-    \ref{CB2depth} for details.}
-\end{figure}
-
-
-
-\clearpage
-
-\begin{figure}
-  \centering
-  \fbox{\includegraphics[scale=1.5]{Figures/SupFig1/Hoxd10-all-cells-1.eps}}
+  {\includegraphics[scale=1.5]{Figures/SupFig1/Hoxd10-all-cells-1.eps}}
   \caption{Planar view of Hoxd10 RGCs. See Figure \ref{CB2planar} for details.}
 \end{figure}
 
@@ -270,16 +258,8 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/Hoxd10-stratification-depth-1}}
-  \caption{Stratification depth profiles for Hoxd10. See Figure
-    \ref{CB2depth} for details.}
-\end{figure}
-
-\clearpage
-
-\begin{figure}
-  \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/Hoxd10-stratification-depth-16}}
+  {\includegraphics[scale=1]{Figures/SupFig2/Hoxd10-stratification-depth-1}}
+  {\includegraphics[scale=1]{Figures/SupFig2/Hoxd10-stratification-depth-16}}
   \caption{Stratification depth profiles for Hoxd10. See Figure
     \ref{CB2depth} for details.}
 \end{figure}
@@ -289,7 +269,7 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1.5]{Figures/SupFig1/TRHR-all-cells-1.eps}}
+  {\includegraphics[scale=1.5]{Figures/SupFig1/TRHR-all-cells-1.eps}}
   \caption{Planar view of TRHR RGCs. See Figure \ref{CB2planar} for details.}
 \end{figure}
 
@@ -315,11 +295,9 @@
 \end{table}
 
 
-\clearpage
-
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=1]{Figures/SupFig2/TRHR-stratification-depth-1}}
+  {\includegraphics[scale=1]{Figures/SupFig2/TRHR-stratification-depth-1}}
   \caption{Stratification depth profiles for TRHR. See Figure
     \ref{CB2depth} for details.}
 \end{figure}
@@ -330,16 +308,16 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-biStratificationDistance.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-biStratificationDistance.eps}}
   \caption{Bistratification distance for all RGCs in data set.}
 \end{figure}
 
-\clearpage
+%% \clearpage
 
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-branchAssymetry.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-branchAssymetry.eps}}
   \caption{Branch asymmetry for all RGCs in data set. See Methods for details.}
 \end{figure}
 
@@ -347,15 +325,15 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-dendriticDensity.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-dendriticDensity.eps}}
   \caption{Dendritic density for all RGCs in data set.}
 \end{figure}
 
-\clearpage
+%%\clearpage
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-dendriticDiameter.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-dendriticDiameter.eps}}
   \caption{Dendritic diameter for all RGCs in data set.}
 \end{figure}
 
@@ -363,15 +341,15 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-dendriticField.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-dendriticField.eps}}
   \caption{Dendritic area for all RGCs in data set.}
 \end{figure}
 
-\clearpage
+%%\clearpage
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-densityOfBranchPoints.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-densityOfBranchPoints.eps}}
   \caption{Density of branch points for all RGCs in data set.}
 \end{figure}
 
@@ -379,16 +357,16 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-fractalDimensionBoxCounting.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-fractalDimensionBoxCounting.eps}}
   \caption{Fractal dimension for all RGCs in data set. See Methods for
   details.}
 \end{figure}
 
-\clearpage
+%%\clearpage
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-meanBranchAngle.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-meanBranchAngle.eps}}
   \caption{Mean branch angle for all RGCs in data set.}
 \end{figure}
 
@@ -396,15 +374,15 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-meanSegmentLength.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-meanSegmentLength.eps}}
   \caption{Mean segment length for all RGCs in data set.}
 \end{figure}
 
-\clearpage
+%%\clearpage
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-meanSegmentTortuosity.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-meanSegmentTortuosity.eps}}
   \caption{Mean segment tortuosity for all RGCs in data set.}
 \end{figure}
 
@@ -412,15 +390,15 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-meanTerminalSegmentLength.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-meanTerminalSegmentLength.eps}}
   \caption{Mean terminal segment length for all RGCs in data set.}
 \end{figure}
 
-\clearpage
+%%\clearpage
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-numBranchPoints.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-numBranchPoints.eps}}
   \caption{Number of branch points for all RGCs in data set.}
 \end{figure}
 
@@ -428,15 +406,15 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-somaArea.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-somaArea.eps}}
   \caption{Soma area for all RGCs in data set.}
 \end{figure}
 
-\clearpage
+%% \clearpage
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-stratificationDepth.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-stratificationDepth.eps}}
   \caption{Stratification depth for all RGCs in data set.}
 \end{figure}
 
@@ -444,7 +422,7 @@
 
 \begin{figure}
   \centering
-  \fbox{\includegraphics[scale=0.5]{Figures/SupFig3/plotFeatures-totalDendriticLength.eps}}
+  {\includegraphics[scale=0.75]{Figures/SupFig3/plotFeatures-totalDendriticLength.eps}}
   \caption{Total dendritic length for all RGCs in data set.}
 \end{figure}
 
