@@ -277,14 +277,13 @@ wanted to see if there was a natural grouping in feature space.
 
 ### Classification method
 
-We evaluated four different types of classification methods: Decision
-trees [@Kotsiantis2013-jc], Support Vector Machines [@Hastie2009-ws],
-Random Subspace [@Ho1998-cp] and Naïve Bayes Classifiers
-[@Manning2008-dq].  We used Matlab’s sequential feature selection
-function *sequentialfs* to test performance of many classifers.  We
-confirmed the results by repeating the comparison using the features
-picked by the exhaustive search (see below) for three of the methods:
-Naïve Bayes, SVMs and Bagging (TODO: ref for bagging?).
+The primary classifier used in this study was the Naïve Bayes method
+[@Manning2008-dq].  We explored a range of other classification
+methods including Decision trees [@Kotsiantis2013-jc] with various
+forms of boosting or bagging [@Breiman1996-ji; @Ho1998-cp] and Support
+Vector Machines [@Hastie2009-ws].  We found that these classifiers had
+similar performance and so here we present only the results from the
+Naïve Bayes classifier.
 
 ### Classification features
 
@@ -493,12 +492,12 @@ genetic type.
 
 To better understand why unsupervised clustering is not able to
 separate the cell types, we need to examine the feature space.  We can
-do this by generating scatterplots between each pair of features
+do this by generating scatter plots between each pair of features
 e.g. one shown in Figure 5A, plotting soma area against density of
 branch points.  We can observe from this that TRHR has a large overlap
 with DRD4 and to some extent Cdh3. Likewise, Hoxd10 has large overlaps
 with other genetic types.  Rather than repeat this procedure for each
-pair of features (there are 10 scatterplots for a five dimensional
+pair of features (there are ten scatter plots for a five dimensional
 feature), we used Principal component analysis to reduce the
 five-dimensional vectors to two dimensions. Figure 5B shows that the
 majority of the Hoxd10 cells are grouped together into a cluster that
@@ -512,7 +511,7 @@ as outlined for synthetic data in Figure 3C.
 ### Confidence in classification
 
 To assess the nature of the boundaries in feature space between cell
-types, we returned to the classifer to assess its performance. If
+types, we returned to the classifier to assess its performance. If
 there is only a small overlap between clusters, we expect the
 classifier to be confident (i.e. high maximal posterior probability)
 about most of its predictions. When the clusters are harder to
@@ -571,7 +570,7 @@ fine z-resolution in the image stack.  Their dataset was made freely
 available and therefore served as a useful control for our feature
 vector generation and classification method.
 
-We took the Sumbul et al. dataset (post image warping) and processed
+We took the Sümbül et al. dataset (post image warping) and processed
 it in the same manner as for our data, using exactly the same methods
 to generate feature vectors and then to classify these feature
 vectors.  The only difference in feature vectors was that soma area
@@ -912,11 +911,13 @@ For figure 6 the PCA variances are
  -->
 
 
-<!--  LocalWords:  RGC RGCs dendritic morphologies somata GFP VAChT
+<!--  LocalWords:  RGC RGCs dendritic morphologies somata GFP VAChT dataset
  -->
 <!--  LocalWords:  soma starburst bistratification monostratified
  -->
 <!--  LocalWords:  bistratified misclassified melanopsin arbor voxel
  -->
 <!--  LocalWords:  Addtionally contralateral colliculus geniculate
+ -->
+<!--  LocalWords:  Hoxd10 Sümbül
  -->
