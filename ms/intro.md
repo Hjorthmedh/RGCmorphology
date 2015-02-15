@@ -763,7 +763,7 @@ comments on the manuscript.
 # Figure legends
 
 <!--ExampleMorphologies.eps   -->
-**Figure 1:** Neurolucida tracings of RGC obtained from five
+**Figure 1:** Neurolucida tracings of RGCs obtained from five
 transgenic mouse lines: CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and
 TRHR-GFP. Dendrites and soma are drawn in black, and axons in red.
 
