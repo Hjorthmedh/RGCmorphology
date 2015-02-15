@@ -64,6 +64,9 @@ allfigs.pdf: allfigs.tex
 allTables.pdf: allTables.tex
 	pdflatex allTables.tex
 
+allsupfigs.pdf: allsupfigs.tex
+	pdflatex allsupfigs.tex
+
 
 merge.pdf: intro.pdf allfigs.pdf allTables.pdf
 	echo $^
