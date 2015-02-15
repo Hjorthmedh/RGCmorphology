@@ -31,12 +31,6 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 \clearpage
 
-# TODO
-
-J Neurophysiol special issue on cell types as initial target.  J Comp
-Neurol second choice.
-
-spell-check / langtool
 
 
 \clearpage
@@ -135,7 +129,7 @@ When we refer to a class, it is in the predicted group from the
 clustering/classification methods. We refer to the genetic markers as
 the "genetic type" of the RGCs, and follow the terminology proposed by
 @Cook1998 for distinguishing between the notion of a "type" and
-"class" of a neuron. Some of the cells included in this study were
+"class" of a neuron. Some  neurons included in this study were
 illustrated and analysed in earlier publications
 [@Beier2013-mc; @Cruz-Martin2014-sf; @Osterhout2014-ko; @El-Danaf2015-pk].
 
@@ -198,8 +192,8 @@ features, we defined a feature vector, which specified a point in the
 
 ### Dendritic Area and Soma Area
 
-The dendritic area is the convex hull enclosing all of the dendrites
-(Figure 2A), and the soma area is calculated in a similar way. All
+The dendritic area is the convex hull enclosing all the dendrites
+(Figure 2A), and the soma area is calculated similarly. All
 areas are measured in the XY-plane.
 
 ### Fractal Dimension
@@ -364,7 +358,7 @@ of numbers quantifying that RGC. Fifteen morphological features were
 calculated (Table 2). Together they define a feature vector, which
 captured both large-scale characteristics of the neuron such as
 stratification depth, area of the dendritic arbor and number of
-branches, and also finer aspects such as the mean angle and 
+branches, and also finer aspects such as the mean angle and
 tortuosity of branches (Figure\ 2).
 
 ## Single features do not uniquely predict RGC type
@@ -375,9 +369,9 @@ type. Previous studies
 highlighted that stratification depth, relative to the two VAChT bands
 surrounding the inner plexiform layer, is a good predictor of RGC
 type. Most, but not of all, of our RGC z-stacks included VAChT
-staining.  However as we were unable to reliably observe two separate
+staining.  However, as we were unable to reliably observe two separate
 VAChT bands, we could not use the bands to determine stratification
-depth. Instead we calculated the stratification depth relative to the
+depth.  We instead calculated the stratification depth relative to the
 soma centre.  However, we found that there was considerable overlap
 between the different RGC types according to stratification depth
 (Table 3).  There were also significant overlaps between the RGC types
@@ -394,8 +388,8 @@ features are not reliable classifiers of neuronal type.
 ## Selection of multiple feature vectors
 
 Rodrieck and Brening (1983) described the need to base neuronal
-classification on objectively measurable features, which if used to
-form axes, would define a multidimensional feature space.  This is
+classification on objectively measurable features which, if used to
+form axes, define a multidimensional feature space.  This is
 demonstrated with three sets of synthetic data in Figure 3.  In Figure
 3A, dendritic area on the y-axis can separate the red and green
 clusters quite well, but does not separate the green and blue
@@ -555,9 +549,9 @@ confirm our earlier suggestion that Hoxd10 line labels at least three
 distinct RGC types.
 
 
-## Re-analysis of the Sümbül  et al (2014) data set
+## Re-analysis of the Sümbül  et al. (2014) data set
 
-A recent study by Sümbül et al (2014) achieved perfect classification
+A recent study by Sümbül et al. (2014) achieved perfect classification
 for RGC types labelled by seven distinct genetic markers.  One reason
 for their high performance was that their classifier received a
 high-dimensional representation of the density of the entire arbor,
@@ -742,7 +736,7 @@ predictive information could be obtained by examining the destination
 brain region for axons.  Our earlier work has identified targets of the
 five genetic types studied here. For example, CB2 RGCs projects to
 contralateral superior colliculus and dorsal lateral geniculate
-nucleus [@Huberman2008-5a6] whereas Hoxd10 RGCs project to the  accessory
+nucleus [@Huberman2008-5a6] whereas Hoxd10 RGCs project to the accessory
 optic system [@Dhande2013-vp].
 
 In summary, we have shown the utility of building a classifier for
