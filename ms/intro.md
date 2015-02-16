@@ -52,14 +52,15 @@ types selectively express green fluorescent protein (GFP). Cell
 tracings of 94 RGCs were acquired from retinas of CB2-GFP, Cdh3-GFP,
 DRD4-GFP, Hoxd10-GFP and TRHR-GFP transgenic mice. Fifteen
 morphological features of GFP expressing RGCs were calculated, and
-supervised learning techniques were used to classify the neurons. We
-found that just five features (dendritic area, density of branch
-points, fractal dimension, mean terminal segment length and soma area)
-were enough to correctly classify 83 % of the RGCs into the five types
-that we examined.  We therefore believe that standard morphological
-features can serve as reliable classifiers of mouse RGCs.  As these
-features are not specific to retinal neurons, we believe our
-classifier can classify a wide range of neuronal morphologies.
+supervised machine learning techniques were used to classify the
+neurons. We found that just five features (dendritic area, density of
+branch points, fractal dimension, mean terminal segment length and
+soma area) were enough to correctly classify 83% of the RGCs into the
+five types that we examined.  We therefore believe that standard
+morphological features can serve as reliable classifiers of mouse
+RGCs.  As these features are not specific to retinal neurons, we
+suggest our approach can be used on a wide range of neuronal
+morphologies.
 
 
 
@@ -90,8 +91,8 @@ types occupy different parts of feature space.
 Recent advances in imaging and genetics have led to a dramatic
 increase in data available, especially from mice [@Badea2004], that
 can be used to test whether distinct types of RGCs form clusters in
-multidimensional space.  Estimates for mouse RGCs vary from 12
-[@Kong2005] to 22 [@Volgyi2009] types based either on manual
+multidimensional space.  Estimates for the number of mouse RGCs types vary from 12
+[@Kong2005] to 22 [@Volgyi2009] based either on manual
 classification of cell types or unsupervised machine learning methods.
 These techniques have also been applied to grouping of RGCs in other
 species, including cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and
@@ -112,7 +113,7 @@ found five that were highly predictive of cell type.  We compare our
 findings with a recent study [@Sumbul2014-vm] where perfect
 classification was achieved when detailed information about the entire
 dendritic stratification relative to reliable retinal landmarks (VAChT
-bands) is included.  We suggest that our simple anatomical measures
+bands) was included.  We suggest that our simple anatomical measures
 can provide a reliable basis for classification in the absence of
 stratification depth information, and thus that the @Rodieck1983-nb
 method of classification is robust when applied to mouse RGCs.
@@ -178,7 +179,7 @@ pixels, Kalman averaging = 2-4). Complete 3D morphological
 reconstructions were obtained manually using Neurolucida software
 (10.42.1, MBF Bioscience) and exported to our custom-written Matlab
 scripts for analysis.  All relevant data and code relating to this
-project are available
+project are available from
 [https://github.com/Hjorthmedh/RGCmorphology](https://github.com/Hjorthmedh/RGCmorphology).
 
 ## Analysis of RGC morphology
@@ -213,10 +214,11 @@ slope is an estimate of the fractal dimension.
 ### Stratification Depth and Bistratification distance
 
 Commonly, stratification depth is defined as the center of mass of the
-dendritic tree relative to the two VAChT bands [@Kong2005; @Sumbul2014-vm]
-that mark the locations of the starburst amacrine cells. Due to
-unreliable labelling the locations of the two VAChT bands are unknown;
-instead the depth is measured relative to the soma.
+dendritic tree relative to the two VAChT bands
+[@Kong2005; @Sumbul2014-vm] that mark the locations of the starburst
+amacrine cells. Due to unreliable labelling the locations of the two
+VAChT bands are unknown in our study; instead the depth is measured
+relative to the soma.
 
 Bistratification distance is the distance between the upper and lower
 parts of the dendritic tree (Figure 2C). Two Gaussians are fitted to a
@@ -333,9 +335,9 @@ its genetic type.
 
 We filled, reconstructed and analyzed 94 RGCs from five genetic mouse
 lines: CB2, Cdh3, DRD4, Hoxd10 and TRHR (Table 1). In these mouse
-lines GFP is usually expressed in just one or a few RGC types.  This makes it
-possible to reliably and selectively target the same types of RGCs in
-different animals. We will refer to these five lines as “genetic
+lines GFP is usually expressed in just one or a few RGC types.  This
+makes it possible to reliably and selectively target the same types of
+RGCs across animals.  We will refer to these five lines as “genetic
 types” and we assume for the initial analysis that each of these
 uniquely define one RGC type.  Our prior findings suggest however that
 Hoxd10 may label 3--4 distinct RGC types.  In this work we initially
@@ -372,10 +374,10 @@ type. Most, but not of all, of our RGC z-stacks included VAChT
 staining.  However, as we were unable to reliably observe two separate
 VAChT bands, we could not use the bands to determine stratification
 depth.  We instead calculated the stratification depth relative to the
-soma centre.  However, we found that there was considerable overlap
-between the different RGC types according to stratification depth
-(Table 3).  There were also significant overlaps between the RGC types
-based on other features. For example, Table 3 shows that Hoxd10
+soma centre.  We found that there was considerable
+overlap between the different RGC types according to stratification
+depth (Table 3).  There were also significant overlaps between the RGC
+types based on other features. For example, Table 3 shows that Hoxd10
 generally had a larger dendritic area than other RGC types but that
 the standard deviation is so large that the range spans the whole
 spectrum of values of other RGC types. To assess the predictive powers
@@ -558,7 +560,7 @@ high-dimensional representation of the density of the entire arbor,
 with a fine resolution in the depth dimension.  Accurate generation of
 dendritic depth information required reliable information about the
 extent of the inner plexiform layer, gained through reconstruction of
-the two VAChT bands.  This is turn relied on complex non-linear
+the two VAChT bands.  This in turn relied on complex non-linear
 image-warping of the image stacks to flatten the dendritic trees and
 fine z-resolution in the image stack.  Their dataset was made freely
 available and therefore served as a useful control for our feature
@@ -783,7 +785,7 @@ histogram.  *D*: Branch angle, Number of branch points, terminal
 segment length: elementary measures.  *E*: Dendritic tortuosity (DT):
 dendritic path length divided by shortest distance between end points
 (a/b).  *F*: The feature vector is created by assembling fifteen
-measures, such as those shown in panels A--E, e.g. x1 could be the
+measures, such as those shown in panels A--E, e.g. x~1~ could be the
 value of the dendritic area for this neuron.  The RGC in panel A is
 then represented by this feature vector.
 
