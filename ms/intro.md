@@ -48,7 +48,7 @@ ganglion cells (RGCs) in mouse retina. Recently-developed genetic
 markers allow for the identification and targeting of specific RGC
 types, which have different functional and morphological features. The
 purpose of this study was to develop computational tools to identify
-RGCs types based on the most common available sources of information
+RGC types based on the most common available sources of information
 about their morphology: soma size and dendritic branching pattern. We
 used five different transgenic mouse lines, in each of which 1--2 RGCs
 types selectively express green fluorescent protein (GFP). Cell
@@ -736,7 +736,7 @@ However, we found significant between-laboratory differences in the
 magnitudes and distributions of key features.  This discrepancy
 prevented us from further comparing the two datasets together.
 
-Finally, in this work we have predicted RGC identify based solely upon
+Finally, in this work we have predicted RGC identity based solely upon
 the morphological features of the soma and dendrites; further
 predictive information could be obtained by examining the destination
 brain region for axons.  Our earlier work has identified targets of the
@@ -761,8 +761,9 @@ computer code and data relating to this project are freely available online.
 We thank Uygar Sümbül for sharing tracings of retinal ganglion cells,
 and his code for classification of cell types. The authors were
 supported by the Wellcome Trust (JJJH and SJE, grant number: 083205),
-NIH (RNE-D and ADH). We thank Julian Budd and Ellese Cotterill for
-comments on the manuscript.
+NIH RO1 (ADH, grant number: EY022157-01), and a grant from the
+Glaucoma Research Foundation Catalyst for a Cure (RNE-D and ADH). We
+thank Julian Budd and Ellese Cotterill for comments on the manuscript.
 
 \clearpage
 
