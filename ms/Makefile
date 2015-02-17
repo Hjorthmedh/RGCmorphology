@@ -59,16 +59,16 @@ clean:
 ######################################################################
 ## project-specific entries.
 allfigs.pdf: allfigs.tex
-	pdflatex allfigs.tex
+	latexmk -pdf allfigs.tex
 
 allTables.pdf: allTables.tex
-	pdflatex allTables.tex
+	latexmk -pdf allTables.tex
 
 allsupfigs.pdf: allsupfigs.tex
-	pdflatex allsupfigs.tex
+	latexmk -pdf allsupfigs.tex
 
 
-merge.pdf: intro.pdf allfigs.pdf allTables.pdf
+merge.pdf: intro.pdf allfigs.pdf allTables.pdf allsupfigs.pdf
 	echo $^
 	pdftk $^ cat output merge.pdf
 
