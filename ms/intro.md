@@ -237,12 +237,16 @@ monostratified cells, but for bistratified neurons this distance will
 be larger.
 
 ### Branch Asymmetry and Angle
-For each branch point (Figure 2D), the branch asymmetry compares the
-number of leaves n~L~ that each branch has. It is defined as
-the ratio $$ \max(n_L^i) / \sum_{i} n_L^i $$
-The branch angle is calculated as the angle between the two branches
-in 3D space.
-o
+
+For any branch point *i* (Figure 2D), there are typically two, but
+sometimes three, branches.  We denote the number of terminals
+underneath each of the two or three branches at point *i* by A~i~, B~i~,
+C~i~.  The branch asymmetry at branch point *i* is given by
+$$ \max(A_i, B_i, C_i) / (A_i + B_i + C_i).$$  These ratios are averaged over all
+branch points to give the branch asymmetry for a neuron. The
+branch angle is calculated as the angle between the two branches in 3D
+space.
+
 ### Length measures and Branch Points
 
 The dendritic tree is divided into segments, split by the branch
