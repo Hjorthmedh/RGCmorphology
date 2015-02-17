@@ -2,32 +2,34 @@
 title: Dendritic branching and somal characteristics reliably classify mouse retinal ganglion cell types
 author:
 - name: J J Johannes Hjorth
-  affiliation: University of Cambridge
+  affiliation: Department of Applied Mathematics, University of Cambridge, UK
 - name: Rana N El-Danaf
-  affiliation: University of California, San Diego
+  affiliation: Department of Neurosciences, University of California, San Diego, USA
 - name: Andrew D Huberman
-  affiliation: University of California, San Diego
+  affiliation: Department of Neurosciences, University of California, San Diego, USA
 - name: Stephen J Eglen
-  affiliation: University of Cambridge
+  affiliation: Department of Applied Mathematics, University of Cambridge, UK
   email: S.J.Eglen@damtp.cam.ac.uk
 nocite: |
   @Huberman2009-xf, @Osterhout2011-9b9, @Huberman2008-5a6,
   @Dhande2013-vp, @Rivlin-Etzion2011-ji
-date: 2015-02-16 <!-- TODO update by hand. -->
+date: 2015-02-17 <!-- TODO update by hand. -->
 ...
 
 <!-- nocite above to ensure we cite all the refs from Table 1. -->
 ---
 
-Contributions
 
-Conceived and designed the project: ADH, SJE.
+### Abbreviated title
 
-Collected experimental data: RNE-D. 
+Classification of mouse retinal ganglion cells
 
-Analysed and interpreted data: JJJH, RNE-D, ADH, SJE.
+### Contributions
 
+Conceived and designed the project: ADH, SJE;  Collected experimental
+data: RNE-D; Analysed and interpreted data: JJJH, RNE-D, ADH, SJE;
 Wrote the paper: JJJH, RNE-D, ADH, SJE.
+
 
 \clearpage
 
@@ -39,6 +41,7 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 \linenumbers
 \modulolinenumbers[2]
+\renewcommand\linenumberfont{\normalfont\tiny\sffamily\color{lightgray}}
 
 There are estimated to be around 20 different types of retinal
 ganglion cells (RGCs) in mouse retina. Recently-developed genetic
@@ -62,6 +65,9 @@ RGCs.  As these features are not specific to retinal neurons, we
 suggest our approach can be used on a wide range of neuronal
 morphologies.
 
+### Keywords
+cell types, retinal ganglion cells, clustering, classification.
+
 
 
 \clearpage
@@ -75,7 +81,7 @@ channels, we first need to determine the number of RGC types.  The
 pioneering work of @Boycott1974-aa suggested that there were at least
 three morphological sub-classes (alpha, beta and gamma) of RGC in cat,
 and these three types mapped onto previously-defined physiological
-classes (X, Y and W) [@Cleland1971-bo].  For example, alpha cells were
+classes [X, Y and W; @Cleland1971-bo].  For example, alpha cells were
 defined as having larger dendritic fields and somata compared to
 neighbouring beta cells.  However, individual morphological features
 cannot uniquely predict cell type, as demonstrated by the large
@@ -89,16 +95,16 @@ together in one part of this feature space, and that different cell
 types occupy different parts of feature space.
 
 Recent advances in imaging and genetics have led to a dramatic
-increase in data available, especially from mice [@Badea2004], that
-can be used to test whether distinct types of RGCs form clusters in
-multidimensional space.  Estimates for the number of mouse RGCs types vary from 12
-[@Kong2005] to 22 [@Volgyi2009] based either on manual
-classification of cell types or unsupervised machine learning methods.
-These techniques have also been applied to grouping of RGCs in other
-species, including cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and
-lamprey [@Fletcher2014-mj].  These unsupervised approaches use
-statistical methods to determine the optimal number of clusters in the
-data [e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
+increase in data, especially from mice [@Badea2004], to test whether
+distinct types of RGCs form clusters in multidimensional space.
+Estimates for the number of mouse RGCs types vary from 12 [@Kong2005]
+to 22 [@Volgyi2009] based either on manual classification of cell
+types or unsupervised machine learning methods.  These techniques have
+also been applied to grouping of RGCs in other species, including cat
+[@Jelinek2004-gp], newt [@Pushchin2009-ef5] and lamprey
+[@Fletcher2014-mj].  These unsupervised approaches use statistical
+methods to determine the optimal number of clusters in the data
+[e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
 However, these previous studies had no independent indicator of cell
 type to compare with the predicted cell types.
 
@@ -118,20 +124,18 @@ can provide a reliable basis for classification in the absence of
 stratification depth information, and thus that the @Rodieck1983-nb
 method of classification is robust when applied to mouse RGCs.
 
-\clearpage
+# Materials and Methods
 
-# Methods
-
-Five different transgenic strains of mice were chosen for this
-study. By utilizing genetic markers for CB2, Cdh3, DRD4, Hoxd10 and
-TRHR, individual RGCs of specific types could be targeted and labelled
-with a fluorescent dye (details of each line are given in Table 1).
-When we refer to a class, it is in the predicted group from the
-clustering/classification methods. We refer to the genetic markers as
-the "genetic type" of the RGCs, and follow the terminology proposed by
-@Cook1998 for distinguishing between the notion of a "type" and
-"class" of a neuron. Some  neurons included in this study were
-illustrated and analysed in earlier publications
+Five different transgenic lines of mice were chosen for this study. By
+utilizing genetic markers for CB2, Cdh3, DRD4, Hoxd10 and TRHR,
+individual RGCs of specific types could be targeted and fluorescently
+labelled (details of each line are given in Table 1).  We refer to the
+genetic markers as the "genetic type" of the RGCs, and follow the
+terminology proposed by @Cook1998 for distinguishing between the
+notion of a "type" and "class" of a neuron. When we refer to a class
+of a neuron, it usually indicates the predicted group from the
+clustering/classification methods. Some neurons included in this study
+were illustrated and analysed in earlier publications
 [@Beier2013-mc; @Cruz-Martin2014-sf; @Osterhout2014-ko; @El-Danaf2015-pk].
 
 
@@ -201,7 +205,7 @@ areas are measured in the XY-plane.
 
 Fractal dimension measures the neuron’s coverage of the retina at
 different length scales. Here we used the box counting method
-[@Fernandez2001-ef]. The neuron was projected onto the XY plane and a
+[@Fernandez2001-ef]. The neuron was projected onto the XY-plane and a
 grid was placed over it (Figure 2B). This grid was then successively
 refined. The magnification is defined as the maximal distance between
 grid lines / current distance between grid lines. At each step, the
@@ -238,7 +242,7 @@ number of leaves n~L~ that each branch has. It is defined as
 the ratio $$ \max(n_L^i) / \sum_{i} n_L^i $$
 The branch angle is calculated as the angle between the two branches
 in 3D space.
-
+o
 ### Length measures and Branch Points
 
 The dendritic tree is divided into segments, split by the branch
@@ -839,17 +843,16 @@ marked with a dashed blue line.
 <!-- Blind-Hoxd10-best-clustering.eps -->
 
 **Figure 6:** Distribution of Hoxd10 RGCs in feature space.  The
-projection of all X Hoxd10 RGCs onto the first two principal
-components (accounting for 84% of the variance) is shown in the
-top-left.  Unsupervised clustering into three clusters, here marked
-with filled circles, triangles and crosses.  Two large clusters are
-observed, with a third cluster with just own member (top-right). Three
-representative RGCs from each of the three clusters (numbered 1, 2 and
-3) are shown.
+projection of all Hoxd10 RGCs onto the first two principal components
+(accounting for 84% of the variance) is shown in the top-left.
+Unsupervised clustering into three clusters, here marked with filled
+circles, triangles and crosses.  Two large clusters are observed, with
+a third cluster with just own member (top-right). Three representative
+RGCs from each of the three clusters (numbered 1, 2 and 3) are shown.
 
 ## Supplementary information
 
-One supplementary PDF includes drawings of all RGCs in x-y plane and
+One supplementary PDF includes drawings of all RGCs in XY-plane and
 profiles in the z-dimension, and scatter plots of each of the fifteen
 features, stratified by RGC type.
 
