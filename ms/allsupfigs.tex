@@ -13,6 +13,9 @@
 %% \makeatother
 
 
+%% SJE: remove the tables from the supplementary info for now.
+\usepackage{verbatim}
+\renewenvironment{table}[1][ht]{\comment}{\endcomment}
 
 % !!! For some reason it complains about one of the captions, wants to
 % add a $ sign...??
@@ -21,7 +24,8 @@
 \pagestyle{empty}
 
 
-\vspace*{5cm}\\
+\vspace*{5cm}
+
 
 \begin{center}
   { \Large 
@@ -55,8 +59,9 @@
   \centering
   {\includegraphics[scale=1.5]{Figures/SupFig1/CB2-all-cells-1.eps}}
   \caption{Planar view of CB2 RGCs. Dendrites and outline of soma are
-    drawn to scale. See Table \protect{\ref{CB2filenames}} for file
-    names. \label{CB2planar}}
+    drawn to scale. 
+    %% See Table \protect{\ref{CB2filenames}} for file names.
+    \label{CB2planar}}
 \end{figure}
 
 \begin{table}[h!]
@@ -100,7 +105,7 @@
     normalised, and location of soma is marked with a red disk. \label{CB2depth}}
 \end{figure}
 
-%%\clearpage
+
 
 
 \clearpage
@@ -135,8 +140,8 @@
 \end{table}
 
 
-
-\clearpage
+%% SJE: put this back if we need tables.
+%%\clearpage
 
 
 \begin{figure}
