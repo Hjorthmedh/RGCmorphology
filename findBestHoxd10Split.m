@@ -108,6 +108,9 @@ ylabel('PC #2','fontsize',20)
 set(gca,'fontsize',20)
 axis equal
 pbaspect([1 1.5 1])
+a = axis;
+a(3:4) = [-2 4];
+axis(a)
 
 fName = sprintf('FIGS/Blind-%s-best-clustering.eps',r.RGCtypeName{RGCidx(1)});
 printA4(fName)
