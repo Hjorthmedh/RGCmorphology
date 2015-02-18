@@ -68,7 +68,7 @@ allsupfigs.pdf: allsupfigs.tex
 	latexmk -pdf allsupfigs.tex
 
 
-merge.pdf: intro.pdf allfigs.pdf allTables.pdf allsupfigs.pdf
+merge.pdf: intro.pdf allfigs.pdf allTables.pdf
 	echo $^
 	pdftk $^ cat output merge.pdf
 
