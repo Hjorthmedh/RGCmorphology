@@ -274,7 +274,7 @@ correlation.
 ### Unsupervised clustering
 
 To assess the structure of the RGCs in the feature space we performed
-unsupervised k-means clustering using the Matlab *kmeans* function.  The
+unsupervised k-means clustering using the Matlab `kmeans` function.  The
 rational was that the features chosen for the classifier would be
 those that were informative for separating the RGC types, and we
 wanted to see if there was a natural grouping in feature space.
@@ -856,11 +856,7 @@ circles, triangles and crosses.  Two large clusters are observed, with
 a third cluster with just one member (top-right). Three representative
 RGCs from each of the three clusters (numbered 1, 2 and 3) are shown.
 
-## Supplementary information
 
-One supplementary PDF includes drawings of all RGCs in XY-plane and
-profiles in the z-dimension, and scatter plots of each of the fifteen
-features, stratified by RGC type.
 
 
 
