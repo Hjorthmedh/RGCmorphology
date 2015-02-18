@@ -320,7 +320,7 @@ leading diagonal. For each RGC, we created a test set containing all
 RGCs except that cell, trained the classifier, and then predicted the
 type of the RGC that was held back. The classification of individual
 cells was generated in the same way as for the confusion matrix, using
-the leave one out method, and the robustness of the results verified with
+the leave-one-out method, and the robustness of the results verified with
 cross-validation.
 
 
@@ -351,14 +351,15 @@ uniquely define one RGC type.  Our prior findings suggest however that
 Hoxd10 may label 3--4 distinct RGC types.  In this work we initially
 assume that Hoxd10 labels one type of RGCs, and then assess later in
 detail whether it is likely to label multiple types.  Three example
-RGCs of each genetic type are shown in Figure 1. The axons (red) and
-dendrites (black) were manually traced, and the locations of the somas
-were marked. Each RGC collects information about a small region in the
-visual field; the shape and distribution of the dendritic tree differs
-depending on the function the RGC performs. It is an open problem to
-identify the RGC type based on morphological characteristics. Here we
-are interested in using objective methods to assess morphological
-patterns distinct to each type.
+RGCs of each genetic type are shown in Figure 1. The axons (not shown
+in Figure 1) and dendrites (black lines) were manually traced, and the
+locations of the somas were marked. Each RGC collects information
+about a small region in the visual field; the shape and distribution
+of the dendritic tree differs depending on the function the RGC
+performs. It is an open problem to identify the RGC type based on
+morphological characteristics. Here we are interested in using
+objective methods to assess morphological patterns distinct to each
+type.
 
 ## Quantifying RGC morphology
 
@@ -438,7 +439,7 @@ to correlations between the features. The pairwise correlations
 between all features are reported in Table 4.  For example, mean
 segment length and mean terminal segment length are highly correlated
 with each other (r=0.97), but strongly anti-correlated with density of
-branch points (r=-0.78 and r=-0.85).
+branch points (r=-0.85 and r=-0.78).
 
 
 To assess which subset of features would give the best classification,
@@ -615,11 +616,11 @@ morphological features of each RGC and its genetic type.  From a list
 of fifteen quantitative features for each RGC morphology, a subset of
 five features (dendritic area, density of branch points, fractal
 dimension, mean terminal segment length and soma area) classified the
-genetic type of each cell with 83% accuracy.  From the remaining 17%
-of RGCs that were misclassified, one cell type, Hoxd10 was identified
-and further studied.  Using unsupervised clustering of these RGCs, we
-believe this genetic type is probably composed of three distinct types
-of neuron.
+genetic type of each cell with 83% accuracy.  From the remaining RGCs
+that were misclassified, one cell type, Hoxd10, had a particularly high
+error rate.  We therefore investigated the Hoxd10 cell type further.  Using
+unsupervised clustering of these RGCs, we believe this genetic type is
+probably composed of three distinct types of neuron.
 
 
 ## Unsupervised versus supervised approaches
@@ -734,11 +735,12 @@ where a broad range of RGCs were labelled.  Using these heterogeneous
 lines, they predicted the existence of six new types of RGCs. One of
 our goals was to combine our data set with theirs to see if we could
 identify one of their unknown six types. As a control, as both
-datasets included samples of CB2 and Cdh3 RGCs we first checked
+datasets included samples of CB2 and Cdh3 RGCs, we first checked
 whether features were consistent between the two laboratories.
 However, we found significant between-laboratory differences in the
-magnitudes and distributions of key features.  This discrepancy
-prevented us from further comparing the two datasets together.
+magnitudes and distributions of key features for the same genetic
+type.  This discrepancy prevented us from further comparing the two
+datasets together.
 
 Finally, in this work we have predicted RGC identity based solely upon
 the morphological features of the soma and dendrites; further
@@ -790,8 +792,8 @@ relative to the soma centre; for the @Sumbul2014-vm data it is
 normalized to the VAChT-bands, shown as dotted red
 lines). Bistratification distance (BD): (normalized) distance Δz
 between the centres of two Gaussians fitted to the dendritic
-histogram.  *D*: Branch angle, Number of branch points, terminal
-segment length: elementary measures.  *E*: Dendritic tortuosity (DT):
+histogram.  *D*: Branch angle (BA), Number of branch points (NBP), terminal
+segment length (TSL): elementary measures.  *E*: Dendritic tortuosity (DT):
 dendritic path length divided by shortest distance between end points
 (a/b).  *F*: The feature vector is created by assembling fifteen
 measures, such as those shown in panels A--E, e.g. x~1~ could be the
@@ -804,8 +806,7 @@ then represented by this feature vector.
 of three types of neurons in feature space.  Each neuron is represented
 as a point in a high dimensional feature space (here for simplicity we
 are showing just two of those dimensions). For good classification, cells
-of the same type need to be close to each other and far from other
-cells of other types.
+of the same type need to be close to each other and far from cells of other types.
 *A*: The classes are clearly separable in feature space; cells can be
 classified without error.
 *B*: Classes overlap significantly in feature space, making it
@@ -852,7 +853,7 @@ projection of all Hoxd10 RGCs onto the first two principal components
 (accounting for 84% of the variance) is shown in the top-left.
 Unsupervised clustering into three clusters, here marked with filled
 circles, triangles and crosses.  Two large clusters are observed, with
-a third cluster with just own member (top-right). Three representative
+a third cluster with just one member (top-right). Three representative
 RGCs from each of the three clusters (numbered 1, 2 and 3) are shown.
 
 ## Supplementary information
