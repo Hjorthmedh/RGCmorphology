@@ -66,7 +66,23 @@ classdef RGCmorph < handle
     dendPercentiles = [0.1 0.9];
     
     xSoma = []; ySoma = []; zSoma = [];
-       
+    
+    nameList = {'CB2', ...           % 1 Unique
+                'Cdh3', ...          % 2 Two subtypes?
+                'DRD4', ...          % 3 Unique
+                'Hoxd10', ...        % 4 Two subtypes?
+                'TRHR', ...          % 5 Unique
+                'BD', ...            % 6
+                'JAM-B', ...         % 7
+                'K', ...             % 8
+                'W3', ...            % 9
+                'W7', ...            % 10
+                'Hoxd10-ON', ...     % 11
+                'Hoxd10-ON-OFF', ... % 12
+                'Cdh3-ON', ...       % 13 
+                'Cdh3-diving'};   % 14
+    
+    
   end
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

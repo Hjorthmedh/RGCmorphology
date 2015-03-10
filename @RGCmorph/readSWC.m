@@ -61,15 +61,13 @@ function readSWC(obj,filename,dataDir)
 
   end
   
-  % Is there more info in the itemType, yell, I want to know
-  assert(all(itemType == 0))
-  
   rowUsed = zeros(size(xCoord));
   
   % Time to parse everything
   
   % Save soma
   somaIdx = find(parent == -1);
+  assert(itemType(somaIdx) == 0 | itemType(somaIdx) == 1);
   
   obj.xSoma = xCoord(somaIdx);
   obj.ySoma = yCoord(somaIdx);
@@ -83,17 +81,47 @@ function readSWC(obj,filename,dataDir)
   
   % Find all branches
   primBranchIdx = find(parent == itemLabel(somaIdx));
-  
+    
   for iPrim = 1:numel(primBranchIdx)
     
-    primBranch = parseTree(primBranchIdx(iPrim),0,0);
+    [primBranch, branchType] = parseTree(primBranchIdx(iPrim),0,0);
+  
+    % 0 = undefined
+    % 1 = soma
+    % 2 = axon
+    % 3 = dendrite
+    % 4 = apical dendrite
+    % 5 = fork point
+    % 6 = end point
+    % 7 = custom
     
-    if(isempty(obj.dendrite))
-      obj.dendrite = primBranch;
-    else
-      obj.dendrite(end+1) = primBranch;
+    switch(branchType)
+      case {0,3,4}
+        if(isempty(obj.dendrite))
+          obj.dendrite = primBranch;
+        else
+          obj.dendrite(end+1) = primBranch;
+        end
+      case {2}
+        if(isempty(obj.axon))
+          obj.axon = primBranch;
+        else
+          obj.axon(end+1) = primBranch;
+        end
+      case {1}
+        if(isempty(primBranch.branches) & size(primBranch,1) <= 1)
+          % Just skip this, orphaned branch that is empty
+          disp('Orphaned branch')
+        else
+          fprintf('Something fishy with the input branch')
+          keyboard
+        end
+        
+      otherwise
+       fprintf('The itemType %d is currently not supported\n', ...
+               itemType(primBranchIdx(iPrim)))    
+       keyboard
     end
-    
   end
   
   try
@@ -106,7 +134,7 @@ function readSWC(obj,filename,dataDir)
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
   
-  function tree = parseTree(branchStartIdx,somaDist,branchOrder)
+  function [tree, branchType, allSegmentType] = parseTree(branchStartIdx,somaDist,branchOrder)
 
     if(0)
       fprintf('parseTree called: branchStartIdx = %d, somaDist = %.2f, branchOrder = %d\n', ...
@@ -150,6 +178,7 @@ function readSWC(obj,filename,dataDir)
     
     segIdx = branchStartIdx:branchEndIdx;
     
+    
     % if(branchEndIdx < putativeBranchEndIdx)
     %   disp('Check why...') % Seems legit
     %   keyboard
@@ -180,10 +209,10 @@ function readSWC(obj,filename,dataDir)
     % Find all branches that has the end point as parent, and parse them
     childIdx = find(parent == branchEndIdx);    
     
-    
+    childSegType = {};
     for iChild = 1:numel(childIdx)      
       
-      branch = parseTree(childIdx(iChild),tree.somaDist,tree.branchOrder);
+      [branch,branchType,childSegType{iChild}] = parseTree(childIdx(iChild),tree.somaDist,tree.branchOrder);
       
       try
         if(isempty(tree.branches))
@@ -197,6 +226,20 @@ function readSWC(obj,filename,dataDir)
       end
     end
       
+    % Most common itemType as the type of branch, sometimes first element can be marked as soma, 
+    % want to avoid that screwing things up. Also branch points might get other itemType values
+    allSegmentType = itemType(segIdx);
+    for iChild = 1:numel(childSegType)
+      allSegmentType = [allSegmentType;childSegType{iChild}];
+    end
+    branchType = mode(allSegmentType);
+    
+    % if(branchType == 1)
+    %   disp('For some reason branchType is 1 = soma')
+    %   keyboard
+    % end
+    
+    
   end
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
