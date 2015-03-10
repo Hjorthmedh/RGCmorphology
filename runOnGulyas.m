@@ -15,7 +15,7 @@ else
   r.dataSetName = 'Gulyas';
   
   for i = 1:numel(r.RGC)
-    r.RGC(i).nameList = {'cb','cr','cc','pv','pc'};
+    r.RGC(i).nameList = {'cb','cr','cck','pv','pc'};
     [r.RGC(i).typeID,r.RGC(i).typeName] = r.RGC(i).RGCtype();
   end
 
@@ -31,7 +31,6 @@ else
                     'meanSegmentTortuosity', ...
                     'meanTerminalSegmentLength', ...
                     'numBranchPoints', ...
-                    'somaArea', ...                    
                     'totalDendriticLength'};
   
   r.allFeatureNames = r.featuresUsed;
