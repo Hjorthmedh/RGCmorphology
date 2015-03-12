@@ -70,7 +70,7 @@ r2.setNameLookup();
 data.featureNameDisplay = r2.featureNameDisplay;
 data.featureNameDisplayShort = r2.featureNameDisplayShort;     
 
-fid = fopen('RESULTS/ExhaustiveSearchLatex.tex','w');
+fid = fopen('RESULTS/ExhaustiveSearchLatex-Gulyas.tex','w');
 % Number of features, 
 fprintf(fid,'\\begin{sidewaystable}\n');                     
 fprintf(fid,'\\begin{tabular}{cc%s}\n',repmat('l',1,numel(bestNfeatureSets)));
@@ -91,8 +91,8 @@ for i = 1:numel(allFeaturesShort)
   headerStr = sprintf('%s & %s', headerStr, allFeaturesShort{i});
 end
 
-fprintf(fid,'Number of features & Performance %s\\\\\n', headerStr);
-fprintf(fid,'\\hline\n');
+fprintf(fid,'N & Performance %s\\\\\n', headerStr);
+fprintf(fid,'\\toprule\n');
 
 for i = 1:numel(bestNfeatureSets)
   
@@ -116,7 +116,7 @@ for i = 1:numel(bestNfeatureSets)
 
 end
   
-fprintf(fid,'\\hline\n');
+fprintf(fid,'\\bottomrule\n');
 fprintf(fid,'\\end{tabular}\n');
 
 captionStr = sprintf('%s (%s)', ...
@@ -146,7 +146,7 @@ for i = 1:numel(csvRowHeader)
   csvRowHeader{i} = num2str(csvRowHeader{i});
 end
 
-fid = fopen('RESULTS/ExhaustiveFeatureSearchPick.csv','w');
+fid = fopen('RESULTS/ExhaustiveFeatureSearchPick-Gulyas.csv','w');
 
 fprintf(fid, 'No.,Performance');
 for i = 1:numel(allFeaturesShort)
@@ -195,7 +195,7 @@ xlabel('No.','fontsize',24)
 ylabel('Performance (%)','fontsize',24)
 set(gca,'fontsize',20)
 
-saveas(gcf,'FIGS/ExhaustiveFeatureSearch-performance-overview.pdf','pdf')
+saveas(gcf,'FIGS/ExhaustiveFeatureSearch-Gulyas-performance-overview.pdf','pdf')
 
 figure
 hold on
@@ -218,7 +218,7 @@ set(gca,'fontsize',20)
 
 axis([0 15.5 0 100])
 
-saveas(gcf,'FIGS/ExhaustiveFeatureSearch-performance-overview-alt.pdf','pdf')
+saveas(gcf,'FIGS/ExhaustiveFeatureSearch-Gulyas-performance-overview-alt.pdf','pdf')
 
 
 bestNfeatureSetsName = {};
@@ -229,7 +229,7 @@ end
 
 dataIdx = data.dataIdx;
 
-save('RESULTS/exhaustiveSearchResultsSummary.mat', ...
+save('RESULTS/exhaustiveSearchResultsSummary-Gulyas.mat', ...
      'bestNfeatureSets', ...
      'bestNfeatureSetsMean', ...
      'bestNfeatureSetsName', ...

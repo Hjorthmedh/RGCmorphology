@@ -411,4 +411,44 @@ N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} &
 \label{tab:sumbulfeatureselection}
 \end{table}
 
+
+\clearpage
+
+% References for Gulyas are:
+% "Convergence of excitatory and inhibitory inputs onto CCK-containing
+% basket cells in the CA1 area of the rat hippocampus"
+% Matyas et al 2004
+% 
+% "Total Number and Ratio of Excitatory and Inhibitory Synapses
+% Converging onto Single Interneurons of Different Types in the CA1
+% Area of the Rat Hippocampus"
+% Gulyas et al 1999
+
+%
+% Using: dendriticField fractalDimensionBoxCounting meanSegmentLength
+% meanSegmentTortuosity meanTerminalSegmentLength totalDendriticLength
+% we get 74.8 +/- 2.2 % prediction rate
+
+\begin{table}
+\begin{tabular}{ccllllllllllll}
+N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & TDL\\
+\toprule
+1 & $57.0 \pm 1.9\,\%$  &  &  &  &  &  &  &  &  &  &  &  & $\bullet$\\
+2 & $66.8 \pm 1.8\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$\\
+3 & $70.1 \pm 2.6\,\%$  &  &  &  &  &  &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$\\
+4 & $72.7 \pm 2.9\,\%$  &  &  & $\bullet$ &  &  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+5 & $74.1 \pm 2.0\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+6 & $74.8 \pm 2.2\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+7 & $74.9 \pm 2.1\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+8 & $74.5 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+9 & $73.8 \pm 2.8\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+10 & $73.1 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $72.5 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $69.0 \pm 2.9\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive feature search using the Gulyas data set.  Using same format
+  as Table~\ref{tab:performance}. \textbf{THIS IS PRELIMINARY DATA} }
+\end{table}
+
 \end{document}
