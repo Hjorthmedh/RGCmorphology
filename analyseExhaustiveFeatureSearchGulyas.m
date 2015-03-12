@@ -1,7 +1,7 @@
 close all, clear all
 
 disp('Make sure it runs with right data file')
-data = load('RESULTS/ExhaustiveFeatureSearch-Gulyas-NaiveBayes-1.mat');
+data = load('RESULTS/ExhaustiveFeatureSearch-Gulyas-NaiveBayes-20.mat');
 
 [~,bestIdx] = sort(data.corrFracMean,'descend');
 

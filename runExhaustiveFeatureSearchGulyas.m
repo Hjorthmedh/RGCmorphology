@@ -10,7 +10,7 @@ r.lazyLoad('Gulyas');
 
 nWorkers = 4;
 nFolds = 5;
-nRep = 1;
+nRep = 20;
 
 featureIdx = r.getSubsetOfFeatures();
 
