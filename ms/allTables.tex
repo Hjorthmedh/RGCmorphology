@@ -455,4 +455,24 @@ N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP 
   as Table~\ref{tab:performance}. \textbf{THIS IS PRELIMINARY DATA} }
 \end{table}
 
+
+% getConfusionMatrixLatexGulyas
+
+\begin{table}
+\begin{tabular}{llrrrrr}
+\hline
+ & & \multicolumn{5}{c}{Predicted Class}\\
+ & & cb & cr & cck & pv & pc\\
+\cline{3-7}
+\multirow{5}{*}{\rotatebox{90}{True Class}}& cb & 11 & 4 & 1 & 2 & 0\\
+& cr & 5 & 21 & 1 & 2 & 0\\
+& cck & 1 & 0 & 12 & 1 & 0\\
+& pv & 3 & 1 & 2 & 14 & 0\\
+& pc & 0 & 0 & 0 & 0 & 18\\
+\cline{3-7}
+\end{tabular}
+\end{table}
+
+
+
 \end{document}
