@@ -3,7 +3,7 @@
 
 close all, clear all
 
-loadCache = true;
+loadCache = false;
 
 if(loadCache)
   r = RGCclass(0);

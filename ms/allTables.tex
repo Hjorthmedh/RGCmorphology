@@ -437,22 +437,22 @@ N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} &
 \begin{tabular}{ccllllllllllll}
 N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & TDL\\
 \toprule
-1 & $57.0 \pm 1.9\,\%$  &  &  &  &  &  &  &  &  &  &  &  & $\bullet$\\
-2 & $66.8 \pm 1.8\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$\\
-3 & $70.1 \pm 2.6\,\%$  &  &  &  &  &  &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$\\
-4 & $72.7 \pm 2.9\,\%$  &  &  & $\bullet$ &  &  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
-5 & $74.1 \pm 2.0\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
-6 & $74.8 \pm 2.2\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-7 & $74.9 \pm 2.1\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
-8 & $74.5 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-9 & $73.8 \pm 2.8\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-10 & $73.1 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-11 & $72.5 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-12 & $69.0 \pm 2.9\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+1 & $56.8 \pm 2.1\,\%$  &  &  &  &  &  &  &  &  &  &  &  & $\bullet$\\
+2 & $66.8 \pm 1.9\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$\\
+3 & $69.0 \pm 1.9\,\%$  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ &  &  & $\bullet$\\
+4 & $71.3 \pm 1.9\,\%$  &  &  &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+5 & $73.4 \pm 1.9\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+6 & $74.5 \pm 2.0\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+7 & $74.4 \pm 2.1\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+8 & $74.5 \pm 1.6\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+9 & $73.2 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+10 & $73.3 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $72.5 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $69.6 \pm 2.5\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
 \caption{Exhaustive feature search using the Gulyas data set.  Using same format
-  as Table~\ref{tab:performance}. \textbf{THIS IS PRELIMINARY DATA} }
+  as Table~\ref{tab:performance}. }
 \end{table}
 
 
@@ -464,14 +464,18 @@ N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP 
  & & \multicolumn{5}{c}{Predicted Class}\\
  & & cb & cr & cck & pv & pc\\
 \cline{3-7}
-\multirow{5}{*}{\rotatebox{90}{True Class}}& cb & 11 & 4 & 1 & 2 & 0\\
-& cr & 5 & 21 & 1 & 2 & 0\\
+\multirow{5}{*}{\rotatebox{90}{True Class}}& cb & 11 & 5 & 1 & 1 & 0\\
+& cr & 5 & 20 & 1 & 2 & 0\\
 & cck & 1 & 0 & 12 & 1 & 0\\
-& pv & 3 & 1 & 2 & 14 & 0\\
+& pv & 2 & 3 & 2 & 13 & 0\\
 & pc & 0 & 0 & 0 & 0 & 18\\
 \cline{3-7}
 \end{tabular}
 \end{table}
+
+
+
+
 
 
 
