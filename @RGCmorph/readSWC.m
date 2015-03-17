@@ -40,16 +40,22 @@ function readSWC(obj,filename,dataDir)
     end
     
     % label type x y z R parent
+    str = strrep(str,',','');
     c = textscan(str,'%d %d %f %f %f %f %d');
     
-    itemLabel(ctr,1) = c{1}; 
-    itemType(ctr,1)  = c{2}; % This does not appear to be used
-    xCoord(ctr,1)    = c{3};
-    yCoord(ctr,1)    = c{4};
-    zCoord(ctr,1)    = c{5};
-    radius(ctr,1)    = c{6};
-    parent(ctr,1)    = c{7};
-    
+    try 
+      itemLabel(ctr,1) = c{1}; 
+      itemType(ctr,1)  = c{2}; % This does not appear to be used
+      xCoord(ctr,1)    = c{3};
+      yCoord(ctr,1)    = c{4};
+      zCoord(ctr,1)    = c{5};
+      radius(ctr,1)    = c{6};
+      parent(ctr,1)    = c{7};
+    catch e
+      getReport(e)
+      keyboard
+    end
+      
     % This should be equal
     assert(itemLabel(ctr,1) == ctr);
 

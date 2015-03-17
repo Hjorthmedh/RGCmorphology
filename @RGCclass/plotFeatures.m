@@ -29,6 +29,10 @@ function plotFeatures(obj,featureList,interactiveFlag)
   end
     
   rg = RGCgui(obj);
+  if(numel(obj.RGCuniqueIDs) > 5)
+    rg.setClassColours(10);
+  end
+  
   typeCol = rg.classColours;
   
   % typeCol = [228,26,28 ;...

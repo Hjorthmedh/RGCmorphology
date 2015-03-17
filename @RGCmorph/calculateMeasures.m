@@ -80,6 +80,10 @@ function results = calculateMeasures(obj,showFigures)
   %% Number of branch points
   results.numBranchPoints = obj.parseDendrites(@obj.measureCountBranchPoints);
   
+  if(isempty(results.numBranchPoints))
+    results.numBranchPoints = 0;
+  end
+  
   results.numLeaves = obj.parseDendrites(@obj.measureCountLeaves);
   
   %% Number of segments

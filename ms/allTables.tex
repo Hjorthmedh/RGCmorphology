@@ -429,7 +429,7 @@ N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} &
 % meanSegmentTortuosity meanTerminalSegmentLength totalDendriticLength
 % we get 74.8 +/- 2.2 % prediction rate
 
-% runOnGulyas
+% loadGulyas
 % runExhaustiveFeatureSearchGulyas
 % analyseExhaustiveFeatureSearchGulyas
 
@@ -471,9 +471,53 @@ N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP 
 & pc & 0 & 0 & 0 & 0 & 18\\
 \cline{3-7}
 \end{tabular}
+\caption{Confusion table for the Gulyas dataset.}
 \end{table}
 
 
+% loadFeldemeyer
+% runExhaustiveFeatureSearchFeldemeyer
+% analyseExhaustiveFeatureSearchFeldemeyer
+
+\begin{table}
+\begin{tabular}{ccllllllllllll}
+N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & TDL\\
+\toprule
+1 & $60.0 \pm 2.5\,\%$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ & \\
+2 & $67.0 \pm 4.5\,\%$  &  &  &  &  &  &  &  & $\bullet$ &  &  & $\bullet$ & \\
+3 & $72.6 \pm 5.6\,\%$  & $\bullet$ &  & $\bullet$ &  &  &  &  &  &  &  & $\bullet$ & \\
+4 & $72.6 \pm 5.8\,\%$  & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
+5 & $72.6 \pm 3.4\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  &  & $\bullet$ & \\
+6 & $72.6 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+7 & $73.0 \pm 4.5\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
+8 & $74.0 \pm 3.8\,\%$  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+9 & $74.9 \pm 7.1\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+10 & $75.3 \pm 3.5\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $74.9 \pm 3.8\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $74.4 \pm 3.7\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive feature search for the Feldemeyer dataset.  Using same format
+  as Table~\ref{tab:performance}.}
+\end{table}
+
+% getConfusionMatrixLatexFeldemeyer
+
+\begin{table}
+\begin{tabular}{llrrrrr}
+\hline
+ & & \multicolumn{5}{c}{Predicted Class}\\
+ & & Horizontal & Inverted & Multipolar & Pyramidal & Tangenital\\
+\cline{3-7}
+\multirow{5}{*}{\rotatebox{90}{True Class}}& Horizontal & 0 & 2 & 1 & 0 & 2\\
+& Inverted & 2 & 5 & 0 & 0 & 0\\
+& Multipolar & 0 & 0 & 14 & 1 & 0\\
+& Pyramidal & 0 & 1 & 0 & 10 & 0\\
+& Tangenital & 0 & 0 & 0 & 1 & 4\\
+\cline{3-7}
+\end{tabular}
+\caption{Confusion matrix for the Feldemeyer dataset.}
+\end{table}
 
 
 

@@ -5,20 +5,32 @@ function okFlag = checkCoords(obj)
 
   maxCoordXML = obj.parseDendrites(@maxCoord);
   minCoordXML = obj.parseDendrites(@minCoord);
+
+  if(isempty(maxCoordXML))
+    disp('No dendrite in cell?')
+    keyboard
+  end
   
   maxCoordLSM = max(obj.zCoordsXML);
   minCoordLSM = min(obj.zCoordsXML);
   
-  if(maxCoordXML(3) > maxCoordLSM | minCoordXML(3) < minCoordLSM)
-    fprintf('!!! %s\n', obj.xmlFile)
-    fprintf('!!! XML Z coords out of range of LSM image: XML (%.2f,%.2f), LSM (%.2f,%.2f)\n',...
-            minCoordXML(3), maxCoordXML(3), minCoordLSM, maxCoordLSM)
-
-    okFlag = false;
-  else
-    okFlag = true;
-  end
+  try
   
+    if(maxCoordXML(3) > maxCoordLSM | minCoordXML(3) < minCoordLSM)
+      fprintf('!!! %s\n', obj.xmlFile)
+      fprintf('!!! XML Z coords out of range of LSM image: XML (%.2f,%.2f), LSM (%.2f,%.2f)\n',...
+              minCoordXML(3), maxCoordXML(3), minCoordLSM, maxCoordLSM)
+
+      okFlag = false;
+    else
+      okFlag = true;
+    end
+  
+  catch e
+    getReport(e)
+    keyboard
+  end
+    
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   function res = maxCoord(branch,res)
