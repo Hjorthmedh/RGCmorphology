@@ -425,10 +425,6 @@ N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} &
 % Gulyas et al 1999
 
 %
-% Using: dendriticField fractalDimensionBoxCounting meanSegmentLength
-% meanSegmentTortuosity meanTerminalSegmentLength totalDendriticLength
-% we get 74.8 +/- 2.2 % prediction rate
-
 % loadGulyas
 % runExhaustiveFeatureSearchGulyas
 % analyseExhaustiveFeatureSearchGulyas
@@ -462,16 +458,18 @@ N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP 
 \begin{tabular}{llrrrrr}
 \hline
  & & \multicolumn{5}{c}{Predicted Class}\\
- & & cb & cr & cck & pv & pc\\
+ & & CB & CR & CCK & PV & PC\\
 \cline{3-7}
-\multirow{5}{*}{\rotatebox{90}{True Class}}& cb & 11 & 5 & 1 & 1 & 0\\
-& cr & 5 & 20 & 1 & 2 & 0\\
-& cck & 1 & 0 & 12 & 1 & 0\\
-& pv & 2 & 3 & 2 & 13 & 0\\
-& pc & 0 & 0 & 0 & 0 & 18\\
+\multirow{5}{*}{\rotatebox{90}{True Class}}& CB & 11 & 5 & 1 & 1 & 0\\
+& CR & 5 & 20 & 1 & 2 & 0\\
+& CCK & 1 & 0 & 12 & 1 & 0\\
+& PV & 2 & 3 & 2 & 13 & 0\\
+& PC & 0 & 0 & 0 & 0 & 18\\
 \cline{3-7}
 \end{tabular}
-\caption{Confusion table for the Gulyas dataset.}
+\caption{Confusion table for the Gulyas dataset. Calbindin (CB),
+  Calretinin (CR), Cholecystokinin (CCK) and Parvalbumin (PV)
+  containing cells, and Pyramidal cells (PC)}
 \end{table}
 
 
