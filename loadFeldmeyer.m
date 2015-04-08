@@ -10,7 +10,7 @@ if(loadCache)
   r.lazyLoad('Feldmeyer');
 else
 
-  r = RGCclass('/Users/hjorth/DATA/NeuroMorpho.org/feldmeyer/CNG version');
+  r = RGCclass('DATA/Feldmeyer');
   
   r.dataSetName = 'Feldmeyer';
   

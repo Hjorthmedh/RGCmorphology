@@ -10,7 +10,7 @@ if(loadCache)
   r.lazyLoad('Gulyas');
 else
 
-  r = RGCclass('/Users/hjorth/DATA/NeuroMorpho.org/gulyas/CNG version');
+  r = RGCclass('DATA/Gulyas');
   
   r.dataSetName = 'Gulyas';
   
