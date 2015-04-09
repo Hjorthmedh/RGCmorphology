@@ -158,6 +158,10 @@ classdef RGCclass < handle
     
     function lazySave(obj,fName)
       
+      if(~exist('SAVE/cache'))
+        mkdir('SAVE/cache')
+      end
+      
       if(~exist('fName') | isempty(fName))
         fName = 'SAVE/cache/lazyload.mat';
       else
