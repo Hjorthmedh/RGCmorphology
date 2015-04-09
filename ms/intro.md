@@ -398,7 +398,7 @@ features are not reliable classifiers of neuronal type.
 
 ## Selection of multiple feature vectors
 
-Rodrieck and Brening (1983) described the need to base neuronal
+@Rodieck1983-nb described the need to base neuronal
 classification on objectively measurable features which, if used to
 form axes, define a multidimensional feature space.  This is
 demonstrated with three sets of synthetic data in Figure 3.  In Figure
