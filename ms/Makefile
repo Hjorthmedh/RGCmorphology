@@ -26,7 +26,7 @@ PREFIX = ./pandoc-templates
 BIB = rgcmorph.bib
 
 ## CSL stylesheet (located in the csl folder of the PREFIX directory).
-CSL = journal-of-neurophysiology
+CSL = the-journal-of-comparative-neurology
 
 
 PDFS=$(SRC:.md=.pdf)
