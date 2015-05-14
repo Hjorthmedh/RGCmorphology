@@ -1,4 +1,4 @@
-% This script uses the data from Gulyas taken from Neuromorpho.org to see how our method
+% This script uses the data from Feldmeyer taken from Neuromorpho.org to see how our method
 % performs on that data set.
 
 close all, clear all
