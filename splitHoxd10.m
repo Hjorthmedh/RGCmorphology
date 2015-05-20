@@ -1,6 +1,6 @@
 clear all, close all
 
-reloadData = false;
+reloadData = true;
 
 % On/Off Cluster 1: Hoxd10-06112012-corrected.xml
 % On/Off Cluster 1: Hoxd10-03132012-r1c3-corrected.xml
