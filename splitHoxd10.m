@@ -1,6 +1,6 @@
 clear all, close all
 
-reloadData = true;
+reloadData = false;
 
 % On/Off Cluster 1: Hoxd10-06112012-corrected.xml
 % On/Off Cluster 1: Hoxd10-03132012-r1c3-corrected.xml
@@ -68,7 +68,7 @@ Hoxd10ON = { 'Hoxd10-04032012-corrected.xml', ...
 
 
 if(~reloadData)
-  r = RGCclass('DATA/RanaEldanaf/Hoxd10-split/XML/');
+  r = RGCclass('DATA/RanaEldanaf/ALT/Hoxd10-split/XML/');
   r.lazySave('Hoxd10-split')
 else
   r = RGCclass(0);
