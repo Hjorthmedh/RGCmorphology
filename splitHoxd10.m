@@ -68,7 +68,7 @@ Hoxd10ON = { 'Hoxd10-04032012-corrected.xml', ...
 
 
 if(~reloadData)
-  r = RGCclass('/Users/hjorth/DATA/RanaEldanaf/Hoxd10-split/XML/');
+  r = RGCclass('DATA/RanaEldanaf/Hoxd10-split/XML/');
   r.lazySave('Hoxd10-split')
 else
   r = RGCclass(0);

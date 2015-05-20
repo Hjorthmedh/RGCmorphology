@@ -80,8 +80,7 @@ classdef RGCmorph < handle
                 'Hoxd10-ON', ...     % 11
                 'Hoxd10-ON-OFF', ... % 12
                 'Cdh3-ON', ...       % 13 
-                'Cdh3-diving'};   % 14
-    
+                'Cdh3-diving' };     % 14
     
   end
   

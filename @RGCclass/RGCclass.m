@@ -100,7 +100,11 @@ classdef RGCclass < handle
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    function obj = RGCclass(dataDir)
+    function obj = RGCclass(dataDir,loadCache)
+      
+      if(~exist('loadCache'))
+        loadCache = true;
+      end
       
       if(~obj.skipNeuronsWithoutVAChT)
         % This feature comes from the VAChT bands, skip
@@ -127,7 +131,6 @@ classdef RGCclass < handle
 
         
         
-        loadCache = true;
         reanalyse = true;
         randomOrder = false; % Turn off random order for now
         

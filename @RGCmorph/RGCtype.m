@@ -22,7 +22,7 @@ function [type,name] = RGCtype(obj)
     disp('Using parent directory name to determine RGC type')
     keyboard
   end
-    
+  
   found = 0;
   
   for i = 1:numel(obj.nameList)
