@@ -161,6 +161,7 @@
 
 \begin{table}
   \centering
+  \newcommand{\dd}{(2D)}
   {\renewcommand{\arraystretch}{1.3} \begin{tabular}{lp{8.5cm}}
       \toprule
       \textbf{Feature} & \textbf{Description} \\
@@ -168,23 +169,23 @@
       BD: Bistratification Distance & {\footnotesize Distance between putative bistratified dendrites (normalised by variance)}\\
       BA: Branch Asymmetry & {\footnotesize Ratio of number of leaves
         on either side of a branch point}\\
-      DA: Dendritic Area & {\footnotesize Area of dendritic arbor projected on the XY-plane, calculated using the convex hull}\\
-      DD: Dendritic Density & {\footnotesize TDL / DA}\\
-      DDi: Dendritic Diameter & {\footnotesize  Largest distance between two points on the dendritic arbor}\\
-      DBP: Density of Branch Points &  {\footnotesize  NBP / DA }\\
-      FD: Fractal Dimension & {\footnotesize  Fractal-based dendritic complexity measure}\\
-      MBA: Mean Branch Angle &  {\footnotesize  Mean angle between the branches in 3D space.}\\
+      DA: Dendritic Area & {\footnotesize Area of dendritic arbor projected on the XY-plane, calculated using the convex hull \dd}\\
+      DD: Dendritic Density & {\footnotesize TDL / DA \dd}\\
+      DDi: Dendritic Diameter & {\footnotesize  Largest distance between two points on dendritic arbor \dd}\\
+      DBP: Density of Branch Points &  {\footnotesize  NBP / DA \dd}\\
+      FD: Fractal Dimension & {\footnotesize  Fractal-based dendritic complexity measure \dd}\\
+      MBA: Mean Branch Angle &  {\footnotesize  Mean angle between branches}\\
       MSL: Mean Segment Length & {\footnotesize  Mean length of dendritic segments}\\
       MST: Mean Segment Tortuosity & {\footnotesize  Ratio of segment length to distance between end points}\\
       MTSL: Mean Terminal Segment Length & {\footnotesize  Mean length of the last segment of each dendrite}\\
       NBP: Number of Branch Points &  {\footnotesize  Number of points where the dendrites branch}\\
-      SA: Soma Area & {\footnotesize  Area of the soma projected onto the XY-plane}\\
+      SA: Soma Area & {\footnotesize  Area of the soma projected onto the XY-plane \dd}\\
       SD: Stratification Depth & {\footnotesize Centre of mass of dendrite along z-axis, with soma at $z=0$}\\
       TDL: Total Dendritic Length & {\footnotesize Total length of all dendrites}\\
   \bottomrule
 \end{tabular}
 }
-\caption{Features calculated from each RGC.}
+\caption{Features calculated from each RGC. \dd\ marks features which are calculated from 2D representations; all other measures are derived from the 3D representation of the tree.}
 \label{tab:featurelist}
 \end{table}
 
@@ -279,30 +280,30 @@ Total Dendritic Length (TDL) & -0.09 & 0.27 & \textbf{0.58} & 0.02 & \textbf{0.6
 
 %%framebox to show frame around it.
 %%\newcommand{\xx}[1]{\framebox[6mm][c]{\footnotesize #1}}
-\newcommand{\xx}[1]{\makebox[6mm][c]{\footnotesize #1}}
+\newcommand{\xx}[1]{\rotatebox{90}{\makebox[8mm][l]{\footnotesize #1}}}
 % 20 reps
 \begin{table}
 \centering
 \begin{tabular}{rcccccccccccccccc}
 \toprule
-N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} &
+N & \% Correct  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} &
 \xx{MST} & \xx{MTSL} & \xx{NBP} & \xx{SA} & \xx{SD} & \xx{TDL}\\
 \midrule
-1 & $64.7 \pm 1.7\,\%$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ &  &  &  & \\
-2 & $72.9 \pm 2.0\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ &  & \\
-3 & $78.7 \pm 2.8\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
-4 & $80.7 \pm 3.1\,\%$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
-5 & $83.1 \pm 3.6\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
-6 & $84.0 \pm 2.7\,\%$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & \\
-7 & $85.5 \pm 2.9\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
-8 & $86.3 \pm 2.6\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
-9 & $85.7 \pm 2.1\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-10 & $85.1 \pm 2.2\,\%$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-11 & $85.2 \pm 1.7\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-12 & $84.9 \pm 1.7\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-13 & $84.1 \pm 1.7\,\%$  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-14 & $83.2 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-15 & $82.2 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+1 &  $65 \pm 2$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ &  &  &  & \\
+2 &  $73 \pm 2$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ &  & \\
+3 &  $79 \pm 3$  &  &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
+4 &  $81 \pm 3$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
+5 &  $83 \pm 4$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  & \\
+6 &  $84 \pm 3$  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & \\
+7 &  $86 \pm 3$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
+8 &  $86 \pm 3$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & \\
+9 &  $86 \pm 2$  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+10 & $85 \pm 2$  &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+11 & $85 \pm 2$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+12 & $85 \pm 2$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+13 & $84 \pm 2$  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+14 & $83 \pm 2$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+15 & $82 \pm 2$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
 \caption{Performance (mean $\pm$ s.d.) of classifiers. Row $n$ of the table shows the
@@ -386,23 +387,23 @@ N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} &
 \centering
 \begin{tabular}{cccccccccccccccc}
 \toprule
-N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} &
+N & \% Correct  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} &
 \xx{MST} & \xx{MTSL} & \xx{NBP} & \xx{SD} & \xx{TDL}\\
 \hline
-1 & $56.0 \pm 1.4\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & \\
-2 & $67.1 \pm 2.0\,\%$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
-3 & $75.8 \pm 2.2\,\%$  &  &  &  & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
-4 & $81.1 \pm 2.0\,\%$  & $\bullet$ &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
-5 & $81.6 \pm 2.7\,\%$  & $\bullet$ &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
-6 & $81.9 \pm 2.4\,\%$  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
-7 & $80.4 \pm 2.2\,\%$  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
-8 & $79.8 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
-9 & $79.0 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
-10 & $78.1 \pm 1.8\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-11 & $76.6 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-12 & $74.7 \pm 2.0\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-13 & $73.0 \pm 2.3\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-14 & $71.6 \pm 2.1\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+1  & $56 \pm 1$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  & \\
+2  & $67 \pm 2$  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
+3  & $76 \pm 2$  &  &  &  & $\bullet$ &  &  &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
+4  & $81 \pm 2$  & $\bullet$ &  &  &  &  & $\bullet$ &  &  &  &  &  &  & $\bullet$ & $\bullet$\\
+5  & $82 \pm 3$  & $\bullet$ &  &  &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
+6  & $82 \pm 2$  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$\\
+7  & $80 \pm 2$  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+8  & $80 \pm 2$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
+9  & $79 \pm 2$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+10 & $78 \pm 2$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $77 \pm 2$  & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $75 \pm 2$  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+13 & $73 \pm 2$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+14 & $72 \pm 2$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
 \caption{Feature set performance for \Sumbul dataset using same format
@@ -430,24 +431,26 @@ N & Performance  & \xx{BD} & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} &
 % analyseExhaustiveFeatureSearchGulyas
 
 \begin{table}
+\centering
 \begin{tabular}{ccllllllllllll}
-N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & TDL\\
 \toprule
-1 & $56.8 \pm 2.1\,\%$  &  &  &  &  &  &  &  &  &  &  &  & $\bullet$\\
-2 & $66.8 \pm 1.9\,\%$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$\\
-3 & $69.0 \pm 1.9\,\%$  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ &  &  & $\bullet$\\
-4 & $71.3 \pm 1.9\,\%$  &  &  &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
-5 & $73.4 \pm 1.9\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
-6 & $74.5 \pm 2.0\,\%$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-7 & $74.4 \pm 2.1\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
-8 & $74.5 \pm 1.6\,\%$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-9 & $73.2 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
-10 & $73.3 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-11 & $72.5 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-12 & $69.6 \pm 2.5\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+N & \% Correct & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} & \xx{MST} & \xx{MTSL} & \xx{NBP} & \xx{TDL}\\
+\midrule
+ 1 & $57 \pm 2$  &  &  &  &  &  &  &  &  &  &  &  & $\bullet$\\
+ 2 & $67 \pm 2$  &  &  &  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$\\
+ 3 & $69 \pm 2$  &  &  & $\bullet$ &  &  &  &  &  & $\bullet$ &  &  & $\bullet$\\
+ 4 & $71 \pm 2$  &  &  &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+ 5 & $73 \pm 2$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+ 6 & $75 \pm 2$  &  & $\bullet$ &  &  &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+ 7 & $74 \pm 2$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+ 8 & $74 \pm 2$  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+ 9 & $73 \pm 2$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$\\
+10 & $73 \pm 2$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $73 \pm 2$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $70 \pm 3$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
-\caption{Exhaustive feature search using the Gulyas data set.  Using same format
+\caption{Exhaustive feature search using the Gulyas data set,  using same format
   as Table~\ref{tab:performance}. }
 \end{table}
 
@@ -455,17 +458,19 @@ N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP 
 % getConfusionMatrixLatexGulyas
 
 \begin{table}
+\centering
 \begin{tabular}{llrrrrr}
-\hline
+\toprule
  & & \multicolumn{5}{c}{Predicted Class}\\
  & & CB & CR & CCK & PV & PC\\
-\cline{3-7}
+%%\cline{3-7}
+\midrule
 \multirow{5}{*}{\rotatebox{90}{True Class}}& CB & 11 & 5 & 1 & 1 & 0\\
 & CR & 5 & 20 & 1 & 2 & 0\\
 & CCK & 1 & 0 & 12 & 1 & 0\\
 & PV & 2 & 3 & 2 & 13 & 0\\
 & PC & 0 & 0 & 0 & 0 & 18\\
-\cline{3-7}
+\bottomrule
 \end{tabular}
 \caption{Confusion table for the Gulyas dataset. Calbindin (CB),
   Calretinin (CR), Cholecystokinin (CCK) and Parvalbumin (PV)
@@ -478,21 +483,23 @@ N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP 
 % analyseExhaustiveFeatureSearchFeldemeyer
 
 \begin{table}
+\centering
 \begin{tabular}{ccllllllllllll}
-N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP & TDL\\
 \toprule
-1 & $60.0 \pm 2.5\,\%$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ & \\
-2 & $67.0 \pm 4.5\,\%$  &  &  &  &  &  &  &  & $\bullet$ &  &  & $\bullet$ & \\
-3 & $72.6 \pm 5.6\,\%$  & $\bullet$ &  & $\bullet$ &  &  &  &  &  &  &  & $\bullet$ & \\
-4 & $72.6 \pm 5.8\,\%$  & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
-5 & $72.6 \pm 3.4\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  &  & $\bullet$ & \\
-6 & $72.6 \pm 1.9\,\%$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
-7 & $73.0 \pm 4.5\,\%$  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
-8 & $74.0 \pm 3.8\,\%$  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
-9 & $74.9 \pm 7.1\,\%$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-10 & $75.3 \pm 3.5\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-11 & $74.9 \pm 3.8\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
-12 & $74.4 \pm 3.7\,\%$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+N & \% Correct  & \xx{BA} & \xx{DA} & \xx{DD} & \xx{DDi} & \xx{DBP} & \xx{FD} & \xx{MBA} & \xx{MSL} & \xx{MST} & \xx{MTSL} & \xx{NBP} & \xx{TDL}\\
+\midrule
+ 1 & $60 \pm 3$  &  &  &  &  &  &  &  &  &  &  & $\bullet$ & \\
+ 2 & $67 \pm 5$  &  &  &  &  &  &  &  & $\bullet$ &  &  & $\bullet$ & \\
+ 3 & $73 \pm 6$  & $\bullet$ &  & $\bullet$ &  &  &  &  &  &  &  & $\bullet$ & \\
+ 4 & $73 \pm 6$  & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  &  &  &  &  & $\bullet$ & \\
+ 5 & $73 \pm 3$  & $\bullet$ &  & $\bullet$ & $\bullet$ &  &  &  & $\bullet$ &  &  & $\bullet$ & \\
+ 6 & $73 \pm 2$  & $\bullet$ & $\bullet$ &  & $\bullet$ &  &  &  & $\bullet$ & $\bullet$ &  &  & $\bullet$\\
+ 7 & $73 \pm 5$  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  &  & $\bullet$ &  &  & $\bullet$ & $\bullet$\\
+ 8 & $74 \pm 4$  & $\bullet$ &  &  & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$\\
+ 9 & $75 \pm 7$  &  &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+10 & $75 \pm 4$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+11 & $75 \pm 4$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ &  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
+12 & $74 \pm 4$  & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$\\
 \bottomrule
 \end{tabular}
 \caption{Exhaustive feature search for the Feldemeyer dataset.  Using same format
@@ -502,17 +509,18 @@ N & Performance  & BA & DA & DD & DDi & DBP & FD & MBA & MSL & MST & MTSL & NBP 
 % getConfusionMatrixLatexFeldemeyer
 
 \begin{table}
+\centering
 \begin{tabular}{llrrrrr}
-\hline
+\toprule
  & & \multicolumn{5}{c}{Predicted Class}\\
  & & Horizontal & Inverted & Multipolar & Pyramidal & Tangenital\\
-\cline{3-7}
+\midrule
 \multirow{5}{*}{\rotatebox{90}{True Class}}& Horizontal & 0 & 2 & 1 & 0 & 2\\
 & Inverted & 2 & 5 & 0 & 0 & 0\\
 & Multipolar & 0 & 0 & 14 & 1 & 0\\
 & Pyramidal & 0 & 1 & 0 & 10 & 0\\
 & Tangenital & 0 & 0 & 0 & 1 & 4\\
-\cline{3-7}
+\bottomrule
 \end{tabular}
 \caption{Confusion matrix for the Feldemeyer dataset.}
 \end{table}
