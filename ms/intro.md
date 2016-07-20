@@ -347,9 +347,7 @@ plotted the most atypical RGC of each type, which was defined as the
 RGC with the highest posterior probability for another type other than
 its genetic type.
 
-### Classification of other cell types
-
-**CHECK NEW SECTION**
+## Classification of other cell types
 
 In addition to analysing RGCs collected from our previous work, we
 have re-analyzed neurons from three other sources.  First, we
