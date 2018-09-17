@@ -19,10 +19,11 @@ date: 2016-07-20 <!-- TODO update by hand. -->
 <!-- nocite above to ensure we cite all the refs from Table 1. -->
 ---
 
+**TODO: list any current addresses?  Andrew now at Stanford, Rana at NYU?**
 
 ### Abbreviated title
 
-Classification of mouse retinal ganglion cells
+Supervised classification of neurons
 
 ### Contributions
 
@@ -46,30 +47,30 @@ cells in many species have been be grouped according to their distinct
 morphologies and branching patterns within the inner plexiform layer.
 The dominant statistical method for grouping neurons into distinct
 types is that of unsupervised clustering, whereby neurons are grouped
-using just there morphological features.  We have taken a
-complementary approach, using supervised classification methods to
-learn and predict any association between morphological features as
-input and an independent assessment of cell type.  For this study, We
-have used five different transgenic mouse lines, in each of which we
-we assume 1--2 RGCs types selectively express green fluorescent
-protein (GFP).  We assume that each mice line labels a unique "genetic
-type" of RGC.  Cell tracings of 94 RGCs were acquired from retinas of
-CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and TRHR-GFP transgenic
-mice. Fifteen morphological features of GFP expressing RGCs were
-calculated, and supervised machine learning techniques were used to
-classify the neurons according to their genetic type information.  We
-found that just five features (dendritic area, density of branch
-points, fractal dimension, mean terminal segment length and soma area)
-were enough to correctly classify 83% of the RGCs into the five types
-that we examined.  We therefore believe that standard morphological
-features can serve as reliable classifiers of mouse RGCs.  As these
-morphological features are not specific to retinal neurons, we have
-tested how well these features can also classify other types of
-neurons.  Without adding any further features, or refinement of our
-procedures, we found that we could classify five types of cortical or
-hippocampal neuron into predefined types with around 75\% accuracy.
-Overall this suggest that simple dendritic features can act as fairly
-reliable, albeit imperfect, predictors of cell type.
+using morphological features.  We have taken a complementary approach,
+using supervised classification methods to learn and predict any
+association between morphological features as input and an independent
+assessment of cell type.  Here we have used five different transgenic
+mouse lines, in each of which we we assume 1--2 RGCs types selectively
+express green fluorescent protein (GFP).  We assume that each mice
+line labels a unique "genetic type" of RGC.  Cell tracings of 94 RGCs
+were acquired from retinas of CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP
+and TRHR-GFP transgenic mice. Fifteen morphological features of GFP
+expressing RGCs were calculated, and supervised machine learning
+techniques were used to classify the neurons according to their
+genetic type information.  We found that just five features (dendritic
+area, density of branch points, fractal dimension, mean terminal
+segment length and soma area) were enough to correctly classify 83% of
+the RGCs into the five types that we examined.  We therefore believe
+that standard morphological features can serve as reliable classifiers
+of mouse RGCs.  As these morphological features are not specific to
+retinal neurons, we have tested how well these features can also
+classify other types of neurons.  Without adding any further features,
+or refinement of our procedures, we found that we could classify five
+types of cortical or hippocampal neuron into predefined types with
+around 75\% accuracy.  Overall this suggest that simple dendritic
+features can act as fairly reliable, albeit imperfect, predictors of
+cell type.
 
 ### Keywords
 cell types, retinal ganglion cells, clustering, classification.
@@ -81,16 +82,17 @@ cell types, retinal ganglion cells, clustering, classification.
 # Introduction
 
 Classifying neurons into distinct cell types has been a key problem in
-Neuroscience for over a century [@Ramon_y_Cajal1894-qo].  A key
-working assumption is that neurons can be classified into groups based
-on similarity of their anatomy [@Rodieck1983-nb], physiology
-[@Farrow2011], or connectivity [@Jiang2015].  Over the last fourty
-years, there has been significant progress in classifying retinal
-neurons into distinct classes, mostly due to the highly laminar
-structure of the retina [@Cook1998].  Furthermore, within a lamina,
-each classes of cells (such as retinal ganglion cells) can be divided
-into unique types on their basis of their dendritic arborization
-pattern.
+Neuroscience for over a century [@Ramon_y_Cajal1894-qo] and is still
+seen as a prerequistive for understanding neuronal mechanisms
+[@Zeng2017-ao].  A key working assumption is that neurons can be
+classified into groups based on similarity of their anatomy
+[@Rodieck1983-nb], physiology [@Farrow2011], connectivity [@Jiang2015]
+or transcriptome [@Shekhar2016-md].  Over the last fourty years, there
+has been significant progress in classifying retinal neurons into
+distinct classes, mostly due to the highly laminar structure of the
+retina [@Cook1998].  Furthermore, within a lamina, each classes of
+cells (such as retinal ganglion cells) can be divided into unique
+types on their basis of their dendritic arborization pattern.
 
 The pioneering work of @Boycott1974-aa suggested that there were at
 least three morphological sub-classes (alpha, beta and gamma) of RGC
@@ -109,16 +111,16 @@ same type should cluster together in one part of this feature space,
 and that different cell types occupy different parts of feature space.
 
 Recent advances in imaging and genetics have led to a dramatic
-increase in data, especially from mice [@Badea2004], to test whether
-distinct types of RGCs form clusters in multidimensional space.
-Estimates for the number of mouse RGCs types vary from 12 [@Kong2005]
-to over 30 [@Baden2016-io] based either on manual classification of
-cell types or unsupervised machine learning methods.  These techniques
-have also been applied to grouping of RGCs in other species, including
-cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and lamprey
-[@Fletcher2014-mj].  These unsupervised approaches use statistical
-methods to determine the optimal number of clusters in the data
-[e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
+increase in data, especially from mice [@Badea2004,@Baden2016-io], to
+test whether distinct types of RGC form clusters in multidimensional
+space.  Estimates for the number of mouse RGCs types vary from 12
+[@Kong2005] to over 30 [@Baden2016-io] based either on manual
+classification of cell types or unsupervised machine learning methods.
+These techniques have also been applied to grouping of RGCs in other
+species, including cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and
+lamprey [@Fletcher2014-mj].  These unsupervised approaches use
+statistical methods to determine the optimal number of clusters in the
+data [e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
 However, these previous studies had no independent indicator of cell
 type to compare with the predicted cell types.
 
@@ -133,13 +135,13 @@ mouse, i.e. the mouse line from where the cell was labelled.  This
 provides us with ground-truth data which we can use to evaluate our
 methods against.  From each individual RGC we measured fifteen
 features, from which we found five that were highly predictive of cell
-type.  We compare our findings with a recent study [@Sumbul2014-vm]
+type.  We compare our findings with an earlier study [@Sumbul2014-vm]
 where perfect classification was achieved when detailed information
 about the entire dendritic stratification relative to reliable retinal
 landmarks (VAChT bands) was included.
 
-Although our findings from supervised classification are not as
-accurate as the recent findings from [@Sumbul2014-vm], their
+Although our results from supervised classification are not as
+accurate as the findings from [@Sumbul2014-vm], their
 method is highly optimised for classifying RGCs, due to the strong
 laminar information provided by the retinal landmarks, i.e. the VAChT
 bands.  We have therefore tested our supervised approach on neurons
@@ -593,7 +595,7 @@ the Hoxd10 RGCs.
 **TODO: Rewrite**
 Out of the five RGC types, the Hoxd10 seems to perform poorest in both
 classification and clustering results.  As noted at the start of the
-Results, our recent work [@Dhande2013-vp] suggested that Hoxd10 labels
+Results, our earlier work [@Dhande2013-vp] suggested that Hoxd10 labels
 multiple RGC types, rather than just one type.  This mixing of
 multiple types might account for why cells in the Hoxd10 class are
 being misclassified at a relatively high rate.
@@ -617,9 +619,9 @@ distinct RGC types.
 
 ## Re-analysis of the Sümbül  et al. (2014) data set
 
-A recent study by Sümbül et al. (2014) achieved perfect classification
-for RGC types labelled by seven distinct genetic markers.  One reason
-for their high performance was that their classifier received a
+The study by Sümbül et al. (2014) reported perfect classification for
+RGC types labelled by seven distinct genetic markers.  One reason for
+their high performance was that their classifier received a
 high-dimensional representation of the density of the entire arbor,
 with a fine resolution in the depth dimension.  Accurate generation of
 dendritic depth information required reliable information about the
@@ -746,7 +748,7 @@ error, or by optimising some measure of the "purity" of each cluster,
 such as silhouette widths [@Rousseeuw1987-xe] or similarity profile
 analysis [@Clarke2008-ex].
 
-The recent study by @Sumbul2014-vm was the first to use genetic type
+The study by @Sumbul2014-vm was the first to use genetic type
 information to classify neurons after they had been grouped using
 unsupervised clustering techniques. However, the genetic information
 was used after the groups had been created to label the groups.  By
@@ -774,7 +776,7 @@ varies.  Using this approach, we found five features that were highly
 predictive of cell type.
 
 Although our feature classifier gives good performance, it does not
-match the perfect performance reported recently for seven genetic
+match the perfect performance reported for seven genetic
 types of mouse RGC [@Sumbul2014-vm].  We believe the key difference is
 due to the detailed nature of the representation of the dendritic arbor
 in that study: each neuron was represented by a 20x20x120 volume, with
