@@ -13,7 +13,7 @@ author:
 nocite: |
   @Huberman2009-xf, @Osterhout2011-9b9, @Huberman2008-5a6,
   @Dhande2013-vp, @Rivlin-Etzion2011-ji
-date: 2015-05-25 <!-- TODO update by hand. -->
+date: 2016-07-20 <!-- TODO update by hand. -->
 ...
 
 <!-- nocite above to ensure we cite all the refs from Table 1. -->
@@ -33,44 +33,43 @@ Wrote the paper: JJJH, RNE-D, ADH, SJE.
 
 \clearpage
 
-# TODO
-
-Note new title to emphasise not just the retina.
-
-
-\clearpage
-
 # Abstract
 
 \linenumbers
 \modulolinenumbers[2]
 \renewcommand\linenumberfont{\normalfont\tiny\sffamily\color{lightgray}}
+\onehalfspacing
 
-There are estimated to be around 20 different types of retinal
-ganglion cells (RGCs) in mouse retina. Recently-developed genetic
-markers allow for the identification and targeting of specific RGC
-types, which have different functional and morphological features. The
-purpose of this study was to develop computational tools to identify
-RGC types based on the most common available sources of information
-about their morphology: soma size and dendritic branching pattern. We
-used five different transgenic mouse lines, in each of which 1--2 RGCs
-types selectively express green fluorescent protein (GFP). Cell
-tracings of 94 RGCs were acquired from retinas of CB2-GFP, Cdh3-GFP,
-DRD4-GFP, Hoxd10-GFP and TRHR-GFP transgenic mice. Fifteen
-morphological features of GFP expressing RGCs were calculated, and
-supervised machine learning techniques were used to classify the
-neurons. We found that just five features (dendritic area, density of
-branch points, fractal dimension, mean terminal segment length and
-soma area) were enough to correctly classify 83% of the RGCs into the
-five types that we examined.  We therefore believe that standard
-morphological features can serve as reliable classifiers of mouse
-RGCs.  As these features are not specific to retinal neurons, we have
+Neurons are often grouped into distinct types according to
+similarities in their morphology.  In particular, retinal ganglion
+cells in many species have been be grouped according to their distinct
+morphologies and branching patterns within the inner plexiform layer.
+The dominant statistical method for grouping neurons into distinct
+types is that of unsupervised clustering, whereby neurons are grouped
+using just there morphological features.  We have taken a
+complementary approach, using supervised classification methods to
+learn and predict any association between morphological features as
+input and an independent assessment of cell type.  For this study, We
+have used five different transgenic mouse lines, in each of which we
+we assume 1--2 RGCs types selectively express green fluorescent
+protein (GFP).  We assume that each mice line labels a unique "genetic
+type" of RGC.  Cell tracings of 94 RGCs were acquired from retinas of
+CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and TRHR-GFP transgenic
+mice. Fifteen morphological features of GFP expressing RGCs were
+calculated, and supervised machine learning techniques were used to
+classify the neurons according to their genetic type information.  We
+found that just five features (dendritic area, density of branch
+points, fractal dimension, mean terminal segment length and soma area)
+were enough to correctly classify 83% of the RGCs into the five types
+that we examined.  We therefore believe that standard morphological
+features can serve as reliable classifiers of mouse RGCs.  As these
+morphological features are not specific to retinal neurons, we have
 tested how well these features can also classify other types of
 neurons.  Without adding any further features, or refinement of our
 procedures, we found that we could classify five types of cortical or
-hippocampal neuron with around 75\% accuracy.  Overall this suggest
-that simple dendritic features can act as fairly reliable, albeit
-imperfect, predictors of cell type.
+hippocampal neuron into predefined types with around 75\% accuracy.
+Overall this suggest that simple dendritic features can act as fairly
+reliable, albeit imperfect, predictors of cell type.
 
 ### Keywords
 cell types, retinal ganglion cells, clustering, classification.
@@ -81,55 +80,81 @@ cell types, retinal ganglion cells, clustering, classification.
 
 # Introduction
 
-The retina processes the visual scene and sends this information in
-parallel channels to the brain via retinal ganglion cells (RGCs)
-[@Wassle2004-lt; @Dhande2014-ek].  To determine the number of parallel
-channels, we first need to determine the number of RGC types.  The
-pioneering work of @Boycott1974-aa suggested that there were at least
-three morphological sub-classes (alpha, beta and gamma) of RGC in cat,
-and these three types mapped onto previously-defined physiological
-classes [X, Y and W; @Cleland1971-bo].  For example, alpha cells were
-defined as having larger dendritic fields and somata compared to
-neighbouring beta cells.  However, individual morphological features
-cannot uniquely predict cell type, as demonstrated by the large
-overlap in RGC somata area [Figure 6 of @Boycott1974-aa] among
-alpha/beta/gamma cat RGCs.  Instead, multiple features should be
-considered simultaneously when classifying neurons.  @Rodieck1983-nb
-formalised this notion, proposing to use multiple features to define a
-multidimensional "feature space" in which to define RGC types.  If
-cells form distinct types, then cells of the same type should cluster
-together in one part of this feature space, and that different cell
-types occupy different parts of feature space.
+Classifying neurons into distinct cell types has been a key problem in
+Neuroscience for over a century [@Ramon_y_Cajal1894-qo].  A key
+working assumption is that neurons can be classified into groups based
+on similarity of their anatomy [@Rodieck1983-nb], physiology
+[@Farrow2011], or connectivity [@Jiang2015].  Over the last fourty
+years, there has been significant progress in classifying retinal
+neurons into distinct classes, mostly due to the highly laminar
+structure of the retina [@Cook1998].  Furthermore, within a lamina,
+each classes of cells (such as retinal ganglion cells) can be divided
+into unique types on their basis of their dendritic arborization
+pattern.
+
+The pioneering work of @Boycott1974-aa suggested that there were at
+least three morphological sub-classes (alpha, beta and gamma) of RGC
+in cat, and these three types mapped onto previously-defined
+physiological classes [X, Y and W; @Cleland1971-bo].  For example,
+alpha cells were defined as having larger dendritic fields and somata
+compared to neighbouring beta cells.  However, individual
+morphological features cannot uniquely predict cell type, as
+demonstrated by the large overlap in RGC somata area [Figure 6 of
+@Boycott1974-aa] among alpha/beta/gamma cat RGCs.  Instead, multiple
+features should be considered simultaneously when classifying neurons.
+@Rodieck1983-nb formalised this notion, proposing to use multiple
+features to define a multidimensional "feature space" in which to
+define RGC types.  If cells form distinct types, then cells of the
+same type should cluster together in one part of this feature space,
+and that different cell types occupy different parts of feature space.
 
 Recent advances in imaging and genetics have led to a dramatic
 increase in data, especially from mice [@Badea2004], to test whether
 distinct types of RGCs form clusters in multidimensional space.
 Estimates for the number of mouse RGCs types vary from 12 [@Kong2005]
-to 22 [@Volgyi2009] based either on manual classification of cell
-types or unsupervised machine learning methods.  These techniques have
-also been applied to grouping of RGCs in other species, including cat
-[@Jelinek2004-gp], newt [@Pushchin2009-ef5] and lamprey
+to over 30 [@Baden2016-io] based either on manual classification of
+cell types or unsupervised machine learning methods.  These techniques
+have also been applied to grouping of RGCs in other species, including
+cat [@Jelinek2004-gp], newt [@Pushchin2009-ef5] and lamprey
 [@Fletcher2014-mj].  These unsupervised approaches use statistical
 methods to determine the optimal number of clusters in the data
 [e.g. using the silhouette widths technique, @Rousseeuw1987-xe].
 However, these previous studies had no independent indicator of cell
 type to compare with the predicted cell types.
 
-In this study, we analyse the morphology of RGCs from five mutant mice
-lines where typically one or a few types of RGCs are labelled with GFP.
-We use supervised machine learning techniques to predict whether the
-anatomical features can predict the "genetic type" of the mouse,
-i.e. the mouse line from where the cell was labelled.  This provides
-us with ground-truth data which we can use to evaluate our methods
-against.  From each individual RGC we measured fifteen features, from which we
-found five that were highly predictive of cell type.  We compare our
-findings with a recent study [@Sumbul2014-vm] where perfect
-classification was achieved when detailed information about the entire
-dendritic stratification relative to reliable retinal landmarks (VAChT
-bands) was included.  We suggest that our simple anatomical measures
-can provide a reliable basis for classification in the absence of
-stratification depth information, and thus that the @Rodieck1983-nb
-method of classification is robust when applied to mouse RGCs.
+In this study, take a complementary approach by using supervised
+classification to evaluate the association between morphology and some
+externally-determined indicator of cell type.  In particular, we
+analyse the morphology of RGCs from five mutant mice lines where our
+working assumption is that one or a few types of RGCs are labelled
+with GFP.  We use supervised machine learning techniques to predict
+whether the anatomical features can predict the "genetic type" of the
+mouse, i.e. the mouse line from where the cell was labelled.  This
+provides us with ground-truth data which we can use to evaluate our
+methods against.  From each individual RGC we measured fifteen
+features, from which we found five that were highly predictive of cell
+type.  We compare our findings with a recent study [@Sumbul2014-vm]
+where perfect classification was achieved when detailed information
+about the entire dendritic stratification relative to reliable retinal
+landmarks (VAChT bands) was included.
+
+Although our findings from supervised classification are not as
+accurate as the recent findings from [@Sumbul2014-vm], their
+method is highly optimised for classifying RGCs, due to the strong
+laminar information provided by the retinal landmarks, i.e. the VAChT
+bands.  We have therefore tested our supervised approach on neurons
+from other brain regions where there are no readily observable landmarks.
+We have analysed two further datasets, one containing cortical
+neurons, and one containing hippocampal neurons.  In these two
+datasets, the original investigators classified these neurons into
+five types each based on morphology.  We show that without any further
+refinement of our method (e.g. adding extra features), we could
+classify these neurons with around 75% accuracy.  We suggest that our
+simple anatomical measures can provide a reliable basis for
+classification in the absence of stratification depth information, and
+thus that the @Rodieck1983-nb method of classification is robust when
+applied to rodent neurons from three different brain regions.
+ 
 
 # Materials and Methods
 
@@ -375,7 +400,7 @@ lines GFP is usually expressed in just one or a few RGC types.  This
 makes it possible to reliably and selectively target the same types of
 RGCs across animals.  We will refer to these five lines as "genetic
 types" and we assume for the initial analysis that each of these
-uniquely define one RGC type.  **However, it is unlikely that our
+uniquely define one RGC type.  However, it is unlikely that our
 current genetic mouse lines provide a 1:1 correspondence between
 genetic marker and RGC type.  In particular, our previous findings
 suggested that Hoxd10 labels at least two distinct types of
@@ -383,14 +408,14 @@ directionally-selective RGCs: one with an ON-like morphology and the
 other with a smaller, ON-OFF morphology [@Dhande2013-vp].  In this work we
 initially assume that Hoxd10 labels one type of RGCs, and then assess
 later in detail whether dividing Hoxd10 into two classes affects our
-results.**
+results.
 
 Three example RGCs of each genetic type are shown in Figure 1. The
 axons (not shown in Figure 1) and dendrites (black lines) were
 manually traced, and the locations of the somas were marked. Each RGC
 collects information about a small region in the visual field; the
 shape and distribution of the dendritic tree differs depending on the
-function the RGC performs. It is an open problem to identify the RGC
+function the RGC performs. It is an open problem to identify the neuronal
 type based on morphological characteristics. Here we are interested in
 using objective methods to assess morphological patterns distinct to
 each type.
@@ -414,21 +439,22 @@ predict the RGC type. Previous studies
 highlighted that stratification depth, relative to the two VAChT bands
 surrounding the inner plexiform layer, is a good predictor of RGC
 type. Most, but not of all, of our RGC z-stacks included VAChT
-staining.  However, as we were unable to reliably observe two separate
-VAChT bands, we could not use the bands to determine stratification
-depth.  We instead calculated the stratification depth relative to the
-soma centre.  We found that there was considerable overlap between the
-different RGC types according to stratification depth (Table 3).
-There were also significant overlaps between the RGC types based on
-other features. For example, Table 3 shows that Hoxd10 generally had a
-larger dendritic area than other RGC types but that the standard
-deviation is so large that the range spans the whole spectrum of
-values of other RGC types. To assess the predictive powers of the
-individual features, we trained a Naïve Bayes classifier for each
-individual feature.  The single-most discriminative feature for our
-data was mean terminal segment length, which correctly predicted 64.7
-± 1.7\ % of the cases.  We therefore confirm that our individual
-features are not reliable classifiers of neuronal type.
+staining.  Unfortunately, however, as we were unable to reliably
+observe two separate VAChT bands, we could not use the bands to
+determine stratification depth.  We instead calculated the
+stratification depth relative to the soma centre.  We found that there
+was considerable overlap between the different RGC types according to
+stratification depth (Table 3).  There were also significant overlaps
+between RGC types based on other features. For example, Table 3
+shows that Hoxd10 generally had a larger dendritic area than other RGC
+types but that the standard deviation is so large that the range spans
+the whole spectrum of values of other RGC types. To assess the
+predictive powers of the individual features, we trained a Naïve Bayes
+classifier for each individual feature.  The single-most
+discriminative feature for our data was mean terminal segment length,
+which correctly predicted 64.7 ± 1.7\ % of the cases.  We therefore
+confirm that our individual features are not reliable classifiers of
+neuronal type.
 
 ## Selection of multiple feature vectors
 
@@ -460,14 +486,14 @@ classification is still possible but there will be some
 miss-classifications.
 
 Using this approach, we translated each neuron into a
-fifteen-dimensional feature vector (Figure 2F).  *A priori* it is not
-certain that all fifteen features should be used in classification.
+fifteen-dimensional feature vector (Figure 2F).  *A priori* it is
+unclear if all fifteen features should be used in classification.
 With each additional feature, the dimensionality of the feature space
-increases, causing the data points to be more spread out. Adding
-features with little or no useful information increases the distance
-between all cells in feature space. As more irrelevant features are
-added, the difference between within-class distance and between-class
-distance decreases, making the cells harder to classify. A potential
+increases, further separating the data points. Adding features with
+little or no useful information increases the distance between all
+cells in feature space. As more irrelevant features are added, the
+difference between within-class distance and between-class distance
+decreases, making the cells harder to classify. A potential
 complication is that some features capture similar properties, leading
 to correlations between the features. The pairwise correlations
 between all features are reported in Table 4.  For example, mean
@@ -479,7 +505,7 @@ branch points (r=-0.85 and r=-0.78).
 To assess which subset of features would give the best classification,
 rather than select the features by trial and error, we did an
 exhaustive search using all possible combinations of the fifteen
-features. We choose the Naïve Bayes classifier, as initial tests
+features. We chose the Naïve Bayes classifier, as initial tests
 showed that it was fast and had reasonably good classification
 performance. A bootstrap aggregation classifier and support vector
 machine performed equally well. The performance of each set of
@@ -501,10 +527,10 @@ training would be about 24%.
 
 ## Assessing the classification
 
-To get a sense of what the different RGC types looked like we selected
-a typical and an atypical RGC from each genetic type (Figure 4), based
-upon the classification of these RGCs. Each row shows two neurons: the
-left being the most typical in the class, and in the right a neuron that
+To understand the variability in RGC structures, we selected a typical
+and an atypical RGC from each genetic type (Figure 4), based upon the
+classification of these RGCs. Each row shows two neurons: the left
+being the most typical in the class, and in the right a neuron that
 was incorrectly classified. We see, for example, that the two Cdh3
 RGCs shown look quite different. The more typical RGC (left) is more
 compact while the atypical one (right) occupies a larger area with
@@ -535,16 +561,14 @@ do this by generating scatter plots between each pair of features
 e.g. one shown in Figure 5A, plotting soma area against density of
 branch points.  We can observe from this that TRHR has a large overlap
 with DRD4 and to some extent Cdh3. Likewise, Hoxd10 has large overlaps
-with other genetic types.  Rather than repeat this procedure for each
-pair of features (there are ten scatter plots for a five dimensional
-feature), we used Principal component analysis to reduce the
-five-dimensional vectors to two dimensions. Figure 5B shows that the
-majority of the Hoxd10 cells are grouped together into a cluster that
-partially overlaps with DRD4. There are also a few outliers that
-overlap with CB2 and TRHR.  This two-dimensional projection confirms
-our *a priori* belief that there is likely to be a morphological
-signal that can separate RGCs types, but that the boundaries overlap,
-as outlined for synthetic data in Figure 3C.
+with other genetic types. We used Principal component analysis to
+reduce the five-dimensional vectors to two dimensions for
+visualisation. Figure 5B shows that most Hoxd10 cells grouped together
+into a cluster that partially overlaps with DRD4. There are also a few
+outliers that overlap with CB2 and TRHR.  This two-dimensional
+projection confirms our *a priori* belief that there is likely to be a
+morphological signal that can separate RGCs types, but that the
+boundaries overlap, as outlined for synthetic data in Figure 3C.
 
 
 ### Confidence in classification
@@ -557,11 +581,10 @@ about most of its predictions. When the clusters are harder to
 separate, we expect the classifier's confidence in the predictions to
 be lower [@Khan2001-71f]. Figure 5C shows the confidence of the
 classification for different RGCs, with a higher score signifying a
-more confident classification. Triangles mark the cells that were
-incorrectly classified. There are some misclassified cells with
+more confident classification.  There are some misclassified cells with
 confidences around 0.5, but perhaps more concerning are misclassified
 RGCs with higher (> 0.8) confidence.  Each type had one example of a
-RGC with high posterior probability for the wrong type, except for
+RGC with high posterior probability for the incorrect type, except for
 Hoxd10, which had three.  This might reflect the hetereogenity with
 the Hoxd10 RGCs.
 
