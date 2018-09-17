@@ -87,7 +87,7 @@ seen as a prerequistive for understanding neuronal mechanisms
 [@Zeng2017-ao].  A key working assumption is that neurons can be
 classified into groups based on similarity of their anatomy
 [@Rodieck1983-nb], physiology [@Farrow2011], connectivity [@Jiang2015]
-or transcriptome [@Shekhar2016-md].  Over the last fourty years, there
+or transcriptome [@Shekhar2016-td].  Over the last fourty years, there
 has been significant progress in classifying retinal neurons into
 distinct classes, mostly due to the highly laminar structure of the
 retina [@Cook1998].  Furthermore, within a lamina, each classes of
@@ -111,7 +111,7 @@ same type should cluster together in one part of this feature space,
 and that different cell types occupy different parts of feature space.
 
 Recent advances in imaging and genetics have led to a dramatic
-increase in data, especially from mice [@Badea2004,@Baden2016-io], to
+increase in data, especially from mice [@Badea2004; @Baden2016-io], to
 test whether distinct types of RGC form clusters in multidimensional
 space.  Estimates for the number of mouse RGCs types vary from 12
 [@Kong2005] to over 30 [@Baden2016-io] based either on manual
@@ -150,7 +150,7 @@ We have analysed two further datasets, one containing cortical
 neurons, and one containing hippocampal neurons.  In these two
 datasets, the original investigators classified these neurons into
 five types each based on morphology.  We show that without any further
-refinement of our method (e.g. adding extra features), we could
+refinement of our method, e.g. adding new features, we could
 classify these neurons with around 75% accuracy.  We suggest that our
 simple anatomical measures can provide a reliable basis for
 classification in the absence of stratification depth information, and
@@ -320,9 +320,9 @@ wanted to see if there was a natural grouping in feature space.
 
 The primary classifier used in this study was the Naïve Bayes method
 [@Manning2008-dq].  We explored a range of other classification
-methods including Decision trees [@Kotsiantis2013-jc] with various
-forms of boosting or bagging [@Breiman1996-ji; @Ho1998-cp] and Support
-Vector Machines [@Hastie2009-ws].  We found that these classifiers had
+methods including decision trees [@Kotsiantis2013-jc] with various
+forms of boosting or bagging [@Breiman1996-ji; @Ho1998-cp] and support
+vector machines [@Hastie2009-ws].  We found that these classifiers had
 similar performance and so here we present only the results from the
 Naïve Bayes classifier.
 
@@ -532,7 +532,7 @@ training would be about 24%.
 To understand the variability in RGC structures, we selected a typical
 and an atypical RGC from each genetic type (Figure 4), based upon the
 classification of these RGCs. Each row shows two neurons: the left
-being the most typical in the class, and in the right a neuron that
+being the most typical in the class, and on the right a neuron that
 was incorrectly classified. We see, for example, that the two Cdh3
 RGCs shown look quite different. The more typical RGC (left) is more
 compact while the atypical one (right) occupies a larger area with
@@ -563,7 +563,7 @@ do this by generating scatter plots between each pair of features
 e.g. one shown in Figure 5A, plotting soma area against density of
 branch points.  We can observe from this that TRHR has a large overlap
 with DRD4 and to some extent Cdh3. Likewise, Hoxd10 has large overlaps
-with other genetic types. We used Principal component analysis to
+with other genetic types. We used principal component analysis to
 reduce the five-dimensional vectors to two dimensions for
 visualisation. Figure 5B shows that most Hoxd10 cells grouped together
 into a cluster that partially overlaps with DRD4. There are also a few
@@ -592,13 +592,13 @@ the Hoxd10 RGCs.
 
 ## Hoxd10 contain multiple subtypes
 
-**TODO: Rewrite**
-Out of the five RGC types, the Hoxd10 seems to perform poorest in both
+
+Out of the five RGC types, Hoxd10 performs poorest in both
 classification and clustering results.  As noted at the start of the
-Results, our earlier work [@Dhande2013-vp] suggested that Hoxd10 labels
-multiple RGC types, rather than just one type.  This mixing of
-multiple types might account for why cells in the Hoxd10 class are
-being misclassified at a relatively high rate.
+results section, our earlier work [@Dhande2013-vp] suggested that
+Hoxd10 labels multiple RGC types, rather than just one type.  This
+mixing of multiple types might account for why cells in the Hoxd10
+class are being misclassified at a relatively high rate.
 
 If two or more morphologically distinct RGC types are included in one
 genetic type, an algorithm that looks for spatial clustering in
@@ -755,7 +755,7 @@ was used after the groups had been created to label the groups.  By
 contrast, in our study, we have used the genetic information to
 supervise the construction of groupings.  We believe that this is the
 first time that supervised classification methods have been used to
-classify neurons based on their morphology.
+classify neurons based solely on their morphology.
 
 ## Choice of features
 
@@ -853,7 +853,14 @@ brain region for axons.  Our earlier work has identified targets of the
 five genetic types studied here. For example, CB2 RGCs projects to
 contralateral superior colliculus and dorsal lateral geniculate
 nucleus [@Huberman2008-5a6] whereas Hoxd10 RGCs project to the accessory
-optic system [@Dhande2013-vp].
+optic system [@Dhande2013-vp].  More generally, other approaches to
+neuronal classification have used physiological or molecular
+signatures [summarised in @Zeng2017-ao].  In particular, recent high
+throughput single-cell RNA sequencing has led to a comprehensive
+classification of retinal bipolar neurons in mouse, with a clear
+relationship to morphological featurese.  As more data from different
+sources becomes available, other features can be added to the
+classification.
 
 In summary, we have shown the utility of building a classifier for
 neuronal morphologies based upon correlating simple dendritic features
@@ -880,7 +887,7 @@ thank Julian Budd and Ellese Cotterill for comments on the manuscript.
 # Figure legends
 
 <!--ExampleMorphologies.eps   -->
-**Figure 1:** Neurolucida tracings of RGCs obtained from five
+\indent **Figure 1:** Neurolucida tracings of RGCs obtained from five
 transgenic mouse lines: CB2-GFP, Cdh3-GFP, DRD4-GFP, Hoxd10-GFP and
 TRHR-GFP. Dendrites and soma are drawn in black, and axons in red.
 
